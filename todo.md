@@ -1,4 +1,4 @@
-##To do
+# To do
 1. Finish more frontend.
 2. Create a login page.
 3. Create a db model.
