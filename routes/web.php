@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.layouts.welcome');
+    return view('frontend.layouts.frontpage');
 });
 
 Route::get('/NyKube', function () {
     return view('frontend.layouts.nykube');
+});
+Route::get('/NyBigård', function () {
+    return view('frontend.layouts.nyBigård');
 });
