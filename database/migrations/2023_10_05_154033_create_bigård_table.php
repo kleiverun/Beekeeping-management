@@ -4,17 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration {
+return new class() extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('bigård', function (Blueprint $table) {
-            $table->varchar('idBigård');
-            $table->varchar('bruker_idBruker');
-            $table->varchar('adresse');
-            $table->timestamps('tidLaget');
+            $table->id('idBigård');
+            $table->string('navn');
+            $table->foreignId('bruker_idBruker')->constrained('bruker', 'idBruker');
+            $table->string('adresse');
+            $table->timestamps();
         });
     }
 

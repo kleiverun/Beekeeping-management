@@ -4,20 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration {
+return new class() extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('bikube', function (Blueprint $table) {
-            $table->id('idBikube');
-            $table->foreignId('bigård_idBigård')->constrained('bigård');
-            $table->foreignId('bruker_idBruker')->constrained('bruker');
+        Schema::create('bikube_endringer', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('bikube_idBikube')->constrained('bikube', 'idBikube');
             $table->integer('antallSkattekasser');
-            $table->timestamps('tidLaget');
-            $table->string('identifikasjon');
             $table->integer('estimertStyrke');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +25,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('bikube');
+        Schema::dropIfExists('bikube_endringer');
     }
 };
