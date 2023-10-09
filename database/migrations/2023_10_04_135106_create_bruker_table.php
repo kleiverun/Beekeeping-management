@@ -19,7 +19,7 @@ return new class() extends Migration
             $table->string('telefonnr');
             $table->string('epost');
             $table->string('adresse');
-            $table->timestamp('tidLaget');
+            $table->timestamps();
         });
     }
 

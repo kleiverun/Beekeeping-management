@@ -8,11 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Bruker extends Model
 {
     use HasFactory;
-    private $idBruker;
-    private $passord;
-    private $fornavn;
-    private $etternavn;
-    private $epost;
-    private $telefonnr;
-    private $adresse;
+    protected $table = 'bruker';
+    protected $fillable = ['passord', 'fornavn', 'etternavn', 'epost', 'telefonnr', 'adresse', 'created_at', 'updated_at'];
 }

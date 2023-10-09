@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class BikubeEndringer extends Model
 {
     use HasFactory;
-    private $idBikubeEndringer;
-    private $bikube_idBikube;
-    private $antallSkattekasser;
-    private $estimertStyrke;
-    private $tidEndret;
+    protected $table = 'bikube_endringer';
+    protected $fillable = ['idBikubeEndringer', 'bikube_idBikube', 'antallSkattekasser', 'estimertStyrke', 'created_at', 'updated_at'];
 }

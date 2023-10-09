@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BiGård extends Model
+class Bigård extends Model
 {
     use HasFactory;
-    private $idBigård;
-    private $bruker_idBruker;
-    private $adresse;
-    private $tidLaget;
+    protected $table = 'bigård';
+    protected $fillable = ['navn', 'bruker_idBruker', 'adresse', 'created_at', 'updated_at'];
 }
