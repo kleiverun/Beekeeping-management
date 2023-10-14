@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Filters\V1\BrukerFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\BrukerCollection;
 use App\Http\Resources\V1\BrukerResource;
@@ -13,9 +14,16 @@ class BrukerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new BrukerCollection(Bruker::paginate());
+        $filter = new BrukerFilter();
+        $queryItems = $filter->transform($request);
+
+        if (count($queryItems) == 0) {
+            return new BrukerCollection(Bruker::paginate());
+        } else {
+            return new BrukerCollection(Bruker::where($queryItems)->paginate());
+        }
     }
 
     /**
