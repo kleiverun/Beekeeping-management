@@ -15,8 +15,8 @@ class BrukerSeeder extends Seeder
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-        //
-        for ($i = 0; $i < 100; $i++) {
+
+        for ($i = 0; $i < 100; ++$i) {
             Bruker::create([
                 'passord' => $faker->password,
                 'fornavn' => $faker->firstName,
