@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\BrukerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +23,4 @@ Route::get('/NyKube', function () {
 Route::get('/NyBigård', function () {
     return view('frontend.layouts.nyBigård');
 });
-Route::get('/bruker/{id}', [BrukerController::class, 'show']);
+
