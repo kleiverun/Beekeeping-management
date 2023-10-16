@@ -1,20 +1,31 @@
 <?php
-/*
-* Class for the filters we may want to appply to our API calls
-*/
 
-namespace App\Filters;
+namespace App\Filters\V1;
 
-class ApiFilter
+use App\Filters\ApiFilter;
+
+class BigårdFilter extends ApiFilter
 {
-    // Parameters in the url which can be used, like this :'fornavn' => ['eq'],
     protected $allowedParms = [
+        'id' => ['eq'],
+        'navn' => ['eq'],
+        'bruker_idBruker' => ['eq'],
+        'adresse' => ['eq'],
     ];
-    // Map of columns in the table
     protected $columnMap = [
+        'id' => 'id',
+        'navn' => 'navn',
+        'bruker_idBruker' => 'bruker_idBruker',
+        'adresse' => 'adresse',
     ];
-
     protected $operatorMap = [
+        'eq' => '=',
+        'ne' => '!=',
+        'gt' => '>',
+        'ge' => '>=',
+        'lt' => '<',
+        'le' => '<=',
+        'like' => 'like',
     ];
 
     public function transform($request)
