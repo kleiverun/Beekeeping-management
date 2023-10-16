@@ -40,7 +40,13 @@ class BigardController extends Controller
      */
     public function show(string $id)
     {
-        return new BigårdResource(Bruker::findOrFail($id));
+        $bigård = Bigård::find($id);
+
+        if ($bigård) {
+            return new BigårdResource($bigård);
+        }
+
+        return new BigårdResource(Bigård::findOrFail($id));
     }
 
     /**
