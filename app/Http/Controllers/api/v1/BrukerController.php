@@ -19,11 +19,14 @@ class BrukerController extends Controller
         $filter = new BrukerFilter();
         $queryItems = $filter->transform($request);
 
-        if (count($queryItems) == 0) {
-            return new BrukerCollection(Bruker::paginate());
-        } else {
-            return new BrukerCollection(Bruker::where($queryItems)->paginate());
+        $inkluderBigårder = $request->query('inkluderBigårder');
+        $brukere = Bruker::where($queryItems);
+
+        if ($inkluderBigårder) {
+            $brukere = $brukere->with('bigårder');
         }
+
+        return new BrukerCollection($brukere->paginate()->appends($request->query()));
     }
 
     /**
@@ -36,43 +39,45 @@ class BrukerController extends Controller
 
     /*
      * Store a newly created resource in storage.
-     * public function store(Request $request)
-     * {
-     * // Lager et nytt bruker-objekt og lagrer det i databasen
-     * if (!empty($request->passord) && !empty($request->fornavn) && !empty($request->etternavn) && !empty($request->epost) && !empty($request->telefonnr) && !empty($request->adresse)) {
-     * $bruker = new Bruker();
-     * $bruker->passord = $request->passord;
-     * $bruker->fornavn = $request->fornavn;
-     * $bruker->etternavn = $request->etternavn;
-     * $bruker->epost = $request->epost;
-     * $bruker->telefonnr = $request->telefonnr;
-     * $bruker->adresse = $request->adresse;
-     * $bruker->save();
-     * }.
-     *
-     * return response()->json([
-     * 'message' => 'Bruker opprettet',
-     * 'bruker' => $bruker,
-     * ], 201);
-     * }
      */
+    public function store(Request $request)
+    {
+        // Lager et nytt bruker-objekt og lagrer det i databasen
+        if (!empty($request->passord) && !empty($request->fornavn)
+        && !empty($request->etternavn) && !empty($request->epost)
+        && !empty($request->telefonnr) && !empty($request->adresse)) {
+            $bruker = new Bruker();
+            $bruker->passord = $request->passord;
+            $bruker->fornavn = $request->fornavn;
+            $bruker->etternavn = $request->etternavn;
+            $bruker->epost = $request->epost;
+            $bruker->telefonnr = $request->telefonnr;
+            $bruker->adresse = $request->adresse;
+            $bruker->save();
+        }
+
+        return response()->json([
+        'message' => 'Bruker opprettet',
+        'bruker' => $bruker,
+        ], 201);
+    }
+
+    /* Update the specified resource in storage.
+    *
+    */
+    public function update(Request $request, Bruker $bruker)
+    {
+    }
 
     /*
-     * Update the specified resource in storage.
-     * public function update(Request $request, Bruker $bruker)
-     * {
-     * }
-     *
-     * /**
-     * Remove the specified resource from storage.
-     *
-     * public function destroy(Bruker $bruker)
-     * {
-     * $bruker->delete();
-     *
-     * return response()->json([
-     * 'message' => 'Bruker slettet',
-     * ], 200);
-     * }
-     */
+       * Remove the specified resource from storage.
+        */
+    public function destroy(Bruker $bruker)
+    {
+        $bruker->delete();
+
+        return response()->json([
+        'message' => 'Bruker slettet',
+        ], 200);
+    }
 }
