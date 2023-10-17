@@ -17,7 +17,7 @@ class BrukerFilter extends ApiFilter
     protected $columnMap = [
         'fornavn' => 'fornavn',
         'etternavn' => 'etternavn',
-        'telefonNr' => 'telefonnr',
+        'telefonnr' => 'telefonnr',
         'epost' => 'epost',
         'adresse' => 'adresse',
         'passord' => 'passord',

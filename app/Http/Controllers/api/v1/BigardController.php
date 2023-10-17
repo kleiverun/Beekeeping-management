@@ -4,10 +4,12 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Filters\V1\BigårdFilter;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\BulkStoreBigardRequest;
 use App\Http\Resources\V1\BigårdCollection;
 use App\Http\Resources\V1\BigårdResource;
 use App\Models\Bigård;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class BigardController extends Controller
 {
@@ -50,10 +52,22 @@ class BigardController extends Controller
     }
 
     /**
+     * Create multiple bigård resource in storage.
+     */
+    public function bulkStore(BulkStoreBigardRequest $request)
+    {
+        $bulk = collect($request->all())->map(function ($arr, $key) {
+            return Arr::except($arr, ['id', 'created_at', 'updated_at']);
+        });
+        Bigård::insert($bulk->toArray());
+    }
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
+
     }
 
     /**
