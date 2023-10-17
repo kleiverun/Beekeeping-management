@@ -69,11 +69,7 @@ class BrukerController extends Controller
     */
     public function update(UpdateBrukerRequest $request, Bruker $bruker)
     {
-        // $bruker->update($request->validated());
-
         $bruker->update($request->validated());
-
-        return new BrukerResource($bruker);
     }
 
     /*

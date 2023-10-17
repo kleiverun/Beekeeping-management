@@ -21,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // api/v1/brukere
-Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1'], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1',  'middleware' => 'auth:sanctum'], function () {
     Route::apiResource('brukere', BrukerController::class);
     Route::apiResource('bigårder', BigardController::class);
+
+    Route::post('bigarder/bulk', ['uses' => 'BigardController@bulkStore']);
 });

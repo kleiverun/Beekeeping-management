@@ -16,7 +16,7 @@ class BigårdResource extends JsonResource
     {
         return [
             'name' => $this->navn,
-            'userid' => $this->id,
+            'IdBefarm' => $this->id,
             'adress' => $this->adresse,
         ];
     }
