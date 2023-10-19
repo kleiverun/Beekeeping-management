@@ -69,21 +69,14 @@ class BrukerController extends Controller
     */
     public function update(UpdateBrukerRequest $request, $id)
     {
-        \DB::enableQueryLog();
-
         // Find the Bruker model by its ID
         $bruker = Bruker::find($id);
 
         if ($bruker) {
             // Update the Bruker model with the validated data
             $bruker->update($request->validated());
-
-            // Log the queries
-            dd(\DB::getQueryLog());
         } else {
-            // Handle the case where the Bruker with the given ID is not found
-            // You might return a 404 response or perform some other action here.
-
+            // Bruker with the given ID is not found
             return response()->json([
                 'message' => 'Bruker ikke funnet',
             ], 404);
