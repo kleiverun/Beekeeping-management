@@ -67,9 +67,27 @@ class BrukerController extends Controller
     /* Update the specified resource in storage.
     *
     */
-    public function update(UpdateBrukerRequest $request, Bruker $bruker)
+    public function update(UpdateBrukerRequest $request, $id)
     {
-        $bruker->update($request->validated());
+        \DB::enableQueryLog();
+
+        // Find the Bruker model by its ID
+        $bruker = Bruker::find($id);
+
+        if ($bruker) {
+            // Update the Bruker model with the validated data
+            $bruker->update($request->validated());
+
+            // Log the queries
+            dd(\DB::getQueryLog());
+        } else {
+            // Handle the case where the Bruker with the given ID is not found
+            // You might return a 404 response or perform some other action here.
+
+            return response()->json([
+                'message' => 'Bruker ikke funnet',
+            ], 404);
+        }
     }
 
     /*
