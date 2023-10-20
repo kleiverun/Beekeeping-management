@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(BrukerSeeder::class);
         $this->call(BigårdSeeder::class);
+        $this->call(BikubeSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
