@@ -24,11 +24,9 @@ class StoreBikubeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', 'integer'],
             'bigård_idBigård' => ['required', 'integer'],
             'bruker_idBruker' => ['required', 'integer'],
             'antallSkattekasser' => ['required', 'integer'],
-            'created_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
             'updated_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
             'identifikasjon' => ['required'],
             'estimertStyrke' => ['required', 'integer'],

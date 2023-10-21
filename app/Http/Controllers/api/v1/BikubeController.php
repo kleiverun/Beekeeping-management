@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\StoreBikubeRequest;
 use App\Http\Resources\V1\BikubeCollection;
 use App\Http\Resources\V1\BikubeResource;
 use App\Models\Bikube;
@@ -11,23 +12,35 @@ use Illuminate\Http\Request;
 class BikubeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all bikuber .
+     * Search for a specified bikube:
+     * Search for all bikuber for a user: http://127.0.0.1:8000/api/v1/bikuber/?brukerId=65.
      */
     public function index()
     {
-        return new BikubeCollection(Bikube::paginate());
+        $brukerId = request()->query('brukerId');
+        if ($brukerId) {
+            $bikuber = Bikube::where('bruker_idBruker', $brukerId)->get();
+
+            return new BikubeCollection($bikuber);
+        } else {
+            return new BikubeCollection(Bikube::all());
+        }
+        // return new BikubeCollection(Bikube::all());
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBikubeRequest $request)
     {
+        return new BikubeResource(Bikube::create($request->validated()));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified bikube resource.
      * If the inkluderIdBigård query parameter is set, the bigårder relation will be loaded.
+     *  http://127.0.0.1:8000/api/v1/bikuber/1?inkluderIdBigård=true.
      */
     public function show($idBikube)
     {

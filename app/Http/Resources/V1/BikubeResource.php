@@ -16,6 +16,8 @@ class BikubeResource extends JsonResource
     {
         return [
             'IdBikube' => $this->id,
+            'IdBigård' => $this->bigård_idBigård,
+            'IdBruker' => $this->bruker_idBruker,
             'identifikasjon' => $this->identifikasjon,
             'antallSkattekasser' => $this->antallSkattekasser,
             'estimertStyrke' => $this->estimertStyrke,

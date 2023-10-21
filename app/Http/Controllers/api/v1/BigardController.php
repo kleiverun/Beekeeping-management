@@ -39,6 +39,7 @@ class BigardController extends Controller
 
     /**
      * Display the specified resource.
+     * If the inkluderIdBikube query parameter is set, the bikuber relation will be loaded.
      */
     public function show(string $id)
     {

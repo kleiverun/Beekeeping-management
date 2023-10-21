@@ -7,11 +7,13 @@ use App\Filters\ApiFilter;
 class BrukerFilter extends ApiFilter
 {
     protected $allowedParms = [
+        'bruker_idBruker' => ['eq', 'like'],
         'antallSkattekasser' => ['eq', 'gt', 'ge', 'lt', 'le'],
         'identifikasjon' => ['eq', 'like'],
         'estimertStyrke' => ['eq', 'gt', 'ge', 'lt', 'le'],
     ];
     protected $columnMap = [
+        'bruker_idBruker' => 'bruker_idBruker',
         'antallSkattekasser' => 'antallSkattekasser',
         'identifikasjon' => 'identifikasjon',
         'estimertStyrke' => 'estimertStyrke',
