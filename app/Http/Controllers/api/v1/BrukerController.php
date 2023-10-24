@@ -33,12 +33,8 @@ class BrukerController extends Controller
 
     /**
      * Display the specified resource.
-     *     "passord": "password123",
-     * "fornavn": "John",
-     * "etternavn": "Doe",
-     * "epost": "john.doe@example.com",
-     * "telefonnr": "1234567890",
-     * "adresse": "1234 Elm St, Some City, Country".
+     *
+     * @example location passord: "password123", fornavn: "John", etternavn: "Doe", epost: "john.doe@example.com", telefonnr: "1234567890", adresse: "1234 Elm St, Some City, Country"
      */
     public function show($id)
     {
@@ -71,14 +67,14 @@ class BrukerController extends Controller
     {
         // Find the Bruker model by its ID
         $bruker = Bruker::find($id);
-
+        echo $request;
         if ($bruker) {
             // Update the Bruker model with the validated data
             $bruker->update($request->validated());
         } else {
             // Bruker with the given ID is not found
             return response()->json([
-                'message' => 'Bruker ikke funnet',
+                'error' => 'Bruker ikke funnet',
             ], 404);
         }
     }

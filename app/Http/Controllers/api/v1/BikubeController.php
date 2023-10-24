@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\api\v1;
 
+// use App\Filters\V1\BikubeFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreBikubeRequest;
+use App\Http\Requests\V1\UpdateBikubeRequest;
 use App\Http\Resources\V1\BikubeCollection;
 use App\Http\Resources\V1\BikubeResource;
 use App\Models\Bikube;
-use Illuminate\Http\Request;
 
 class BikubeController extends Controller
 {
@@ -26,7 +27,6 @@ class BikubeController extends Controller
         } else {
             return new BikubeCollection(Bikube::all());
         }
-        // return new BikubeCollection(Bikube::all());
     }
 
     /**
@@ -61,9 +61,22 @@ class BikubeController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * If the bikube is not found, a 404 response is returned.
      */
-    public function update(Request $request, Bikube $bikube)
+    public function update(UpdateBikubeRequest $updateBikubeRequest, $id)
     {
+        // Find the Bruker model by its ID
+        $bikube = Bikube::find($id);
+        if ($bikube) {
+            // Update the bikube model with the validated data
+            $bikube->update($updateBikubeRequest->validated());
+            echo $updateBikubeRequest;
+        } else {
+            // Bruker with the given ID is not found
+            return response()->json([
+                'error' => 'Bikube ikke funnet',
+            ], 404);
+        }
     }
 
     /**
