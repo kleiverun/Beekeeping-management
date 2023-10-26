@@ -11,8 +11,7 @@
 
     </head>
     <body class="bg-background-orange">
-        @include('../includes/nav')
-        @include('../includes/partials/nykube-form')
+        @include('../components/nav')
 
     </body>
 </html>

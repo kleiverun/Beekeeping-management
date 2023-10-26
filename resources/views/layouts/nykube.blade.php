@@ -8,8 +8,8 @@
 
     <title>Ny kube</title>
 </head>
-    <body class="bg-background-orange">
-        @include('../includes/nav')
-        @include('../includes/partials/nyBigård-form')
+<body class="bg-background-orange">
+            @include('../components/nav')
+        @include('../components/nykube-form')
     </body>
 </html>

@@ -1,6 +1,6 @@
 <div class="flex justify-center items-center h-1/2 w-1/2">
     <div class="w-full max-w-xs">
-      <form class="shadow-md rounded-lg mt-20 bg-menu-orange p-6">
+      <form class="shadow-md rounded-lg mt-20 bg-orange-light p-6">
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-1" for="username">
             Navn på bigård
