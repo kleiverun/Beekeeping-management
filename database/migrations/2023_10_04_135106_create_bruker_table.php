@@ -10,16 +10,18 @@ return new class() extends Migration {
      */
     public function up(): void
     {
+        /*
         Schema::create('bruker', function (Blueprint $table) {
             $table->id();
-            $table->string('passord');
-            $table->string('fornavn');
-            $table->string('etternavn');
-            $table->string('telefonnr');
-            $table->string('epost');
-            $table->string('adresse');
+            $table->string('password');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('phonenumber');
+            $table->string('email');
+            $table->string('adress');
             $table->timestamps();
         });
+        */
     }
 
     /**

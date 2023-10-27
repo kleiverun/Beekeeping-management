@@ -2,54 +2,54 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Filters\V1\BrukerFilter;
+use App\Filters\V1\UserFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreBrukerRequest;
 use App\Http\Requests\V1\UpdateBrukerRequest;
-use App\Http\Resources\V1\BrukerCollection;
-use App\Http\Resources\V1\BrukerResource;
-use App\Models\Bruker;
+use App\Http\Resources\V1\UserCollection;
+use App\Http\Resources\V1\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class BrukerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $filter = new BrukerFilter();
+        $filter = new UserFilter();
         $queryItems = $filter->transform($request);
 
         $inkluderBigårder = $request->query('inkluderBigårder');
-        $brukere = Bruker::where($queryItems);
+        $brukere = User::where($queryItems);
 
         if ($inkluderBigårder) {
             $brukere = $brukere->with('bigårder');
         }
 
-        return new BrukerCollection($brukere->paginate()->appends($request->query()));
+        return new UserCollection($brukere->paginate()->appends($request->query()));
     }
 
     /**
      * Display the specified resource.
      *
-     * @example location passord: "password123", fornavn: "John", etternavn: "Doe", epost: "john.doe@example.com", telefonnr: "1234567890", adresse: "1234 Elm St, Some City, Country"
+     * @example location password: "password123", firstname: "John", lastname: "Doe", epost: "john.doe@example.com", phonenumber: "1234567890", adresse: "1234 Elm St, Some City, Country"
      */
     public function show($id)
     {
         $inkluderBigårder = request()->query('inkluderBigårder');
-        $bruker = Bruker::find($id);
+        $bruker = User::find($id);
 
         if ($bruker) {
             if ($inkluderBigårder) {
                 $bruker->loadMissing('bigårder');
             }
 
-            return new BrukerResource($bruker);
+            return new UserResource($bruker);
         }
 
-        return new BrukerResource(Bruker::findOrFail($id));
+        return new UserResource(User::findOrFail($id));
     }
 
     /*
@@ -57,7 +57,13 @@ class BrukerController extends Controller
      */
     public function store(StoreBrukerRequest $request)
     {
-        return new BrukerResource(Bruker::create($request->validated()));
+        $user = User::create($request->validated());
+
+        if ($user) {
+            return response()->json(['message' => 'User created'], 201);
+        } else {
+            return response()->json(['message' => 'User could not be created'], 500);
+        }
     }
 
     /* Update the specified resource in storage.
@@ -66,7 +72,7 @@ class BrukerController extends Controller
     public function update(UpdateBrukerRequest $request, $id)
     {
         // Find the Bruker model by its ID
-        $bruker = Bruker::find($id);
+        $bruker = User::find($id);
         echo $request;
         if ($bruker) {
             // Update the Bruker model with the validated data
@@ -74,7 +80,7 @@ class BrukerController extends Controller
         } else {
             // Bruker with the given ID is not found
             return response()->json([
-                'error' => 'Bruker ikke funnet',
+                'error' => 'User not found',
             ], 404);
         }
     }
@@ -82,12 +88,17 @@ class BrukerController extends Controller
     /*
        * Remove the specified resource from storage.
         */
-    public function destroy(Bruker $bruker)
+    public function destroy(user $bruker)
     {
         $bruker->delete();
-
-        return response()->json([
-        'message' => 'Bruker slettet',
-        ], 200);
+        if ($bruker->delete) {
+            return response()->json([
+                'message' => 'User deleted',
+                ], 200);
+        } else {
+            return response()->json([
+                'message' => 'User could not be deleted',
+                ], 500);
+        }
     }
 }

@@ -29,10 +29,11 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/NyKube', function () {
-        return view('layouts.nykube');
+        return view('nykube');
     })->name('NyKube');
+
     Route::get('/NyBigård', function () {
-        return view('layouts.nyBigård');
+        return view('nybigård');
     })->name('NyBigård');
 });
 
@@ -47,7 +48,10 @@ Route::get('/setup', function () {
         // Admin user doesn't exist, create a new one
 
         $user = new User();
-        $user->name = 'Admin';
+        $user->firstname = 'Admin';
+        $user->lastname = 'Admin';
+        $user->adress = 'Admin';
+        $user->phonenumber = 'Admin';
         $user->email = $credentials['email'];
         $user->password = Hash::make($credentials['password']);
 

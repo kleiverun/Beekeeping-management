@@ -9,14 +9,14 @@ class BigårdFilter extends ApiFilter
     protected $allowedParms = [
         'id' => ['eq'],
         'navn' => ['eq'],
-        'bruker_idBruker' => ['eq'],
-        'adresse' => ['eq'],
+        'user_id' => ['eq'],
+        'adress' => ['eq'],
     ];
     protected $columnMap = [
         'id' => 'id',
         'navn' => 'navn',
-        'bruker_idBruker' => 'bruker_idBruker',
-        'adresse' => 'adresse',
+        'user_id' => 'user_id',
+        'adress' => 'adress',
     ];
     protected $operatorMap = [
         'eq' => '=',

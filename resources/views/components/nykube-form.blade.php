@@ -1,6 +1,6 @@
-<div class="flex justify-center items-center h-1/2 w-1/2">
+<div class="flex justify-center items-center h-1/2 w-2/2">
     <div class="border border-white p-4 w-3/4 rounded-lg mt-20 bg-menu-orange">
-        <form class="w-full max-w-sm">
+        <form method="POST" class="w-full max-w-sm">
             <div class="flex flex-col items-start">
                 <label for="hive" class="text-gray-700 text-sm font-bold mb-1">Velg hvilke bigård denne kuben tilhører:</label>
                 <div class="w-full">

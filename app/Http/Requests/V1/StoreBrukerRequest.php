@@ -24,19 +24,19 @@ class StoreBrukerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'passord' => ['required'],
-            'fornavn' => ['required'],
-            'etternavn' => ['required'],
-            'epost' => ['required', 'email'],
-            'telefonnr' => ['required'],
-            'adresse' => ['required'],
+            'password' => ['required'],
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+            'email' => ['required', 'email'],
+            'phonenumber' => ['required'],
+            'adress' => ['required'],
         ];
     }
 
     protected function prepareForValidation()
     {
         $this->merge([
-            'passord' => bcrypt($this->passord),
+            'password' => bcrypt($this->password),
         ]);
     }
 }

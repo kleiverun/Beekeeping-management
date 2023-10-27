@@ -8,15 +8,25 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
             <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-label for="first name" value="{{ __('First name') }}" />
+                <x-input id="first name" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="firstname" />
             </div>
-
+            <div>
+                <x-label for="lastname" value="{{ __('Lastname') }}" />
+                <x-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
+            </div>
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            </div>
+            <div class="mt-4">
+                <x-label for="adress" value="{{ __('Adress') }}" />
+                <x-input id="adress" class="block mt-1 w-full" type="text" name="adress" :value="old('adress')" required autocomplete="adress" />
+            </div>
+            <div class="mt-4">
+                <x-label for="phonenumber" value="{{ __('Phonenumber') }}" />
+                <x-input id="phonenumber" class="block mt-1 w-full" type="number" name="phonenumber" required autocomplete="phonenumber" />
             </div>
 
             <div class="mt-4">

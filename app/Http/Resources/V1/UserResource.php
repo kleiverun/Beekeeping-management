@@ -5,7 +5,7 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BrukerResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,10 @@ class BrukerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'lastname' => $this->etternavn,
-            'phoneNumber' => $this->telefonnr,
-            'email' => $this->epost,
-            'adress' => $this->adresse,
+            'lastname' => $this->lastname,
+            'phoneNumber' => $this->phonenumber,
+            'email' => $this->email,
+            'adress' => $this->adress,
             'beefarms' => BigårdResource::collection($this->whenLoaded('bigårder')),
         ];
     }

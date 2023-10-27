@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration
-{
+return new class() extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,7 +13,7 @@ return new class() extends Migration
         Schema::create('bikube', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bigård_idBigård')->constrained('bigård', 'id');
-            $table->foreignId('bruker_idBruker')->constrained('bruker', 'id');
+            $table->foreignId('users_id')->constrained('users', 'id');
             $table->integer('antallSkattekasser');
             $table->timestamps();
             $table->string('identifikasjon');

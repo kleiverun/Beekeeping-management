@@ -13,8 +13,8 @@ return new class() extends Migration {
         Schema::create('bigård', function (Blueprint $table) {
             $table->id();
             $table->string('navn');
-            $table->foreignId('bruker_idBruker')->constrained('bruker', 'id');
-            $table->string('adresse');
+            $table->foreignId('users_id')->constrained('users', 'id');
+            $table->string('adress');
             $table->timestamps();
         });
     }

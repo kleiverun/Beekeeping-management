@@ -27,21 +27,21 @@ class UpdateBrukerRequest extends FormRequest
 
         if ($method == 'PUT') {
             return [
-                'passord' => ['required'],
-                'fornavn' => ['required'],
-                'etternavn' => ['required'],
-                'telefonnr' => ['required'],
-                'epost' => ['required', 'email'],
-                'adresse' => ['required'],
+                'password' => ['required'],
+                'firstname' => ['required'],
+                'lastname' => ['required'],
+                'phonenumber' => ['required'],
+                'email' => ['required', 'email'],
+                'adress' => ['required'],
             ];
         } else {
             return [
-                'passord' => ['sometimes', 'required'],
-                'fornavn' => ['sometimes', 'required'],
-                'etternavn' => ['sometimes', 'required'],
-                'epost' => ['sometimes', 'required', 'email'],
-                'telefonnr' => ['sometimes', 'required'],
-                'adresse' => ['sometimes', 'required'],
+                'password' => ['sometimes', 'required'],
+                'firstname' => ['sometimes', 'required'],
+                'lastname' => ['sometimes', 'required'],
+                'email' => ['sometimes', 'required', 'email'],
+                'phonenumber' => ['sometimes', 'required'],
+                'adress' => ['sometimes', 'required'],
             ];
         }
     }
@@ -49,7 +49,7 @@ class UpdateBrukerRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'passord' => bcrypt($this->passord),
+            'password' => bcrypt($this->password),
         ]);
     }
 }

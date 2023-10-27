@@ -18,7 +18,7 @@ class BigårdSeeder extends Seeder
             Bigård::create([
                 'navn' => $faker->name,
                 'bruker_idBruker' => $faker->numberBetween(1, 100),
-                'adresse' => $faker->address,
+                'adress' => $faker->address,
             ]);
         }
     }

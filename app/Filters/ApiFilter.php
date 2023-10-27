@@ -7,13 +7,13 @@ namespace App\Filters;
 
 class ApiFilter
 {
-    // Parameters in the url which can be used, like this :'fornavn' => ['eq'],
+    // Parameters in the url which can be used, like this :'firstname' => ['eq'],
     protected $allowedParms = [
-        // 'fornavn' => ['eq'],
+        // 'firstname' => ['eq'],
     ];
     // Map of columns in the table from the database
     protected $columnMap = [
-        // 'fornavn' => 'fornavn',
+        // 'firstname' => 'firstname',
     ];
     // Map of operators we can use, like this: 'eq' => '=',
     protected $operatorMap = [

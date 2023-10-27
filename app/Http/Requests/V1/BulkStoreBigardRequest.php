@@ -26,7 +26,7 @@ class BulkStoreBigardRequest extends FormRequest
         return [
             '*.bruker_idBruker' => ['required', 'integer'],
             '*.navn' => ['required'],
-            '*.adresse' => ['required'],
+            '*.adress' => ['required'],
             '*.created_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
             '*.updated_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
         ];
@@ -39,7 +39,7 @@ class BulkStoreBigardRequest extends FormRequest
             $modifiedObj = [
                 'bruker_idBruker' => $obj['bruker_idBruker'] ?? null,
                 'navn' => $obj['navn'] ?? null,
-                'adresse' => $obj['adresse'] ?? null,
+                'adress' => $obj['adress'] ?? null,
                 'created_at' => $obj['created_at'] ?? null,
                 'updated_at' => $obj['updated_at'] ?? null,
             ];

@@ -4,23 +4,21 @@ namespace App\Filters\V1;
 
 use App\Filters\ApiFilter;
 
-class BrukerFilter extends ApiFilter
+class UserFilter extends ApiFilter
 {
     protected $allowedParms = [
-        'fornavn' => ['eq'],
-        'etternavn' => ['eq'],
-        'telefonNr' => ['eq'],
-        'epost' => ['eq'],
-        'adresse' => ['eq'],
-        'passord' => ['eq'],
+        'firstname' => ['eq'],
+        'lastname' => ['eq'],
+        'phonenumber' => ['eq'],
+        'email' => ['eq'],
+        'adress' => ['eq'],
     ];
     protected $columnMap = [
-        'fornavn' => 'fornavn',
-        'etternavn' => 'etternavn',
-        'telefonnr' => 'telefonnr',
-        'epost' => 'epost',
-        'adresse' => 'adresse',
-        'passord' => 'passord',
+        'firstname' => 'firstname',
+        'lastname' => 'lastname',
+        'phonenumber' => 'phonenumber',
+        'email' => 'email',
+        'adress' => 'adress',
     ];
     protected $operatorMap = [
         'eq' => '=',
