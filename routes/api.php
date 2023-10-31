@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\api\v1\BigardController;
 use App\Http\Controllers\api\v1\BikubeController;
-use App\Http\Controllers\api\v1\BrukerController;
+use App\Http\Controllers\api\v1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // api/v1/brukere
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1',  'middleware' => 'auth:sanctum'], function () {
-    Route::apiResource('brukere', BrukerController::class);
+    Route::apiResource('brukere', UserController::class);
     Route::apiResource('bigårder', BigardController::class);
     Route::apiResource('bikuber', BikubeController::class);
     Route::post('bigarder/bulk', ['uses' => 'BigardController@bulkStore']);

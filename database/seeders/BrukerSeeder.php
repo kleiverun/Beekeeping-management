@@ -17,13 +17,13 @@ class BrukerSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 100; ++$i) {
-            Bruker::create([
-                'passord' => $faker->password,
-                'fornavn' => $faker->firstName,
-                'etternavn' => $faker->lastName,
-                'epost' => $faker->email,
-                'telefonnr' => $faker->phoneNumber,
-                'adresse' => $faker->address,
+            User::create([
+                'password' => $faker->password,
+                'firstname' => $faker->firstName,
+                'lastname' => $faker->lastName,
+                'email' => $faker->email,
+                'phonenumber' => $faker->phoneNumber,
+                'adress' => $faker->address,
             ]);
         }
     }

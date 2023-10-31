@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('resetdb', function () {
+    $this->comment('Resetting database');
+    Artisan::call('migrate:reset');
+    Artisan::call('migrate');
+    $this->comment('Database reset');
+})->purpose('Resetting database');

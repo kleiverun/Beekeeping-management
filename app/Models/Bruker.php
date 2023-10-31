@@ -9,7 +9,7 @@ class Bruker extends Model
 {
     use HasFactory;
     protected $table = 'bruker';
-    protected $fillable = ['passord', 'fornavn', 'etternavn', 'epost', 'telefonnr', 'adresse', 'created_at', 'updated_at'];
+    protected $fillable = ['password', 'firstname', 'lastname', 'email', 'phonenumber', 'adress', 'created_at', 'updated_at'];
 
     public function bigårder()
     {

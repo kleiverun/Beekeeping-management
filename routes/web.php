@@ -17,14 +17,24 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('frontend.layouts.frontpage');
+    return view('welcome');
 });
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/NyKube', function () {
-    return view('frontend.layouts.nykube');
-});
-Route::get('/NyBigård', function () {
-    return view('frontend.layouts.nyBigård');
+    Route::get('/NyKube', function () {
+        return view('nykube');
+    })->name('NyKube');
+
+    Route::get('/NyBigård', function () {
+        return view('nybigård');
+    })->name('NyBigård');
 });
 
 Route::get('/setup', function () {
@@ -38,7 +48,10 @@ Route::get('/setup', function () {
         // Admin user doesn't exist, create a new one
 
         $user = new User();
-        $user->name = 'Admin';
+        $user->firstname = 'Admin';
+        $user->lastname = 'Admin';
+        $user->adress = 'Admin';
+        $user->phonenumber = 'Admin';
         $user->email = $credentials['email'];
         $user->password = Hash::make($credentials['password']);
 
