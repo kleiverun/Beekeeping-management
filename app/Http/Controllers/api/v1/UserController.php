@@ -73,7 +73,6 @@ class UserController extends Controller
     {
         // Find the Bruker model by its ID
         $bruker = User::find($id);
-        echo $request;
         if ($bruker) {
             // Update the Bruker model with the validated data
             $bruker->update($request->validated());
@@ -90,8 +89,7 @@ class UserController extends Controller
         */
     public function destroy(user $bruker)
     {
-        $bruker->delete();
-        if ($bruker->delete) {
+        if ($bruker->delete()) {
             return response()->json([
                 'message' => 'User deleted',
                 ], 200);

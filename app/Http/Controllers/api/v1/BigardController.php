@@ -30,11 +30,20 @@ class BigardController extends Controller
         }
     }
 
+    public function appendToRequest(Request $request)
+    {
+        $request->merge(['id' => '1',
+                        'users_id' => '1']
+        );
+        BigardController::store($request);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        return new BigårdResource(Bigård::create($request->validated()));
     }
 
     /**
