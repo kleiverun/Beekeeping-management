@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,45 +34,31 @@ Route::middleware([
     Route::get('/NyBigård', function () {
         return view('nybigård');
     })->name('NyBigård');
+    Route::post('bigårder', 'App\Http\Controllers\api\v1\BigardController@store')->name('bigårder.store');
 });
-
 Route::get('/setup', function () {
-    $credentials = [
-        'email' => 'Admin44@hotmail.com',
-        'password' => 'password',
-    ];
+    // This route is now protected and only accessible to authenticated users
 
-    // Attempt to authenticate the admin user
-    if (!Auth::attempt($credentials)) {
-        // Admin user doesn't exist, create a new one
+    // Check if a user is authenticated
+    if (Auth::check()) {
+        // Get the authenticated user
+        $user = Auth::user();
 
-        $user = new User();
-        $user->firstname = 'Admin';
-        $user->lastname = 'Admin';
-        $user->adress = 'Admin';
-        $user->phonenumber = 'Admin';
-        $user->email = $credentials['email'];
-        $user->password = Hash::make($credentials['password']);
+        // Create token with permissions for create, update, delete
+        $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
+        // Create token with permissions for create, update
+        $updateToken = $user->createToken('update-token', ['create', 'update']);
+        // Create a basic token without specific permissions
+        $basicToken = $user->createToken('basic-token');
 
-        $user->save();
-
-        // Attempt to authenticate again
-        if (Auth::attempt($credentials)) {
-            // Admin user is now created or already exists, generate tokens
-            $user = Auth::user();
-            // Create token with permissions for create, update, delete
-            $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-            // Create token with permissions for create, update
-            $updateToken = $user->createToken('update-token', ['create', 'update']);
-            // Create a basic token without specific permissions
-            $basicToken = $user->createToken('basic-token');
-
-            // Optionally, return the generated tokens or any other response
-            return response()->json([
-                'adminToken' => $adminToken->plainTextToken,
-                'updateToken' => $updateToken->plainTextToken,
-                'basicToken' => $basicToken->plainTextToken,
-            ]);
-        }
+        // Optionally, return the generated tokens or any other response
+        return response()->json([
+            'adminToken' => $adminToken->plainTextToken,
+            'updateToken' => $updateToken->plainTextToken,
+            'basicToken' => $basicToken->plainTextToken,
+        ]);
+    } else {
+        // If no user is authenticated, you can handle this situation as needed, e.g., return an error response.
+        return response()->json(['error' => 'No user is authenticated'], 401);
     }
 });

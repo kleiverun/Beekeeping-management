@@ -9,5 +9,5 @@ class Bigård extends Model
 {
     use HasFactory;
     protected $table = 'bigård';
-    protected $fillable = ['navn', 'bruker_idBruker', 'adress', 'created_at', 'updated_at'];
+    protected $fillable = ['navn', 'users_id', 'adress', 'created_at', 'updated_at'];
 }

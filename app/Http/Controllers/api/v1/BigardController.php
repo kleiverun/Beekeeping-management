@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Filters\V1\BigårdFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\BulkStoreBigardRequest;
+use App\Http\Requests\V1\StoreBigardRequest;
 use App\Http\Resources\V1\BigårdCollection;
 use App\Http\Resources\V1\BigårdResource;
 use App\Models\Bigård;
@@ -33,8 +34,10 @@ class BigardController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBigardRequest $request)
     {
+        // Add a authorizaion token to the request
+        return new BigårdResource(Bigård::create($request->validated()));
     }
 
     /**

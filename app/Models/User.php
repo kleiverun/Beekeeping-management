@@ -34,6 +34,10 @@ class User extends Authenticatable
          'updated_at',
     ];
 
+    public function hasPermission($permission)
+    {
+        return $this->tokenCan($permission);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
