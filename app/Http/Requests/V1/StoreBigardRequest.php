@@ -28,7 +28,7 @@ class StoreBigardRequest extends FormRequest
     {
         return [
             'navn' => ['required', 'string'],
-            'users_id' => ['required', 'integer'],
+            'users_id' => ['integer'],
             'adress' => ['required', 'string'],
         ];
     }

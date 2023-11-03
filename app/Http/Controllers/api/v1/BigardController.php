@@ -11,6 +11,9 @@ use App\Http\Resources\V1\BigårdResource;
 use App\Models\Bigård;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+
+// import auth fasade
 
 class BigardController extends Controller
 {
@@ -36,8 +39,11 @@ class BigardController extends Controller
      */
     public function store(StoreBigardRequest $request)
     {
+        $userid = Auth::id();
+        $request->merge(['users_id' => $userid]);
+
         // Add a authorizaion token to the request
-        return new BigårdResource(Bigård::create($request->validated()));
+        return new BigårdResource(Bigård::create($request->all()));
     }
 
     /**
