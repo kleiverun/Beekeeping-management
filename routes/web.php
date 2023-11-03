@@ -34,7 +34,7 @@ Route::middleware([
     Route::get('/NyBigård', function () {
         return view('nybigård');
     })->name('NyBigård');
-    Route::post('bigårder', 'App\Http\Controllers\api\v1\BigardController@store')->name('bigårder.store');
+    Route::post('/', 'App\Http\Controllers\form\v1\NybigardController@store')->name('NybigardController.store');
 });
 Route::get('/setup', function () {
     // This route is now protected and only accessible to authenticated users

@@ -39,9 +39,6 @@ class BigardController extends Controller
      */
     public function store(StoreBigardRequest $request)
     {
-        $userid = Auth::id();
-        $request->merge(['users_id' => $userid]);
-
         // Add a authorizaion token to the request
         return new BigårdResource(Bigård::create($request->all()));
     }
