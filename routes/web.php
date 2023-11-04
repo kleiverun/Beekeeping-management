@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Bigård;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,12 @@ Route::middleware([
         return view('nybigård');
     })->name('NyBigård');
     Route::post('/', 'App\Http\Controllers\form\v1\NybigardController@store')->name('NybigardController.store');
+
+    Route::get('/Bigårder', function () {
+        $bigarder = Bigård::where('users_id', auth()->user()->id)->get();
+
+        return view('bigarder')->with('bigårder', $bigarder);
+    })->name('Bigårder');
 });
 Route::get('/setup', function () {
     // This route is now protected and only accessible to authenticated users
