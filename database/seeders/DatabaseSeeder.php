@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(BrukerSeeder::class);
         $this->call(BigårdSeeder::class);
         $this->call(BikubeSeeder::class);
 

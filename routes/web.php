@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\Bigård;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,30 +40,6 @@ Route::middleware([
 
         return view('bigarder')->with('bigårder', $bigarder);
     })->name('Bigårder');
-});
-Route::get('/setup', function () {
-    // This route is now protected and only accessible to authenticated users
 
-    // Check if a user is authenticated
-    if (Auth::check()) {
-        // Get the authenticated user
-        $user = Auth::user();
-
-        // Create token with permissions for create, update, delete
-        $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-        // Create token with permissions for create, update
-        $updateToken = $user->createToken('update-token', ['create', 'update']);
-        // Create a basic token without specific permissions
-        $basicToken = $user->createToken('basic-token');
-
-        // Optionally, return the generated tokens or any other response
-        return response()->json([
-            'adminToken' => $adminToken->plainTextToken,
-            'updateToken' => $updateToken->plainTextToken,
-            'basicToken' => $basicToken->plainTextToken,
-        ]);
-    } else {
-        // If no user is authenticated, you can handle this situation as needed, e.g., return an error response.
-        return response()->json(['error' => 'No user is authenticated'], 401);
-    }
+    Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\BikuberController@index')->name('bikuber.index');
 });

@@ -9,10 +9,5 @@ class Bikube extends Model
 {
     use HasFactory;
     protected $table = 'bikube';
-    protected $fillable = ['idKube', 'bigård_idBigård', 'bruker_idBruker', 'antallSkattekasser', 'identifikasjon', 'estimertStyrke', 'created_at', 'updated_at'];
-
-    public function bigård()
-    {
-        return $this->belongsTo(Bigård::class, 'bigård_idBigård');
-    }
+    protected $fillable = ['bigård_idBigård', 'users_id', 'antallSkattekasser', 'identifikasjon', 'estimertStyrke', 'created_at', 'updated_at'];
 }
