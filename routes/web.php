@@ -33,7 +33,8 @@ Route::middleware([
     Route::get('/NyBigård', function () {
         return view('nybigård');
     })->name('NyBigård');
-    Route::post('/', 'App\Http\Controllers\form\v1\NybigardController@store')->name('NybigardController.store');
+
+    Route::post('/', 'App\Http\Controllers\form\v1\BigardController@store')->name('BigardController.store');
 
     Route::get('/Bigårder', function () {
         $bigarder = Bigård::where('users_id', auth()->user()->id)->get();

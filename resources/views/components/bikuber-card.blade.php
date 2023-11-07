@@ -6,16 +6,16 @@
 
         <!-- Beehive Details -->
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Beehive #{{ $bikube->id }}
+            Bikube #{{ $bikube->id }}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Identification: {{ $bikube->identifikasjon }}
+            Identifikasjon: {{ $bikube->identifikasjon }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Estimated Strength: {{ $bikube->estimertStyrke }}
+            Styrke på bikube: {{ $bikube->estimertStyrke }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Number of Honeycombs: {{ $bikube->antallSkattekasser }}
+            Antall skattekasser: {{ $bikube->antallSkattekasser }}
         </p>
 
         <!-- View Details Button -->

@@ -1,6 +1,6 @@
 <div class="flex justify-center items-center h-1/2 w-2/2 ">
     <div class="w-full max-w-xs">
-      <form method="POST" action="{{route('NybigardController.store')}}"  class="shadow-md rounded-lg mt-20 bg-menu-orange p-6">
+      <form method="POST" action="{{route('BigardController.store')}}"  class="shadow-md rounded-lg mt-20 bg-menu-orange p-6">
         @csrf
         <div class="mb-4">
             <div>

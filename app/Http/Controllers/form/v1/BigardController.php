@@ -4,9 +4,10 @@ namespace App\Http\Controllers\form\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreBigardRequest;
+use App\Http\Resources\V1\BigårdCollection;
 use App\Models\Bigård;
 
-class NybigardController extends Controller
+class BigardController extends Controller
 {
     public function store(StoreBigardRequest $storeBigardRequest)
     {
@@ -16,5 +17,12 @@ class NybigardController extends Controller
         } else {
             return redirect()->route('NyBigård');
         }
+    }
+
+    public function getAllBigard()
+    {
+        $userid = auth()->user()->id;
+
+        return BigårdCollection::collection(Bigård::where('users_id', $userid)->get());
     }
 }
