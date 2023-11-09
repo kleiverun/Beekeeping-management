@@ -9,9 +9,9 @@ use App\Models\Bigård;
 class BigardController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Get all bigårder the user has registered.
      */
-    public function show()
+    public function index()
     {
         $userid = auth()->user()->id;
 

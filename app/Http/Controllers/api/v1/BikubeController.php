@@ -40,7 +40,7 @@ class BikubeController extends Controller
     /**
      * Display the specified bikube resource.
      * If the inkluderIdBigård query parameter is set, the bigårder relation will be loaded.
-     *  http://127.0.0.1:8000/api/v1/bikuber/1?inkluderIdBigård=true.
+     *  http://127.0.0.1:8000/api/v1/bikuber/{id}?inkluderIdBigård=true.
      */
     public function show($idBikube)
     {

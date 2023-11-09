@@ -19,6 +19,9 @@ class BigardController extends Controller
         }
     }
 
+    /**
+     * Display all bigårder for a user.
+     */
     public function getAllBigard()
     {
         $userid = auth()->user()->id;

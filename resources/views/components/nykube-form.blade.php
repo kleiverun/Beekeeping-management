@@ -1,6 +1,6 @@
 <div class="flex justify-center h-screen">
     <div class="bg-white p-4 w-3/4 rounded-lg" style="box-shadow: 0 0 10px rgba(192, 0, 0, 0.2);">
-        <form method="post" action="{{ url('kube') }}" class="max-w-sm mx-auto space-y-4">
+        <form method="post" action="{{ url('registrerBikube') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
             <div class="text-yellow-600 text-sm font-bold">Velg hvilke bigård denne kuben tilhører:</div>
             <select required name="bigård_idBigård" id="hive"

@@ -38,7 +38,6 @@ Route::middleware([
     Route::get('/NyBigård', function () {
         return view('nyBigård');
     })->name('NyBigård');
-
     Route::post('/registrerBigård', 'App\Http\Controllers\form\v1\BigardController@store')->name('BigardController.store');
     Route::post('/registrerBikube', 'App\Http\Controllers\form\v1\NyBikubeController@store');
 
