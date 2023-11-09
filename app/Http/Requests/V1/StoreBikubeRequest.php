@@ -25,10 +25,9 @@ class StoreBikubeRequest extends FormRequest
     {
         return [
             'bigård_idBigård' => ['required', 'integer'],
-            'bruker_idBruker' => ['required', 'integer'],
+            'users_id' => ['nullable', 'integer'],
             'antallSkattekasser' => ['required', 'integer'],
-            'updated_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
-            'identifikasjon' => ['required'],
+            'identifikasjon' => ['required', 'string', 'max:255'],
             'estimertStyrke' => ['required', 'integer'],
         ];
     }

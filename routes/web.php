@@ -27,14 +27,20 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/NyKube', function () {
-        return view('nykube');
+        $bigarder = Bigård::where('users_id', auth()->user()->id)->get();
+        if ($bigarder->isEmpty()) {
+            return redirect('/NyBigård')->with('success', 'Du må registrere en bigård før du kan registrere en bikube');
+        }
+
+        return view('nykube')->with('bigarder', $bigarder);
     })->name('NyKube');
 
     Route::get('/NyBigård', function () {
-        return view('nybigård');
+        return view('nyBigård');
     })->name('NyBigård');
 
-    Route::post('/', 'App\Http\Controllers\form\v1\BigardController@store')->name('BigardController.store');
+    Route::post('/registrerBigård', 'App\Http\Controllers\form\v1\BigardController@store')->name('BigardController.store');
+    Route::post('/registrerBikube', 'App\Http\Controllers\form\v1\NyBikubeController@store');
 
     Route::get('/Bigårder', function () {
         $bigarder = Bigård::where('users_id', auth()->user()->id)->get();
