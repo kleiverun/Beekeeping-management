@@ -1,6 +1,6 @@
 <?php
 /*
-* Class for the filters we may want to appply to our API calls
+* Class for the filters we may want to apply to our API calls
 */
 
 namespace App\Filters;
@@ -15,6 +15,7 @@ class ApiFilter
     protected $columnMap = [
         // 'firstname' => 'firstname',
     ];
+
     // Map of operators we can use, like this: 'eq' => '=',
     protected $operatorMap = [
         // 'eq' => '=',

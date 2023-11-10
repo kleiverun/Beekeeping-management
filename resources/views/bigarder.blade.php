@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
                     @include('components.bigard-card')
             </div>
         </div>

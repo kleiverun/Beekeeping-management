@@ -1,11 +1,11 @@
 @foreach ($bigårder as $bigård)
     <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
         <div class="p-6">
-            <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+            <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900">
                 {{ $bigård->navn }}
             </h5>
-            <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                {{ $bigård->navn }}
+            <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit text-orange-500">
+                {{ $bigård->adress }}
             </p>
         </div>
 
