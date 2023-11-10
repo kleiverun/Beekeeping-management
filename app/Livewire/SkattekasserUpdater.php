@@ -26,6 +26,9 @@ class SkattekasserUpdater extends Component
         $bikube = \App\Models\Bikube::find($this->bikubeid);
         ++$bikube->antallSkattekasser;
         $bikube->save();
+
+        // Refresh the data in the component
+        $this->skattekasser = $bikube->antallSkattekasser;
     }
 
     public function decreaseSkattekasser()
@@ -33,5 +36,8 @@ class SkattekasserUpdater extends Component
         $bikube = \App\Models\Bikube::find($this->bikubeid);
         --$bikube->antallSkattekasser;
         $bikube->save();
+
+        // Refresh the data in the component
+        $this->skattekasser = $bikube->antallSkattekasser;
     }
 }

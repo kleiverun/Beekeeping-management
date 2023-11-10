@@ -21,17 +21,19 @@
             Styrke på bikube: {{ $bikube->estimertStyrke }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Antall skattekasser: {{ $bikube->antallSkattekasser }}
+            Antall skattekasser: {{ $skattekasser }}
         </p>
 
+
+
         <!-- Increase Skattekasser Button -->
-        <button type="button" wire:click="increaseSkattekasser" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
+        <button wire:click="increaseSkattekasser" wire:loading.attr="disabled" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
             + Legg til skattekasse
         </button>
 
-        <!-- Decrease Skattekasser Button -->
-        <button wire:click="decreaseSkattekasser" type="button" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50" >
+        <button wire:click="decreaseSkattekasser" wire:loading.attr="disabled" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50">
             - Fjern skattekasse
         </button>
+
     </div>
 </div>
