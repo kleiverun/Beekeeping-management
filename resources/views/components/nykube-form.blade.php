@@ -6,8 +6,9 @@
             <select required name="bigård_idBigård" id="hive"
                 class="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
                 <option selected disabled>Velg bigård</option>
-                @foreach ($bigarder as $bigard)
-                    <option name="bigård_idBigård" value="{{ $bigard->id }}">{{ $bigard->navn }}</option>
+                <!-- Note to self next time, the object within view/components need to hold the data which is being passed -->
+                @foreach ($bigarder as $bigard )
+                <x-bigard-select :bigard="$bigard" />
                 @endforeach
             </select>
             <div>
