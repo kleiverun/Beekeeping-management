@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Bigård;
+use App\Models\Apiary;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,25 +27,25 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/NyKube', function () {
-        $bigarder = Bigård::where('users_id', auth()->user()->id)->get();
-        if ($bigarder->isEmpty()) {
-            return redirect('/NyBigård')->with('success', 'Du må registrere en bigård før du kan registrere en bikube');
+        $apiaries = apiary::where('users_id', auth()->user()->id)->get();
+        if ($apiaries->isEmpty()) {
+            return redirect('/Nyapiary')->with('success', 'Du må registrere en apiary før du kan registrere en hive');
         }
-
-        return view('nykube')->with('bigarder', $bigarder);
+        return view('nykube')->with('apiaries', $apiaries);
     })->name('NyKube');
 
-    Route::get('/NyBigård', function () {
-        return view('nyBigård');
-    })->name('NyBigård');
-    Route::post('/registrerBigård', 'App\Http\Controllers\form\v1\BigardController@store')->name('BigardController.store');
-    Route::post('/registrerBikube', 'App\Http\Controllers\form\v1\NyBikubeController@store');
+    Route::get('/NyApiary', function () {
+        return view('nybigård');
+    })->name('Nyapiary');
 
-    Route::get('/Bigårder', function () {
-        $bigarder = Bigård::where('users_id', auth()->user()->id)->get();
+    Route::post('/registrerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
+    Route::post('/registrerHive', 'App\Http\Controllers\form\v1\NewHiveController@store');
 
-        return view('bigarder')->with('bigårder', $bigarder);
-    })->name('Bigårder');
+    Route::get('/apiaries', function () {
+        $apiaries = apiary::where('users_id', auth()->user()->id)->get();
 
-    Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\BikuberController@index')->name('bikuber.index');
+        return view('apiaries')->with('apiaries', $apiaries);
+    })->name('apiaries');
+
+    Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\HiveController@index')->name('bikuber.index');
 });

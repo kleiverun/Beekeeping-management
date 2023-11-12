@@ -8,36 +8,36 @@ class SkattekasserUpdater extends Component
 {
     public $bikubeid; // Rename bikubeid for consistency
     public $skattekasser;
-    public $bikube; // Declare the bikube property
+    public $hive; // Declare the hive property
 
     public function render()
     {
         return view('livewire.skattekasser-updater');
     }
 
-    public function mount($bikube)
+    public function mount($hive)
     {
-        $this->bikubeid = $bikube->id;
-        $this->skattekasser = $bikube->antallSkattekasser;
+        $this->bikubeid = $hive->id;
+        $this->skattekasser = $hive->antallSkattekasser;
     }
 
     public function increaseSkattekasser()
     {
-        $bikube = \App\Models\Bikube::find($this->bikubeid);
-        ++$bikube->antallSkattekasser;
-        $bikube->save();
+        $hive = \App\Models\Hive::find($this->bikubeid);
+        ++$hive->antallSkattekasser;
+        $hive->save();
 
         // Refresh the data in the component
-        $this->skattekasser = $bikube->antallSkattekasser;
+        $this->skattekasser = $hive->antallSkattekasser;
     }
 
     public function decreaseSkattekasser()
     {
-        $bikube = \App\Models\Bikube::find($this->bikubeid);
-        --$bikube->antallSkattekasser;
-        $bikube->save();
+        $hive = \App\Models\Hive::find($this->bikubeid);
+        --$hive->antallSkattekasser;
+        $hive->save();
 
         // Refresh the data in the component
-        $this->skattekasser = $bikube->antallSkattekasser;
+        $this->skattekasser = $hive->antallSkattekasser;
     }
 }

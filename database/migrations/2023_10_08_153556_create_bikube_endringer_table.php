@@ -11,9 +11,9 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('bikube_endringer', function (Blueprint $table) {
+        Schema::create('hive_changes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bikube_idBikube')->constrained('bikube', 'id');
+            $table->foreignId('bikube_idBikube')->constrained('hive', 'id');
             $table->integer('antallSkattekasser');
             $table->integer('estimertStyrke');
             $table->timestamps();

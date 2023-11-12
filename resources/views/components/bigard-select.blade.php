@@ -1,3 +1,3 @@
 <div>
-    <option name="bigård_idBigård" value="{{ $bigard->id }}">{{ $bigard->navn }}</option>
+    <option name="apiary_idApiary" value="{{ $bigard->id }}">{{ $bigard->navn }}</option>
 </div>

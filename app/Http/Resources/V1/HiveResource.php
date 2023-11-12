@@ -16,12 +16,12 @@ class BikubeResource extends JsonResource
     {
         return [
             'IdBikube' => $this->id,
-            'IdBigård' => $this->bigård_idBigård,
+            'Idapiary' => $this->apiary_idApiary,
             'IdBruker' => $this->bruker_idBruker,
             'identifikasjon' => $this->identifikasjon,
             'antallSkattekasser' => $this->antallSkattekasser,
             'estimertStyrke' => $this->estimertStyrke,
-            'bigård' => new BigårdResource($this->whenLoaded('bigård')),
+            'apiary' => new ApiaryResource($this->whenLoaded('apiary')),
         ];
     }
 }

@@ -8,8 +8,8 @@
     <div class="py-12">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                @foreach ($bikuber as $bikube)
-                   @livewire('skattekasser-updater', ['bikube' => $bikube])
+                @foreach ($bikuber as $hive)
+                   @livewire('skattekasser-updater', ['hive' => $hive])
                 @endforeach
             </div>
         </div>

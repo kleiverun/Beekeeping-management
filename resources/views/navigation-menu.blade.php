@@ -18,11 +18,11 @@
                     <x-nav-link href="{{ route('NyKube') }}" :active="request()->routeIs('NyKube')">
                         {{ __('Registrer et nytt bifolk') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('NyBigård') }}" :active="request()->routeIs('NyBigård')">
-                        {{ __('Registrer en ny bigård') }}
+                    <x-nav-link href="{{ route('Nyapiary') }}" :active="request()->routeIs('Nyapiary')">
+                        {{ __('Registrer en ny apiary') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('Bigårder') }}" :active="request()->routeIs('Bigårder')">
-                        {{ __('Se alle bigård') }}
+                    <x-nav-link href="{{ route('apiaries') }}" :active="request()->routeIs('apiaries')">
+                        {{ __('Se alle apiary') }}
                     </x-nav-link>
                 </div>
             </div>

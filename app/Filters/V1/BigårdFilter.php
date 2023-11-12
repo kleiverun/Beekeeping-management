@@ -4,7 +4,7 @@ namespace App\Filters\V1;
 
 use App\Filters\ApiFilter;
 
-class BigårdFilter extends ApiFilter
+class apiaryFilter extends ApiFilter
 {
     protected $allowedParms = [
         'id' => ['eq'],

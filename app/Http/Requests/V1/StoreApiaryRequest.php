@@ -4,10 +4,13 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBrukerRequest extends FormRequest
+class StoreApiaryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * $user = $this->user();.
+     *
+     * return $user != null && $user->tokenCan('create');
      */
     public function authorize(): bool
     {
@@ -24,19 +27,9 @@ class StoreBrukerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'password' => ['required'],
-            'firstname' => ['required'],
-            'lastname' => ['required'],
-            'email' => ['required', 'email'],
-            'phonenumber' => ['required'],
-            'adress' => ['required'],
+            'navn' => ['required', 'string'],
+            'users_id' => ['integer'],
+            'adress' => ['required', 'string'],
         ];
-    }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'password' => bcrypt($this->password),
-        ]);
     }
 }
