@@ -4,13 +4,10 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBigardRequest extends FormRequest
+class StoreHiveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     * $user = $this->user();.
-     *
-     * return $user != null && $user->tokenCan('create');
      */
     public function authorize(): bool
     {
@@ -27,9 +24,18 @@ class StoreBigardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'navn' => ['required', 'string'],
-            'users_id' => ['integer'],
-            'adress' => ['required', 'string'],
+            'apiary_idApiary' => ['required', 'integer'],
+            'users_id' => ['nullable', 'integer'],
+            'antallSkattekasser' => ['required', 'integer'],
+            'identifikasjon' => ['required', 'string', 'max:255'],
+            'estimertStyrke' => ['required', 'integer'],
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'created_at' => now(),
+        ]);
     }
 }

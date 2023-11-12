@@ -8,14 +8,14 @@ class BrukerFilter extends ApiFilter
 {
     protected $allowedParms = [
         'users_id' => ['eq'],
-        'bigård_idBigård' => ['eq'],
+        'apiary_idApiary' => ['eq'],
         'antallSkattekasser' => ['eq', 'gt', 'ge', 'lt', 'le'],
         'identifikasjon' => ['eq', 'like'],
         'estimertStyrke' => ['eq', 'gt', 'ge', 'lt', 'le'],
     ];
     protected $columnMap = [
         'users_id' => 'users_id',
-        'bigård_idBigård' => 'bigård_idBigård',
+        'apiary_idApiary' => 'apiary_idApiary',
         'antallSkattekasser' => 'antallSkattekasser',
         'identifikasjon' => 'identifikasjon',
         'estimertStyrke' => 'estimertStyrke',

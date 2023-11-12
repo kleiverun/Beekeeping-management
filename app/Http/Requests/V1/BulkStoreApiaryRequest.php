@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BulkStoreBigardRequest extends FormRequest
+class BulkStoreApiaryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

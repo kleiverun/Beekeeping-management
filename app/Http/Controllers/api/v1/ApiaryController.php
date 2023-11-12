@@ -2,45 +2,46 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Filters\V1\BigårdFilter;
+use App\Filters\V1\ApiaryFilter;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\BulkStoreBigardRequest;
-use App\Http\Requests\V1\StoreBigardRequest;
-use App\Http\Resources\V1\BigårdCollection;
-use App\Http\Resources\V1\BigårdResource;
-use App\Models\Bigård;
+use App\Http\Requests\V1\BulkStoreApiaryRequest;
+use App\Http\Requests\V1\StoreApiaryRequest;
+use App\Http\Resources\V1\ApiaryCollection;
+use App\Http\Resources\V1\ApiaryResource;
+use App\Models\Apiary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 // import auth fasade
 
-class BigardController extends Controller
+class ApiaryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $filter = new BigårdFilter();
+        $filter = new apiaryFilter();
         $queryItems = $filter->transform($request);
 
         if (count($queryItems) == 0) {
-            return new BigårdCollection(Bigård::paginate());
+            return new ApiaryCollection(apiary::paginate());
         } else {
-            $bigårder = Bigård::where($queryItems)->paginate();
+            $apiaries = apiary::where($queryItems)->paginate();
 
-            return new BigårdCollection($bigårder->appends($request->query()));
+            return new ApiaryCollection($apiaries->appends($request->query()));
         }
     }
 
     /**
      * Store a newly created resource in storage.
+     * The request is validated by the StoreApiaryRequest class.
      */
-    public function store(StoreBigardRequest $request)
+    public function store(StoreApiaryRequest $request)
     {
         // Add a authorizaion token to the request
-        return new BigårdResource(Bigård::create($request->all()));
+        return new ApiaryResource(apiary::create($request->all()));
     }
 
     /**
@@ -49,24 +50,24 @@ class BigardController extends Controller
      */
     public function show(string $id)
     {
-        $bigård = Bigård::find($id);
+        $apiary = apiary::find($id);
 
-        if ($bigård) {
-            return new BigårdResource($bigård);
+        if ($apiary) {
+            return new ApiaryResource($apiary);
         }
 
-        return new BigårdResource(Bigård::findOrFail($id));
+        return new ApiaryResource(apiary::findOrFail($id));
     }
 
     /**
-     * Create multiple bigård resource in storage.
+     * Create multiple apiary resource in storage.
      */
-    public function bulkStore(BulkStoreBigardRequest $request)
+    public function bulkStore(BulkStoreApiaryRequest $request)
     {
         $bulk = collect($request->all())->map(function ($arr, $key) {
             return Arr::except($arr, ['id', 'created_at', 'updated_at']);
         });
-        Bigård::insert($bulk->toArray());
+        apiary::insert($bulk->toArray());
     }
 
     /**

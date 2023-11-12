@@ -1,4 +1,3 @@
-@foreach ($bikuber as $hive)
 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
     <!-- Delete Button -->
     <button type="button" class="absolute top-2 right-2 text-red-500 hover:text-red-700 focus:outline-none" onclick="deleteBikube({{ $hive->id }})">
@@ -22,18 +21,19 @@
             Styrke på hive: {{ $hive->estimertStyrke }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Antall skattekasser: {{ $hive->antallSkattekasser }}
+            Antall skattekasser: {{ $skattekasser }}
         </p>
 
+
+
         <!-- Increase Skattekasser Button -->
-        <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50" onclick="increaseSkattekasser({{ $hive->id }})">
+        <button wire:click="increaseSkattekasser" wire:loading.attr="disabled" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
             + Legg til skattekasse
         </button>
 
-        <!-- Decrease Skattekasser Button -->
-        <button type="button" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50" onclick="decreaseSkattekasser({{ $hive->id }})">
+        <button wire:click="decreaseSkattekasser" wire:loading.attr="disabled" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50">
             - Fjern skattekasse
         </button>
+
     </div>
 </div>
-@endforeach

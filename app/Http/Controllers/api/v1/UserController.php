@@ -4,8 +4,8 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Filters\V1\UserFilter;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\StoreBrukerRequest;
-use App\Http\Requests\V1\UpdateBrukerRequest;
+use App\Http\Requests\V1\StoreUserRequest;
+use App\Http\Requests\V1\UpdateUserRequest;
 use App\Http\Resources\V1\UserCollection;
 use App\Http\Resources\V1\UserResource;
 use App\Models\User;
@@ -21,11 +21,11 @@ class UserController extends Controller
         $filter = new UserFilter();
         $queryItems = $filter->transform($request);
 
-        $inkluderBigårder = $request->query('inkluderBigårder');
+        $includeApiary = $request->query('includeApiary');
         $brukere = User::where($queryItems);
 
-        if ($inkluderBigårder) {
-            $brukere = $brukere->with('bigårder');
+        if ($includeApiary) {
+            $brukere = $brukere->with('apiary');
         }
 
         return new UserCollection($brukere->paginate()->appends($request->query()));
@@ -38,12 +38,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $inkluderBigårder = request()->query('inkluderBigårder');
+        $includeApiary = request()->query('includeApiary');
         $bruker = User::find($id);
 
         if ($bruker) {
-            if ($inkluderBigårder) {
-                $bruker->loadMissing('bigårder');
+            if ($includeApiary) {
+                $bruker->loadMissing('apiaries');
             }
 
             return new UserResource($bruker);
@@ -55,7 +55,7 @@ class UserController extends Controller
     /*
      * Store a newly created resource in storage.
      */
-    public function store(StoreBrukerRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $user = User::create($request->validated());
 
@@ -69,7 +69,7 @@ class UserController extends Controller
     /* Update the specified resource in storage.
     *
     */
-    public function update(UpdateBrukerRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         // Find the Bruker model by its ID
         $bruker = User::find($id);

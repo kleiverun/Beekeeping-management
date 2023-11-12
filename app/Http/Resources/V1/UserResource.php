@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'phoneNumber' => $this->phonenumber,
             'email' => $this->email,
             'adress' => $this->adress,
-            'beefarms' => BigårdResource::collection($this->whenLoaded('bigårder')),
+            'apiary' => ApiaryResource::collection($this->whenLoaded('apiaries')),
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBikubeRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,19 @@ class StoreBikubeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'bigård_idBigård' => ['required', 'integer'],
-            'users_id' => ['nullable', 'integer'],
-            'antallSkattekasser' => ['required', 'integer'],
-            'identifikasjon' => ['required', 'string', 'max:255'],
-            'estimertStyrke' => ['required', 'integer'],
+            'password' => ['required'],
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+            'email' => ['required', 'email'],
+            'phonenumber' => ['required'],
+            'adress' => ['required'],
         ];
     }
 
-    public function prepareForValidation()
+    protected function prepareForValidation()
     {
         $this->merge([
-            'created_at' => now(),
+            'password' => bcrypt($this->password),
         ]);
     }
 }

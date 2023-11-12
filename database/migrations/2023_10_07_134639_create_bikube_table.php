@@ -10,9 +10,9 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('bikube', function (Blueprint $table) {
+        Schema::create('hive', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bigård_idBigård')->constrained('bigård', 'id');
+            $table->foreignId('apiary_idApiary')->constrained('apiary', 'id');
             $table->foreignId('users_id')->constrained('users', 'id');
             $table->integer('antallSkattekasser');
             $table->timestamps();
@@ -26,6 +26,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('bikube');
+        Schema::dropIfExists('hive');
     }
 };

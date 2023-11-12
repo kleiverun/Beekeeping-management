@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Bigård;
+use App\Models\Apiary;
 use Illuminate\Database\Seeder;
 
 // Adjust the namespace and model name as per your application
-class BigårdSeeder extends Seeder
+class apiarySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class BigårdSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < 100; ++$i) {
-            Bigård::create([
+            apiary::create([
                 'navn' => $faker->name,
                 'bruker_idBruker' => $faker->numberBetween(1, 100),
                 'adress' => $faker->address,

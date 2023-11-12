@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\api\v1\BigardController;
-use App\Http\Controllers\api\v1\BikubeController;
+use App\Http\Controllers\api\v1\ApiaryController;
+use App\Http\Controllers\api\v1\HiveController;
 use App\Http\Controllers\api\v1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // api/v1/brukere middleware auth:sanctum er feilen
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1', 'middleware' => 'auth:sanctum'], function () {
     // Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1'], function () {
-    Route::apiResource('brukere', UserController::class);
-    Route::apiResource('bigårder', BigardController::class);
-    Route::apiResource('bikuber', BikubeController::class);
-    Route::post('bigarder/bulk', ['uses' => 'BigardController@bulkStore']);
+    Route::apiResource('users', UserController::class);
+    Route::apiResource('apiaries', ApiaryController::class);
+    Route::apiResource('hives', HiveController::class);
+    Route::post('apiaries/bulk', ['uses' => 'ApiaryController@bulkStore']);
 });
 // https://laravel.com/docs/10.x/sanctum

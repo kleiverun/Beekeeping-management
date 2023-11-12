@@ -5,7 +5,7 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BigårdResource extends JsonResource
+class ApiaryCollection extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,6 @@ class BigårdResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'name' => $this->navn,
-            'IdBefarm' => $this->id,
-            'adress' => $this->adress,
-        ];
+        return parent::toArray($request);
     }
 }
