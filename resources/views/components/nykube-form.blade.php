@@ -3,10 +3,10 @@
         <h3 class="text-3xl font-extrabold text-orange-600 text-center mb-4">Registrer en ny hive</h3>
         <form method="post" action="{{ url('registrerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
-            <div class="text-sm font-bold">Velg hvilke apiary denne kuben tilhører:</div>
+            <div class="text-sm font-bold">Velg hvilken bigård denne kuben tilhører:</div>
             <select required name="apiary_idApiary" id="hive"
                 class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
-                <option selected disabled>Choose apiary</option>
+                <option selected disabled>Velg bigård</option>
                 <!-- Note to self next time, the object within view/components need to hold the data which is being passed -->
                 @foreach ($apiaries as $bigard)
                     <x-bigard-select :bigard="$bigard" />

@@ -19,10 +19,10 @@
                         {{ __('Registrer et nytt bifolk') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('Nyapiary') }}" :active="request()->routeIs('Nyapiary')">
-                        {{ __('Registrer en ny apiary') }}
+                        {{ __('Registrer en ny bigård') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('apiaries') }}" :active="request()->routeIs('apiaries')">
-                        {{ __('Se alle apiary') }}
+                        {{ __('Se dine bigårder') }}
                     </x-nav-link>
                 </div>
             </div>
