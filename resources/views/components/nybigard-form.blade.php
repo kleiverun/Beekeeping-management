@@ -1,6 +1,7 @@
-<div class="flex justify-center items-center h-1/2 w-2/3">
-    <div class="w-full max-w-md">
-        <form method="POST" action="{{ route('ApiaryController.store') }}" class="shadow-md rounded-lg bg-white p-6 mt-8">
+<div class="flex justify-center mt-10">
+    <div class="bg-white p-8 w-full max-w-md rounded-lg shadow-2xl">
+        <h1 class="text-3xl text-center mb-8">Opprett bigård</h1>
+        <form method="POST" action="{{ route('ApiaryController.store') }}" class="p-6 mt-8">
             @csrf
             <div class="mb-4">
                 <div>
@@ -13,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-between">
+            <div class="flex justify-between">
                 <x-button class="bg-orange-500 hover:bg-green-500 text-white">
                     {{ __('Registrer') }}
                 </x-button>

@@ -12,13 +12,13 @@
 
         <!-- Beehive Details -->
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Apiary #{{ $hive->id }}
+            Bikube #{{ $hive->id }}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Identifikasjon: {{ $hive->identifikasjon }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Styrke på hive: {{ $hive->estimertStyrke }}
+            bikube: {{ $hive->estimertStyrke }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Antall skattekasser: {{ $skattekasser }}
