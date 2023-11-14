@@ -31,6 +31,7 @@ Route::middleware([
         if ($apiaries->isEmpty()) {
             return redirect('/Nyapiary')->with('success', 'Du må registrere en apiary før du kan registrere en hive');
         }
+
         return view('nykube')->with('apiaries', $apiaries);
     })->name('NyKube');
 
@@ -38,8 +39,8 @@ Route::middleware([
         return view('nybigård');
     })->name('Nyapiary');
 
-    Route::post('/registrerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
-    Route::post('/registrerHive', 'App\Http\Controllers\form\v1\NewHiveController@store');
+    Route::post('/registerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
+    Route::post('/registerHive', 'App\Http\Controllers\form\v1\NewHiveController@store');
 
     Route::get('/apiaries', function () {
         $apiaries = apiary::where('users_id', auth()->user()->id)->get();

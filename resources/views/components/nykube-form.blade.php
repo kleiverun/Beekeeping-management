@@ -1,7 +1,7 @@
 <div class="flex justify-center mt-10 ">
     <div class="bg-white p-8 w-full max-w-md rounded-lg shadow-2xl"> <!-- Increased shadow -->
-        <h3 class="text-3xl font-extrabold text-orange-600 text-center mb-4">Registrer en ny hive</h3>
-        <form method="post" action="{{ url('registrerHive') }}" class="max-w-sm mx-auto space-y-4">
+        <h3 class="text-3xl font-extrabold text-orange-600 text-center mb-4">Registrer en ny bikube</h3>
+        <form method="post" action="{{ url('registerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
             <div class="text-sm font-bold">Velg hvilken bigård denne kuben tilhører:</div>
             <select required name="apiary_idApiary" id="hive"
