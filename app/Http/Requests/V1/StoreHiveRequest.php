@@ -24,7 +24,7 @@ class StoreHiveRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'apiary_idApiary' => ['required', 'integer'],
+            'apiary_id' => ['required', 'integer'],
             'users_id' => ['nullable', 'integer'],
             'antallSkattekasser' => ['required', 'integer'],
             'identifikasjon' => ['required', 'string', 'max:255'],

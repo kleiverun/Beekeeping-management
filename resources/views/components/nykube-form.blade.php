@@ -4,7 +4,7 @@
         <form method="post" action="{{ url('registerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
             <div class="text-sm font-bold">Velg hvilken bigård denne kuben tilhører:</div>
-            <select required name="apiary_idApiary" id="hive"
+            <select required name="apiary_id" id="hive"
                 class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
                 <option selected disabled>Velg bigård</option>
                 <!-- Note to self next time, the object within view/components need to hold the data which is being passed -->

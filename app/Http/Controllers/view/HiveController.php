@@ -13,7 +13,7 @@ class HiveController extends Controller
     public function index($idBikuber)
     {
         $bikuber = Hive::where('users_id', auth()->user()->id)
-        ->where('apiary_idApiary', $idBikuber)
+        ->where('apiary_id', $idBikuber)
         ->get(); // You need to call get() to execute the query and fetch data.
 
         return view('bikuber', compact('bikuber'));

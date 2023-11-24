@@ -13,7 +13,7 @@ return new class() extends Migration {
         Schema::create('hives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('apiary_id')->constrained('apiaries', 'id');
-            $table->foreignId('user_id')->constrained('users', 'id');
+            $table->foreignId('users_id')->constrained('users', 'id');
             $table->integer('antallSkattekasser');
             $table->timestamps();
             $table->string('identifikasjon');
