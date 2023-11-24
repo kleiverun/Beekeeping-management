@@ -15,9 +15,11 @@ class ApiaryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'name' => $this->navn,
+            'name' => $this->name,
             'idApiary' => $this->id,
-            'adress' => $this->adress,
+            'address' => $this->address,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
         ];
     }
 }

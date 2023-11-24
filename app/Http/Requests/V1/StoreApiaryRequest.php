@@ -27,9 +27,11 @@ class StoreApiaryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'navn' => ['required', 'string'],
+            'name' => ['required', 'string'],
             'users_id' => ['integer'],
-            'adress' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'longitude' => ['nullable', 'numeric'],
+            'latitude' => ['nullable', 'numeric'],
         ];
     }
 }

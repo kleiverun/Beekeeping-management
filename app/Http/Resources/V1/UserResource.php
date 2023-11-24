@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'lastname' => $this->lastname,
             'phoneNumber' => $this->phonenumber,
             'email' => $this->email,
-            'adress' => $this->adress,
+            'address' => $this->address,
             'apiary' => ApiaryResource::collection($this->whenLoaded('apiaries')),
         ];
     }

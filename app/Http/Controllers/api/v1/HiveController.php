@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
-// use App\Filters\V1\BikubeFilter;
+// use App\Filters\V1\HiveFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreHiveRequest;
 use App\Http\Requests\V1\UpdateHiveRequest;

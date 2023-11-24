@@ -11,14 +11,14 @@ class UserFilter extends ApiFilter
         'lastname' => ['eq'],
         'phonenumber' => ['eq'],
         'email' => ['eq'],
-        'adress' => ['eq'],
+        'address' => ['eq'],
     ];
     protected $columnMap = [
         'firstname' => 'firstname',
         'lastname' => 'lastname',
         'phonenumber' => 'phonenumber',
         'email' => 'email',
-        'adress' => 'adress',
+        'address' => 'address',
     ];
     protected $operatorMap = [
         'eq' => '=',

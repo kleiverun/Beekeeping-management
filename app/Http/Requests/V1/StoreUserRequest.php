@@ -29,7 +29,7 @@ class StoreUserRequest extends FormRequest
             'lastname' => ['required'],
             'email' => ['required', 'email'],
             'phonenumber' => ['required'],
-            'adress' => ['required'],
+            'address' => ['required'],
         ];
     }
 

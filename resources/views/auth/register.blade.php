@@ -21,8 +21,8 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
             <div class="mt-4">
-                <x-label for="adress" value="{{ __('Adress') }}" />
-                <x-input id="adress" class="block mt-1 w-full" type="text" name="adress" :value="old('adress')" required autocomplete="adress" />
+                <x-label for="address" value="{{ __('address') }}" />
+                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" />
             </div>
             <div class="mt-4">
                 <x-label for="phonenumber" value="{{ __('Phonenumber') }}" />

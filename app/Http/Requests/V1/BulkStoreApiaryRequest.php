@@ -25,8 +25,8 @@ class BulkStoreApiaryRequest extends FormRequest
     {
         return [
             '*.bruker_idBruker' => ['required', 'integer'],
-            '*.navn' => ['required'],
-            '*.adress' => ['required'],
+            '*.name' => ['required'],
+            '*.address' => ['required'],
             '*.created_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
             '*.updated_at' => ['date_format:Y-m-d H:i:s', 'nullable'],
         ];
@@ -38,8 +38,8 @@ class BulkStoreApiaryRequest extends FormRequest
         foreach ($this->toArray() as $obj) {
             $modifiedObj = [
                 'bruker_idBruker' => $obj['bruker_idBruker'] ?? null,
-                'navn' => $obj['navn'] ?? null,
-                'adress' => $obj['adress'] ?? null,
+                'name' => $obj['name'] ?? null,
+                'address' => $obj['address'] ?? null,
                 'created_at' => $obj['created_at'] ?? null,
                 'updated_at' => $obj['updated_at'] ?? null,
             ];

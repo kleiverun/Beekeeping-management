@@ -34,7 +34,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @example location password: "password123", firstname: "John", lastname: "Doe", epost: "john.doe@example.com", phonenumber: "1234567890", adresse: "1234 Elm St, Some City, Country"
+     * @example location password: "password123", firstname: "John", lastname: "Doe", epost: "john.doe@example.com", phonenumber: "1234567890", addresse: "1234 Elm St, Some City, Country"
      */
     public function show($id)
     {

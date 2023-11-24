@@ -10,18 +10,17 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        /*
-        Schema::create('bruker', function (Blueprint $table) {
+        Schema::create('apiaries', function (Blueprint $table) {
             $table->id();
-            $table->string('password');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('phonenumber');
-            $table->string('email');
-            $table->string('adress');
+            $table->string('name');
+            $table->string('address');
+            $table->double('longitude');
+            $table->double('latitude');
+            $table->unsignedBigInteger('users_id');
             $table->timestamps();
+
+            $table->foreign('users_id')->references('id')->on('users');
         });
-        */
     }
 
     /**
@@ -29,6 +28,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('bruker');
+        Schema::dropIfExists('apiaries');
     }
 };

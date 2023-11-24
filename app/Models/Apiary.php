@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Apiary extends Model
 {
     use HasFactory;
-    protected $table = 'apiary';
-    protected $fillable = ['navn', 'users_id', 'adress', 'created_at', 'updated_at'];
+    protected $table = 'apiaries';
+    public $timestamps = true;
+
+    protected $fillable = ['name', 'address', 'longitude', 'latitude', 'users_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

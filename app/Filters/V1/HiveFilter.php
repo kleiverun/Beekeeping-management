@@ -4,19 +4,21 @@ namespace App\Filters\V1;
 
 use App\Filters\ApiFilter;
 
-class apiaryFilter extends ApiFilter
+class HiveFilter extends ApiFilter
 {
     protected $allowedParms = [
-        'id' => ['eq'],
-        'navn' => ['eq'],
         'users_id' => ['eq'],
-        'adress' => ['eq'],
+        'apiary_idApiary' => ['eq'],
+        'antallSkattekasser' => ['eq', 'gt', 'ge', 'lt', 'le'],
+        'identifikasjon' => ['eq', 'like'],
+        'estimertStyrke' => ['eq', 'gt', 'ge', 'lt', 'le'],
     ];
     protected $columnMap = [
-        'id' => 'id',
-        'navn' => 'navn',
         'users_id' => 'users_id',
-        'adress' => 'adress',
+        'apiary_idApiary' => 'apiary_idApiary',
+        'antallSkattekasser' => 'antallSkattekasser',
+        'identifikasjon' => 'identifikasjon',
+        'estimertStyrke' => 'estimertStyrke',
     ];
     protected $operatorMap = [
         'eq' => '=',

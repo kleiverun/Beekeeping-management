@@ -16,9 +16,9 @@ class apiarySeeder extends Seeder
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < 100; ++$i) {
             apiary::create([
-                'navn' => $faker->name,
+                'name' => $faker->name,
                 'bruker_idBruker' => $faker->numberBetween(1, 100),
-                'adress' => $faker->address,
+                'address' => $faker->address,
             ]);
         }
     }
