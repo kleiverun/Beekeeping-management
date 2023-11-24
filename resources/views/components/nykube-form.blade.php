@@ -18,6 +18,8 @@
                     :value="old('antallSkattekasser')" required autofocus autocomplete="antallSkattekasser" />
             </div>
 
+
+
             <div>
                 <x-label for="estimertStyrke" value="{{ __('Hvor sterk mener du bikuben er (Mellom 1-10)? ') }}" />
                 <x-input id="estimertStyrke" class="block mt-1 w-full" type="number" name="estimertStyrke"

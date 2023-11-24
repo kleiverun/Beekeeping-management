@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreHiveRequest;
 use App\Http\Requests\V1\UpdateHiveRequest;
 use App\Http\Resources\V1\BikubeCollection;
-use App\Http\Resources\V1\BikubeResource;
+use App\Http\Resources\V1\HiveResource;
 use App\Models\Apiary;
 
 class HiveController extends Controller
@@ -34,7 +34,7 @@ class HiveController extends Controller
      */
     public function store(StoreHiveRequest $request)
     {
-        return new BikubeResource(Apiary::create($request->validated()));
+        return new HiveResource(Apiary::create($request->validated()));
     }
 
     /**
@@ -49,14 +49,14 @@ class HiveController extends Controller
         $hive = Apiary::find($idBikube);
 
         if (!$hive) {
-            return new BikubeResource(Apiary::findOrFail($idBikube));
+            return new HiveResource(Apiary::findOrFail($idBikube));
         }
 
         if ($inkluderapiary) {
             $hive->loadMissing('apiary');
         }
 
-        return new BikubeResource($hive);
+        return new HiveResource($hive);
     }
 
     /**
