@@ -7,6 +7,18 @@
             <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit text-orange-500">
                 {{ $apiary->address }}
             </p>
+            @if ($apiary->latitude != null && $apiary->longitude != null)
+            {{-- Map container --}}
+            <div id="map_{{ $apiary->id }}" class="leaflet-map" style="height: 150px;">
+            </div>    {{-- Initialize map for each apiary --}}
+            <script>
+                var map_{{ $apiary->id }} = L.map('map_{{ $apiary->id }}').setView([{{ $apiary->latitude }}, {{ $apiary->longitude }}], 5);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(map_{{ $apiary->id }});
+                L.marker([{{ $apiary->latitude }}, {{ $apiary->longitude }}]).addTo(map_{{ $apiary->id }});
+            </script>
+            @endif
         </div>
 
         <div class="p-6 pt-0">
@@ -18,4 +30,6 @@
             </a>
         </div>
     </div>
+
+
 @endforeach

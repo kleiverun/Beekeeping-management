@@ -14,8 +14,8 @@ return new class() extends Migration {
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->double('longitude');
-            $table->double('latitude');
+            $table->double('longitude')->nullable();
+            $table->double('latitude')->nullable();
             $table->unsignedBigInteger('users_id');
             $table->timestamps();
 

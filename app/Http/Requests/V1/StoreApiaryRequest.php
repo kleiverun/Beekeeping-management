@@ -6,12 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreApiaryRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     * $user = $this->user();.
-     *
-     * return $user != null && $user->tokenCan('create');
-     */
     public function authorize(): bool
     {
         $user = $this->user();
