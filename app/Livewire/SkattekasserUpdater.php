@@ -18,26 +18,26 @@ class SkattekasserUpdater extends Component
     public function mount($hive)
     {
         $this->bikubeid = $hive->id;
-        $this->skattekasser = $hive->antallSkattekasser;
+        $this->skattekasser = $hive->super;
     }
 
     public function increaseSkattekasser()
     {
         $hive = \App\Models\Hive::find($this->bikubeid);
-        ++$hive->antallSkattekasser;
+        ++$hive->super;
         $hive->save();
 
         // Refresh the data in the component
-        $this->skattekasser = $hive->antallSkattekasser;
+        $this->skattekasser = $hive->super;
     }
 
     public function decreaseSkattekasser()
     {
         $hive = \App\Models\Hive::find($this->bikubeid);
-        --$hive->antallSkattekasser;
+        --$hive->super;
         $hive->save();
 
         // Refresh the data in the component
-        $this->skattekasser = $hive->antallSkattekasser;
+        $this->skattekasser = $hive->super;
     }
 }

@@ -9,5 +9,5 @@ class Hive extends Model
 {
     use HasFactory;
     protected $table = 'hives';
-    protected $fillable = ['apiary_id', 'users_id', 'antallSkattekasser', 'identifikasjon', 'estimertStyrke', 'created_at', 'updated_at'];
+    protected $fillable = ['apiary_id', 'users_id', 'super', 'hiveDescription', 'hiveStrength', 'created_at', 'updated_at'];
 }

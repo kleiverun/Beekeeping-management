@@ -14,10 +14,10 @@ return new class() extends Migration {
             $table->id();
             $table->foreignId('apiary_id')->constrained('apiaries', 'id');
             $table->foreignId('users_id')->constrained('users', 'id');
-            $table->integer('antallSkattekasser');
+            $table->integer('super');
             $table->timestamps();
-            $table->string('identifikasjon');
-            $table->integer('estimertStyrke');
+            $table->string('hiveDescription');
+            $table->integer('hiveStrength');
         });
     }
 

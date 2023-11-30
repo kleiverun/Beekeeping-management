@@ -27,15 +27,15 @@ class UpdateHiveRequest extends FormRequest
 
         if ($method == 'PUT') {
             return [
-                'identifikasjon' => ['required'],
-                'antallSkattekasser' => ['required'],
-                'estimertStyrke' => ['required'],
+                'hiveDescription' => ['required'],
+                'super' => ['required'],
+                'hiveStrength' => ['required'],
             ];
         } else {
             return [
-                'identifikasjon' => ['sometimes', 'required'],
-                'antallSkattekasser' => ['sometimes', 'required'],
-                'estimertStyrke' => ['sometimes', 'required'],
+                'hiveDescription' => ['sometimes', 'required'],
+                'super' => ['sometimes', 'required'],
+                'hiveStrength' => ['sometimes', 'required'],
             ];
         }
     }

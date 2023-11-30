@@ -16,13 +16,13 @@
             Apiary #{{ $hive->id }}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Identifikasjon: {{ $hive->identifikasjon }}
+            Identifikasjon: {{ $hive->hiveDescription }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            bikube: {{ $hive->estimertStyrke }}
+            bikube: {{ $hive->hiveStrength }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Antall skattekasser: {{ $hive->antallSkattekasser }}
+            Antall skattekasser: {{ $hive->super }}
         </p>
 
         <!-- Increase Skattekasser Button -->

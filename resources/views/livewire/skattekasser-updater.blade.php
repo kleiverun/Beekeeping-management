@@ -15,10 +15,10 @@
             Bikube #{{ $hive->id }}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Identifikasjon: {{ $hive->identifikasjon }}
+            Identifikasjon: {{ $hive->hiveDescription }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            bikube: {{ $hive->estimertStyrke }}
+            Bikubens estimerte styrke: {{ $hive->hiveStrength }}
         </p>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Antall skattekasser: {{ $skattekasser }}

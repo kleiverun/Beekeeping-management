@@ -14,13 +14,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('livewire:load', function () {
-            Livewire.on('skattekasserUpdated', function (skattekasserCount) {
-                // Update the UI to reflect the new Skattekasser count
-                alert('Skattekasser updated to: ' + skattekasserCount);
-            });
-        });
-    </script>
+
 
 </x-app-layout>

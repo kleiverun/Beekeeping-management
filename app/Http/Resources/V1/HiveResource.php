@@ -18,9 +18,9 @@ class HiveResource extends JsonResource
             'IdBikube' => $this->id,
             'Idapiary' => $this->apiary_idApiary,
             'IdBruker' => $this->bruker_idBruker,
-            'identifikasjon' => $this->identifikasjon,
-            'antallSkattekasser' => $this->antallSkattekasser,
-            'estimertStyrke' => $this->estimertStyrke,
+            'hiveDescription' => $this->hiveDescription,
+            'super' => $this->super,
+            'hiveStrength' => $this->hiveStrength,
             'apiary' => new ApiaryResource($this->whenLoaded('apiary')),
         ];
     }

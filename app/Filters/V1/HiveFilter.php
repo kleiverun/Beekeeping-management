@@ -9,16 +9,16 @@ class HiveFilter extends ApiFilter
     protected $allowedParms = [
         'users_id' => ['eq'],
         'apiary_idApiary' => ['eq'],
-        'antallSkattekasser' => ['eq', 'gt', 'ge', 'lt', 'le'],
-        'identifikasjon' => ['eq', 'like'],
-        'estimertStyrke' => ['eq', 'gt', 'ge', 'lt', 'le'],
+        'super' => ['eq', 'gt', 'ge', 'lt', 'le'],
+        'hiveDescription' => ['eq', 'like'],
+        'hiveStrength' => ['eq', 'gt', 'ge', 'lt', 'le'],
     ];
     protected $columnMap = [
         'users_id' => 'users_id',
         'apiary_idApiary' => 'apiary_idApiary',
-        'antallSkattekasser' => 'antallSkattekasser',
-        'identifikasjon' => 'identifikasjon',
-        'estimertStyrke' => 'estimertStyrke',
+        'super' => 'super',
+        'hiveDescription' => 'hiveDescription',
+        'hiveStrength' => 'hiveStrength',
     ];
     protected $operatorMap = [
         'eq' => '=',

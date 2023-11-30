@@ -13,22 +13,22 @@
                 @endforeach
             </select>
             <div>
-                <x-label for="antallSkattekasser" value="{{ __('Hvor mange skattekasser?') }}" />
-                <x-input id="antallSkattekasser" class="block mt-1 w-full" type="number" name="antallSkattekasser"
-                    :value="old('antallSkattekasser')" required autofocus autocomplete="antallSkattekasser" />
+                <x-label for="super" value="{{ __('Hvor mange skattekasser?') }}" />
+                <x-input id="super" class="block mt-1 w-full" type="number" name="super"
+                    :value="old('super')" required autofocus autocomplete="super" />
             </div>
 
 
 
             <div>
-                <x-label for="estimertStyrke" value="{{ __('Hvor sterk mener du bikuben er (Mellom 1-10)? ') }}" />
-                <x-input id="estimertStyrke" class="block mt-1 w-full" type="number" name="estimertStyrke"
-                    :value="old('estimertStyrke')" required autofocus autocomplete="estimertStyrke" />
+                <x-label for="hiveStrength" value="{{ __('Hvor sterk mener du bikuben er (Mellom 1-10)? ') }}" />
+                <x-input id="hiveStrength" class="block mt-1 w-full" type="number" name="hiveStrength"
+                    :value="old('hiveStrength')" required autofocus autocomplete="hiveStrength" />
             </div>
             <div>
-                <x-label for="identifikasjon" value="{{ __('Hvilken hive er det?') }}" />
-                <x-input id="identifikasjon" class="block mt-1 w-full" type="text" name="identifikasjon"
-                    :value="old('identifikasjon')" required autofocus autocomplete="identifikasjon" />
+                <x-label for="hiveDescription" value="{{ __('Skriv en kort beskrivelse av bikuben') }}" />
+                <x-input id="hiveDescription" class="block mt-1 w-full" type="text" name="hiveDescription"
+                    :value="old('hiveDescription')" required autofocus autocomplete="hiveDescription" />
             </div>
 
             <div class="flex justify-between items-center">

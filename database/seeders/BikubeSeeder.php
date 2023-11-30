@@ -16,9 +16,9 @@ class BikubeSeeder extends Seeder
             \App\Models\Apiary::create([
                 'apiary_idApiary' => $faker->numberBetween(1, 100),
                 'bruker_idBruker' => $faker->numberBetween(1, 100),
-                'antallSkattekasser' => $faker->numberBetween(1, 10),
-                'identifikasjon' => $faker->sentence(7),
-                'estimertStyrke' => $faker->numberBetween(1, 10),
+                'super' => $faker->numberBetween(1, 10),
+                'hiveDescription' => $faker->sentence(7),
+                'hiveStrength' => $faker->numberBetween(1, 10),
             ]);
         }
     }
