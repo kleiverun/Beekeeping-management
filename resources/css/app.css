@@ -5,3 +5,34 @@
 [x-cloak] {
     display: none;
 }
+.text-gradient-1 {
+    color: #FF0000; /* Replace with your color for strength 1 */
+}
+
+.text-gradient-2 {
+    color: #FF3300; /* Replace with your color for strength 2 */
+}
+.text-gradient-3 {
+    color: #FF6600; /* Replace with your color for strength 3 */
+}
+.text-gradient-4 {
+    color: #FF9900; /* Replace with your color for strength 4 */
+}
+.text-gradient-5 {
+    color: #FFCC00; /* Replace with your color for strength 5 */
+}
+.text-gradient-6 {
+    color: #FFFF00; /* Replace with your color for strength 6 */
+}
+.text-gradient-7 {
+    color: #CCFF00; /* Replace with your color for strength 7 */
+}
+.text-gradient-8 {
+    color: #99FF00; /* Replace with your color for strength 8 */
+}
+.text-gradient-9 {
+    color: #66FF00; /* Replace with your color for strength 9 */
+}
+.text-gradient-10 {
+    color: #00FF00; /* Replace with your color for strength 10 */
+}
