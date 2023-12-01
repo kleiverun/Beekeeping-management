@@ -24,6 +24,9 @@
                     <x-nav-link href="{{ route('apiaries') }}" :active="request()->routeIs('apiaries')">
                         {{ __('Se dine bigårder') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('newQueen') }}" :active="request()->routeIs('newQueen')">
+                        {{ __('Registrer dronning') }}
+                    </x-nav-link>
                 </div>
             </div>
 

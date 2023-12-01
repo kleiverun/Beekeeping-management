@@ -49,4 +49,12 @@ Route::middleware([
     })->name('apiaries');
 
     Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\HiveController@index')->name('bikuber.index');
+    Route::get('/newQueen', function () {
+        $apiaries = apiary::where('users_id', auth()->user()->id)->get();
+        if ($apiaries->isEmpty()) {
+            return redirect('/NyApiary')->with('success', 'Du må registrere en apiary før du kan registrere en hive');
+        }
+
+        return view('newqueen')->with('apiaries', $apiaries);
+    })->name('newQueen');
 });
