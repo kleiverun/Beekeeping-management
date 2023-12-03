@@ -51,6 +51,7 @@ Route::middleware([
     })->name('apiaries');
 
     Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\HiveController@index')->name('bikuber.index');
+
     Route::get('/newQueen', function () {
         $hives = Hive::where('users_id', auth()->id())->get();
 

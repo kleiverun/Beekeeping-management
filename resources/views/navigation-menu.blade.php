@@ -22,7 +22,7 @@
                         {{ __('Registrer en ny bigård') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('apiaries') }}" :active="request()->routeIs('apiaries')">
-                        {{ __('Se dine bigårder') }}
+                        {{ __('Se dine bigårder og bikuber') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('newQueen') }}" :active="request()->routeIs('newQueen')">
                         {{ __('Registrer dronning') }}
