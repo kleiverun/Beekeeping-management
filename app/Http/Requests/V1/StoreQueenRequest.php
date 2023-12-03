@@ -24,9 +24,10 @@ class StoreQueenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hiveId' => ['required', 'integer'],
+            'hiveId' => ['nullable', 'integer'],
             'queenDate' => ['required', 'date'],
             'queenBreed' => ['required', 'string', 'max:255'],
+            'queenDescription' => ['nullable', 'string', 'max:255'],
         ];
     }
 
@@ -34,6 +35,7 @@ class StoreQueenRequest extends FormRequest
     {
         $this->merge([
             'created_at' => now(),
+            'usersID' => auth()->user()->id,
         ]);
     }
 }

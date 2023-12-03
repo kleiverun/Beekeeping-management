@@ -9,5 +9,5 @@ class Queen extends Model
 {
     use HasFactory;
     protected $table = 'queens';
-    protected $fillable = ['HiveID', 'QueenDate', 'QueenBreed', 'created_at', 'updated_at'];
+    protected $fillable = ['hiveID', 'queenDate', 'queenDescription', 'queenBreed', 'usersID',  'created_at', 'updated_at'];
 }

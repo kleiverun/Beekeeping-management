@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Apiary;
+use App\Models\Hive;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,7 @@ Route::middleware([
     Route::get('/NyKube', function () {
         $apiaries = apiary::where('users_id', auth()->user()->id)->get();
         if ($apiaries->isEmpty()) {
-            return redirect('/Nyapiary')->with('success', 'Du må registrere en apiary før du kan registrere en hive');
+            return redirect('/Nyapiary')->with('success', 'Du må registrere en bigård før du kan registrere en hive');
         }
 
         return view('nykube')->with('apiaries', $apiaries);
@@ -41,20 +42,18 @@ Route::middleware([
 
     Route::post('/registerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
     Route::post('/registerHive', 'App\Http\Controllers\form\v1\NewHiveController@store');
+    Route::post('/registerQueen', 'App\Http\Controllers\form\v1\NewQueenController@store')->name('NewQueenController.store');
 
     Route::get('/apiaries', function () {
-        $apiaries = apiary::where('users_id', auth()->user()->id)->get();
+        $apiaries = Apiary::where('users_id', auth()->user()->id)->get();
 
         return view('apiaries')->with('apiaries', $apiaries);
     })->name('apiaries');
 
     Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\HiveController@index')->name('bikuber.index');
     Route::get('/newQueen', function () {
-        $apiaries = apiary::where('users_id', auth()->user()->id)->get();
-        if ($apiaries->isEmpty()) {
-            return redirect('/NyApiary')->with('success', 'Du må registrere en apiary før du kan registrere en hive');
-        }
+        $hives = Hive::where('users_id', auth()->id())->get();
 
-        return view('newqueen')->with('apiaries', $apiaries);
+        return view('newqueen')->with('hives', $hives);
     })->name('newQueen');
 });
