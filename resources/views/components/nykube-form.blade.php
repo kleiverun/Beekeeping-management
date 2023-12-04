@@ -4,7 +4,8 @@
         <form method="post" action="{{ url('registerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
             <div class="text-sm font-bold">Velg hvilken bigård denne kuben tilhører:</div>
-            <select required name="apiary_id" id="hive" class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
+            <select required name="apiary_id" id="hive"
+                class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
                 <option selected disabled>Velg bigård</option>
 
                 @foreach ($apiaries as $apiary)
@@ -14,8 +15,8 @@
 
             <div>
                 <x-label for="super" value="{{ __('Hvor mange skattekasser?') }}" />
-                <x-input id="super" class="block mt-1 w-full" type="number" name="super"
-                    :value="old('super')" required autofocus autocomplete="super" />
+                <x-input id="super" class="block mt-1 w-full" type="number" name="super" :value="old('super')"
+                    required autofocus autocomplete="super" />
             </div>
 
 

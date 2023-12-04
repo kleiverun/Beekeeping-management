@@ -13,6 +13,8 @@ return new class() extends Migration {
         Schema::create('hive_changes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bikube_idBikube')->constrained('hives', 'id');
+            $table->foreignId('users_id')->constrained('users', 'id');
+            $table->string('hiveDescription');
             $table->integer('super');
             $table->integer('hiveStrength');
             $table->timestamps();

@@ -12,12 +12,15 @@ return new class() extends Migration {
     {
         Schema::create('hives', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('apiary_id')->constrained('apiaries', 'id');
-            $table->foreignId('users_id')->constrained('users', 'id');
+            $table->foreignId('apiary_id')->constrained('apiaries');
+            $table->foreignId('users_id')->constrained('users');
+            $table->unsignedBigInteger('QueensID')->nullable(); // Make the column nullable
             $table->integer('super');
-            $table->timestamps();
             $table->string('hiveDescription');
             $table->integer('hiveStrength');
+            $table->timestamps();
+
+            $table->foreign('QueensID')->references('QueenID')->on('queens')->nullable();
         });
     }
 

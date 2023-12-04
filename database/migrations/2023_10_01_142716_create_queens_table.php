@@ -12,7 +12,6 @@ return new class() extends Migration {
     {
         Schema::create('queens', function (Blueprint $table) {
             $table->id('QueenID');
-            $table->foreignId('HiveID')->nullable()->constrained('hives', 'id');
             $table->foreignId('UsersID')->constrained('users', 'id');
             $table->date('QueenDate');
             $table->string('QueenBreed');
