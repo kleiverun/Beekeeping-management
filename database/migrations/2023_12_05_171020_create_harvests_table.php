@@ -10,12 +10,11 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('queens', function (Blueprint $table) {
-            $table->id('QueenID');
-            $table->foreignId('usersID')->constrained('users', 'id');
-            $table->date('queenDate');
-            $table->string('queenBreed');
-            $table->string('queenDescription');
+        Schema::create('harvests', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('hiveID')->constrained('hives');
+            $table->integer('harvestWeight');
+            $table->integer('supersHarvested');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('queens');
+        Schema::dropIfExists('harvests');
     }
 };

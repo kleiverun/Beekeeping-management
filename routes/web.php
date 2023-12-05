@@ -34,11 +34,20 @@ Route::middleware([
     Route::get('/newHive', function () {
         $apiaries = apiary::where('users_id', auth()->user()->id)->get();
         if ($apiaries->isEmpty()) {
-            return redirect('/newapiary')->with('success', 'Du må registrere en bigård før du kan registrere en bikube');
+            return redirect('/newApiary')->with('success', 'Du må registrere en bigård før du kan registrere en bikube');
         }
 
         return view('newhive')->with('apiaries', $apiaries);
     })->name('newHive');
+    Route::get('/newHarvest', function () {
+        $allHives = Hive::where('users_id', auth()->user()->id)->get();
+        if ($allHives->isEmpty()) {
+            return redirect('/newHive')->with('success', 'Du må registrere en bikube før du kan registrere en innhøsting');
+        }
+
+        return view('newharvest')->with('allHives', $allHives);
+    })->name('newHarvest');
+
     // Route to the page where you can see all the apiaries you have registered
     Route::get('/apiaries', function () {
         $apiaries = Apiary::where('users_id', auth()->user()->id)->get();
