@@ -14,4 +14,9 @@ class Harvest extends Model
         'harvestWeight',
         'supersHarvested',
     ];
+
+    public function hive()
+    {
+        return $this->belongsTo(Hive::class);
+    }
 }

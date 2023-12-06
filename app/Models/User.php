@@ -34,6 +34,11 @@ class User extends Authenticatable
          'updated_at',
     ];
 
+    public function hives()
+    {
+        return $this->hasMany(Hive::class, 'users_id');
+    }
+
     public function hasPermission($permission)
     {
         return $this->tokenCan($permission);

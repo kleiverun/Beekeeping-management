@@ -8,15 +8,10 @@
     <div class="py-12">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                @if ($allHives->count() < 1 )
-                    @php
-                        redirect()->route('newHive')->with('message', 'Du har ingen bikuber registrert. Vennligst registrer en bikube før du registrerer innhøsting av honning.');
-                    @endphp
-                @endif
-                @livewire('RegisterHarvest')
+                @livewire('RegisterHarvest' , ['hives' => $hives])
             </div>
         </div>
-    </div>
+        <x-harvests :harvests="$harvests"/>    </div>
 
 
 </x-app-layout>

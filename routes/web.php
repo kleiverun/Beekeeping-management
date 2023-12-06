@@ -2,6 +2,7 @@
 
 use App\Models\Apiary;
 use App\Models\Hive;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,13 +40,18 @@ Route::middleware([
 
         return view('newhive')->with('apiaries', $apiaries);
     })->name('newHive');
+    // Route to the page where you see and register new harvests
     Route::get('/newHarvest', function () {
-        $allHives = Hive::where('users_id', auth()->user()->id)->get();
-        if ($allHives->isEmpty()) {
+        $userId = auth()->user()->id;
+        $hives = Hive::where('users_id', $userId)->get(); // Use get() to retrieve the results
+        if ($hives->isEmpty()) { // Check if the collection is empty
             return redirect('/newHive')->with('success', 'Du må registrere en bikube før du kan registrere en innhøsting');
         }
 
-        return view('newharvest')->with('allHives', $allHives);
+        $user = User::find($userId);
+        $harvests = $user->hives->flatMap->harvests;
+
+        return view('newharvest')->with('hives', $hives)->with('harvests', $harvests);
     })->name('newHarvest');
 
     // Route to the page where you can see all the apiaries you have registered
