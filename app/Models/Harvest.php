@@ -13,6 +13,7 @@ class Harvest extends Model
         'hiveID',
         'harvestWeight',
         'supersHarvested',
+        'dateHarvested',
     ];
 
     public function hive()

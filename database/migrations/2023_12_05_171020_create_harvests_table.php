@@ -15,6 +15,7 @@ return new class() extends Migration {
             $table->foreignId('hiveID')->constrained('hives');
             $table->integer('harvestWeight');
             $table->integer('supersHarvested');
+            $table->dateTime('dateHarvested');
             $table->timestamps();
         });
     }

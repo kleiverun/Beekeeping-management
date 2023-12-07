@@ -24,7 +24,26 @@ These are coming soon
 
 ## Deployment
 
-To migrate this project run
+To run this application you have to first have these installed:
+- php, composer, npm, mysql, laravel
+
+- And have cloned the repository 
+
+Then install the dependencies
+```bash
+  composer install
+```
+```bash
+  npm install
+```
+Then create a .env file and copy the content from the .env.example file
+```bash
+  cp .env.example .env
+```
+Then generate a key
+```bash
+  php artisan key:generate
+```
 
 First migrate tables
 ```bash
