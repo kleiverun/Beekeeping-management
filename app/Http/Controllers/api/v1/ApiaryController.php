@@ -41,7 +41,7 @@ class ApiaryController extends Controller
     public function store(StoreApiaryRequest $request)
     {
         // Add a authorizaion token to the request
-        return new ApiaryResource(apiary::create($request->all()));
+        return new ApiaryResource(Apiary::create($request->all()));
     }
 
     /**

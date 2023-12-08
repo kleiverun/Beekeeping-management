@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class HiveChanges extends Model
 {
     use HasFactory;
-    protected $table = 'bikube_endringer';
+    protected $table = 'hiveChanges';
     protected $fillable = ['idBikubeEndringer', 'bikube_idBikube', 'super', 'hiveStrength', 'created_at', 'updated_at'];
 }

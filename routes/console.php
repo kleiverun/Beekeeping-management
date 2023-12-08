@@ -18,7 +18,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('resetdb', function () {
+Artisan::command('rd', function () {
     $this->comment('Resetting database');
     Artisan::call('migrate:reset');
     Artisan::call('migrate');

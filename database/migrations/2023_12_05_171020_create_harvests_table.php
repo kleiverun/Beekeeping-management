@@ -10,13 +10,12 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('hive_changes', function (Blueprint $table) {
+        Schema::create('harvests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bikube_idBikube')->constrained('hives', 'id');
-            $table->foreignId('users_id')->constrained('users', 'id');
-            $table->string('hiveDescription');
-            $table->integer('super');
-            $table->integer('hiveStrength');
+            $table->foreignId('hiveID')->constrained('hives');
+            $table->integer('harvestWeight');
+            $table->integer('supersHarvested');
+            $table->dateTime('dateHarvested');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('hive_changes');
+        Schema::dropIfExists('harvests');
     }
 };

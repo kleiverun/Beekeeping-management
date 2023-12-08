@@ -15,14 +15,20 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('NyKube') }}" :active="request()->routeIs('NyKube')">
+                    <x-nav-link href="{{ route('newHive') }}" :active="request()->routeIs('newHive')">
                         {{ __('Registrer et nytt bifolk') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('Nyapiary') }}" :active="request()->routeIs('Nyapiary')">
+                    <x-nav-link href="{{ route('newApiary') }}" :active="request()->routeIs('newApiary')">
                         {{ __('Registrer en ny bigård') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('apiaries') }}" :active="request()->routeIs('apiaries')">
-                        {{ __('Se dine bigårder') }}
+                        {{ __('Se dine bigårder og bikuber') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('newQueen') }}" :active="request()->routeIs('newQueen')">
+                        {{ __('Registrer dronning') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('newHarvest') }}" :active="request()->routeIs('newHarvest')">
+                        {{ __('Registrer innhøsting') }}
                     </x-nav-link>
                 </div>
             </div>

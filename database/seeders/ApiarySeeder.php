@@ -6,7 +6,7 @@ use App\Models\Apiary;
 use Illuminate\Database\Seeder;
 
 // Adjust the namespace and model name as per your application
-class apiarySeeder extends Seeder
+class ApiarySeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -17,14 +17,20 @@
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Identifikasjon: {{ $hive->hiveDescription }}
         </p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Bikubens estimerte styrke: {{ $hive->hiveStrength }}
-        </p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Antall skattekasser: {{ $skattekasser }}
+
+        <p class="mb-3 font-normal dark:text-gray-400">
+            Bikubens estimerte styrke:
+            <span class="text-gradient-{{ $hive->hiveStrength }}">
+                {{ $hive->hiveStrength }}
+            </span>
         </p>
 
-
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Antall skattekasser:
+            <span class="text-gradient-{{ $hive->super }}">
+                {{ $hive->super }}
+            </span>
+        </p>
 
         <!-- Increase Skattekasser Button -->
         <button wire:click="increaseSkattekasser" wire:loading.attr="disabled" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">

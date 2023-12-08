@@ -8,15 +8,15 @@ use App\Models\Hive;
 class HiveController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all hives for a apiary.
      */
     public function index($idBikuber)
     {
-        $bikuber = Hive::where('users_id', auth()->user()->id)
+        $allHives = Hive::where('users_id', auth()->user()->id)
         ->where('apiary_id', $idBikuber)
         ->get(); // You need to call get() to execute the query and fetch data.
 
-        return view('bikuber', compact('bikuber'));
+        return view('hives', compact('allHives'));
     }
 
     /**
@@ -26,7 +26,7 @@ class HiveController extends Controller
      */
     public function totalHivesForApiary($apiary)
     {
-        $bikuber = Apiary::where('users_id', auth()->user()->id)
+        $bikuber = Hive::where('users_id', auth()->user()->id)
         ->where('apiary_idApiary', $apiary)
         ->get();
 
