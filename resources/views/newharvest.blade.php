@@ -20,9 +20,3 @@
 </x-app-layout>
 <livewire:scripts />
 
-<script>
-    Livewire.on('refreshComponent', () => {
-        // Refresh the Livewire component
-        Livewire.emit('yourCustomEvent'); // Replace 'yourCustomEvent' with the event you want to trigger
-    });
-</script>

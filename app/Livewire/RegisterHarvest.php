@@ -18,12 +18,16 @@ class RegisterHarvest extends Component
     public $harvestDate;
     public $description;
     public $maxSkattekasser;
+    protected $listeners = ['refreshHarvests'];
 
     public function mount($hives)
     {
         $this->hives = $hives;
     }
 
+    /**
+     * Render the component.
+     */
     public function render()
     {
         // Load hive data when a hive is selected
@@ -34,7 +38,16 @@ class RegisterHarvest extends Component
         return view('livewire.register-harvest')->with('hives', $this->hives);
     }
 
-    // Create a new harvest instance and populate its fields
+    /**
+     * Handle hive selection change.
+     */
+    public function handleHiveidChange()
+    {
+        $selectedHive = Hive::findOrFail($this->selectedHiveId);
+        $this->maxSkattekasser = $selectedHive->super;
+    }
+
+    // Validates a new harvest, creates a new harvest record
     public function newHarvest()
     {
         $this->validate([
@@ -57,20 +70,11 @@ class RegisterHarvest extends Component
         $hive->super -= $this->supersHarvested;
         $hive->save();
 
-        // Reset the form
-        $this->selectedHiveId = null;
-        $this->harvestWeight = null;
-        $this->supersHarvested = null;
-        $this->harvestDate = null;
-        $this->description = null;
-
-        // Emit an event if needed
+        $this->reset('selectedHiveId', 'harvestWeight', 'supersHarvested', 'harvestDate', 'description', 'maxSkattekasser');
     }
 
     public function selectAllSupers()
     {
-        // Your implementation for selectAllSupers method
+        $this->supersHarvested = $this->maxSkattekasser;
     }
-
-    // ... Other methods as needed
 }
