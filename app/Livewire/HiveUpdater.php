@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class SkattekasserUpdater extends Component
+class HiveUpdater extends Component
 {
     public $hiveid;
     public $super; // Use the correct property name
@@ -12,7 +12,7 @@ class SkattekasserUpdater extends Component
 
     public function render()
     {
-        return view('livewire.skattekasser-updater');
+        return view('livewire.hive-updater');
     }
 
     public function mount($hive)

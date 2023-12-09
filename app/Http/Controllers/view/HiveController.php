@@ -26,10 +26,10 @@ class HiveController extends Controller
      */
     public function totalHivesForApiary($apiary)
     {
-        $bikuber = Hive::where('users_id', auth()->user()->id)
+        $hives = Hive::where('users_id', auth()->user()->id)
         ->where('apiary_idApiary', $apiary)
         ->get();
 
-        return $bikuber->count();
+        return $hives->count();
     }
 }
