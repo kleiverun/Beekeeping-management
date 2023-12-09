@@ -63,7 +63,6 @@ Route::middleware([
     // Route to the page where you can register a new queen
     Route::get('/newQueen', function () {
         $hives = Hive::where('users_id', auth()->id())->get();
-
         return view('newqueen')->with('hives', $hives);
     })->name('newQueen');
 
@@ -72,5 +71,5 @@ Route::middleware([
     Route::post('/registerHive', 'App\Http\Controllers\form\v1\NewHiveController@store')->name('NewHiveController.store');
     Route::post('/registerQueen', 'App\Http\Controllers\form\v1\NewQueenController@store')->name('NewQueenController.store');
     // Get all hives for this {id} apiary
-    Route::get('/Bikuber/{id}', 'App\Http\Controllers\view\HiveController@index')->name('bikuber.index');
+    Route::get('/hives/{id}', 'App\Http\Controllers\view\HiveController@index')->name('bikuber.index');
 });

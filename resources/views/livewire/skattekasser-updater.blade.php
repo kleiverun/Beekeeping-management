@@ -5,7 +5,6 @@
             <path d="M6 18L18 6M6 6l12 12"></path>
         </svg>
     </button>
-
     <div class="p-5">
         <!-- Bee Image -->
         <img class="rounded-t-lg" src="{{ asset('storage/img/hive.jpg') }}" alt="Bee Image" />

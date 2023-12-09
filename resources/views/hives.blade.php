@@ -10,8 +10,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
                 @foreach ($allHives as $hive)
-                   @livewire('skattekasser-updater', ['allHives' => $allHives])
+                    @livewire('skattekasser-updater', ['hive' => $hive])
                 @endforeach
+
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class SkattekasserUpdater extends Component
 {
-    public $hiveid; // Rename hiveid for consistency
+    public $hiveid;
     public $super; // Use the correct property name
     public $hive; // Declare the hive property
 
@@ -17,6 +17,7 @@ class SkattekasserUpdater extends Component
 
     public function mount($hive)
     {
+
         $this->hiveid = $hive->id;
         $this->super = $hive->super; // Use the correct property name
     }

@@ -22,7 +22,7 @@ class HiveController extends Controller
     /**
      * Get total number of hives for an apiary.
      *
-     * @param $apiary The apiary id
+     * @param $apiary apiary id
      */
     public function totalHivesForApiary($apiary)
     {
