@@ -19,6 +19,6 @@ class hivesSelect extends Component
      */
     public function render(): View|\Closure|string
     {
-        return view('components.hives-select');
+        return view('components.hives-option');
     }
 }
