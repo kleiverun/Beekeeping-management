@@ -12,19 +12,17 @@
                 <div>
                     <x-label for="address" value="{{ __('Bigårdens adresse: ') }}" />
                     <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"
-                        required autofocus autocomplete="address" />
+                        autofocus autocomplete="address" />
                 </div>
 
                 <button class="flex items-center p-4 bg-blue-500 text-white rounded-full" id="showMapButton"
                     type="button">
                     <span class="mr-2">Trykk her for å velge lokasjon</span>
-                    <div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18l-2-4H8l-2 4V8h12v8z" />
                         </svg>
-                    </div>
                 </button>
 
                 <!-- Your existing form fields go here -->

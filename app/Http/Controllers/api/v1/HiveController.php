@@ -6,7 +6,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreHiveRequest;
 use App\Http\Requests\V1\UpdateHiveRequest;
-use App\Http\Resources\V1\BikubeCollection;
+use App\Http\Resources\V1\HiveCollection;
 use App\Http\Resources\V1\HiveResource;
 use App\Models\Hive;
 
@@ -23,9 +23,9 @@ class HiveController extends Controller
         if ($brukerId) {
             $bikuber = Hive::where('bruker_idBruker', $brukerId)->get();
 
-            return new BikubeCollection($bikuber);
+            return new HiveCollection($bikuber);
         } else {
-            return new BikubeCollection(Hive::all());
+            return new HiveCollection(Hive::all());
         }
     }
 

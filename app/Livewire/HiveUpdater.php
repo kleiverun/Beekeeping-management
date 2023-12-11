@@ -17,13 +17,15 @@ class HiveUpdater extends Component
 
     public function mount($hive)
     {
-
         $this->hiveid = $hive->id;
         $this->super = $hive->super; // Use the correct property name
     }
 
-    public function increaseSkattekasser()
+    public function increaseSuper()
     {
+
+
+
         $hive = \App\Models\Hive::find($this->hiveid);
         ++$hive->super;
         $hive->save();
@@ -32,7 +34,7 @@ class HiveUpdater extends Component
         $this->super = $hive->super; // Use the correct property name
     }
 
-    public function decreaseSkattekasser()
+    public function decreaseSuper()
     {
         $hive = \App\Models\Hive::find($this->hiveid);
         --$hive->super;

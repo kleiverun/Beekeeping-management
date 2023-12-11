@@ -15,12 +15,12 @@
         <x-label for="queenDescription" value="{{ __('Dronningens beskrivelse') }}"/>
         <x-input id="queenDescription" class="mt-1 mb-4 w-full" type="text" name="queenDescription"
                  :value="old('queenDescription')" required autofocus autocomplete="queenDescription"/>
-        <x-label for="hive" class="mt-4">Velg hvilken bikube dronningen er fra</x-label>
+       {{-- <x-label for="hive" class="mt-4">Velg hvilken bikube dronningen er fra</x-label>
         <select required name="hiveId" id="hive"
                 class="mt-1 mb-4 w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
 
             <x-hives-select :hives="$hives"/>
-        </select>
+        </select>--}}
         <button type="submit"
                 class="mt-4 bg-orange-500 hover:bg-green-500 text-white py-2 px-4 rounded-md transition-all duration-300">
             {{ __('Registrer') }}

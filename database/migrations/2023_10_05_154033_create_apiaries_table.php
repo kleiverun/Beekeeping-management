@@ -13,7 +13,7 @@ return new class() extends Migration {
         Schema::create('apiaries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
+            $table->string('address') ->nullable();
             $table->double('longitude')->nullable();
             $table->double('latitude')->nullable();
             $table->unsignedBigInteger('users_id');

@@ -39,7 +39,8 @@ class RegisterHarvest extends Component
     }
 
     /**
-     * Handle hive selection change.
+     * If the hiveid in the form changes we will need to update the maxSkattekasser property,
+     *  so that the user can't harvest more supers than the hive has.
      */
     public function handleHiveidChange()
     {
@@ -47,7 +48,7 @@ class RegisterHarvest extends Component
         $this->maxSkattekasser = $selectedHive->super;
     }
 
-    // Validates a new harvest, creates a new harvest record
+    // Validates a new harvest, creates a new harvest record and resets input fields
     public function newHarvest()
     {
         $this->validate([
@@ -72,7 +73,9 @@ class RegisterHarvest extends Component
 
         $this->reset('selectedHiveId', 'harvestWeight', 'supersHarvested', 'harvestDate', 'description', 'maxSkattekasser');
     }
-
+    /*
+     * If the user selects the allSupers button. 
+     */
     public function selectAllSupers()
     {
         $this->supersHarvested = $this->maxSkattekasser;

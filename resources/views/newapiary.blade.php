@@ -35,7 +35,7 @@
                 </div>
                 @endif
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <x-nybigard-form/>
+                    <x-newapiary-form/>
                 </div>
 
             </div>

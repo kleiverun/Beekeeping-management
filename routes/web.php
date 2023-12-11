@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\view\DashboardController;
 use App\Models\Apiary;
 use App\Models\Hive;
 use App\Models\User;
@@ -24,21 +25,21 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Route to the page where you can register a new apiary
     Route::get('/newApiary', function () {
         return view('newapiary');
     })->name('newApiary');
     // Route to the page where you can register a new hive
     Route::get('/newHive', function () {
-        $apiaries = apiary::where('users_id', auth()->user()->id)->get();
+        $apiaries = Apiary::where('users_id', auth()->user()->id)->get();
         if ($apiaries->isEmpty()) {
             return redirect('/newApiary')->with('success', 'Du må registrere en bigård før du kan registrere en bikube');
         }
+        $queens = \App\Models\Queen::where('usersID', auth()->user()->id)->get();
+        $queens = $queens->isEmpty() ? null : $queens;
 
-        return view('newhive')->with('apiaries', $apiaries);
+        return view('newhive')->with('apiaries', $apiaries)->with('queens', $queens);
     })->name('newHive');
     // Route to the page where you see and register new harvests
     Route::get('/newHarvest', function () {

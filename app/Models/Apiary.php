@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Apiary extends Model
 {
     use HasFactory;
+
     protected $table = 'apiaries';
     public $timestamps = true;
 
@@ -16,5 +17,9 @@ class Apiary extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function hives()
+    {
+        return $this->hasMany(Hive::class);
     }
 }
