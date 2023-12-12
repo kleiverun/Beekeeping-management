@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $userid = auth()->user()->id;
 
-        $apiaries = Apiary::where('users_id', $userid)->get();
+        $apiaries = ApiaryCollection::collection(Apiary::where('users_id', $userid)->get());
         $totalApiaries = $apiaries->count();
         $totalHives = 0;
         foreach ($apiaries as $apiary) {

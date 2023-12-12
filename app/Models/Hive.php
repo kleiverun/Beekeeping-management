@@ -13,13 +13,10 @@ class Hive extends Model
     protected $fillable = ['apiary_id', 'queenId', 'users_id', 'super', 'hiveDescription', 'hiveStrength', 'created_at', 'updated_at'];
 
 
-
-
     public function harvests()
     {
         return $this->hasMany(Harvest::class, 'hiveID');
     }
-
 
 
     public function user()

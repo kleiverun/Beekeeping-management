@@ -1,5 +1,5 @@
 <div class="flex justify-center mt-10 ">
-    <div class="bg-white p-8 w-full max-w-md rounded-lg shadow-2xl"> <!-- Increased shadow -->
+    <div class="bg-white p-8 w-full max-w-md rounded-lg"> <!-- Increased shadow -->
         <h3 class="text-3xl font-extrabold text-orange-600 text-center mb-4">Registrer en ny bikube</h3>
         <form method="post" action="{{ url('registerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
@@ -14,14 +14,14 @@
             </select>
 
             <div>
-                <x-label for="super" value="{{ __('Hvor mange skattekasser?') }}"/>
+                <x-label for="super" value="{{ __('Hvor mange skattekasser har den allerede?') }}"/>
                 <x-input id="super" class="block mt-1 w-full" type="number" name="super" :value="old('super')"
                          required autofocus autocomplete="super"/>
             </div>
 
 
         @if ($queens && $queens->count() > 0)
-                <x-label for="queen" value="{{ __('Har bikuben en dronning?') }}"/>
+                <x-label for="queen" value="{{ __('Har bikuben en registrert dronning?') }}"/>
                 <select required name="queen" id="queen"
                         class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">>
                     @foreach($queens as $queen)
@@ -46,11 +46,11 @@
                          :value="old('hiveDescription')" required autofocus autocomplete="hiveDescription"/>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-10">
                 <x-button class="bg-orange-500 hover:bg-green-500 text-white">
                     {{ __('Registrer') }}
                 </x-button>
-                <button class="bg-red-500 border border-gray-300 hover:bg-red-700 text-white py-2 px-4 rounded-lg"
+                <button class="bg-red-500  border-gray-300 hover:bg-red-700 text-white py-2 px-4 rounded-lg"
                         type="button">Gå tilbake
                 </button>
             </div>

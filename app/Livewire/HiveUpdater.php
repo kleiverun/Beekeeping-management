@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Hive;
 use Livewire\Component;
 
 class HiveUpdater extends Component
@@ -23,10 +24,7 @@ class HiveUpdater extends Component
 
     public function increaseSuper()
     {
-
-
-
-        $hive = \App\Models\Hive::find($this->hiveid);
+        $hive = Hive::find($this->hiveid);
         ++$hive->super;
         $hive->save();
 
@@ -36,7 +34,7 @@ class HiveUpdater extends Component
 
     public function decreaseSuper()
     {
-        $hive = \App\Models\Hive::find($this->hiveid);
+        $hive = Hive::find($this->hiveid);
         --$hive->super;
         $hive->save();
 
