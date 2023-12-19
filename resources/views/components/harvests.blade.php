@@ -1,6 +1,6 @@
 @props(['harvests'])
 
-<div class="grid grid-cols-1 gap-4 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<div class="grid mx-10 grid-cols-1 gap-4 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     @foreach($harvests as $harvest)
         <div class="max-w-md overflow-hidden bg-white border border-gray-300 rounded-lg shadow-md">
             <div class="p-6">
@@ -20,3 +20,4 @@
         </div>
     @endforeach
 </div>
+

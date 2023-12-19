@@ -1,16 +1,16 @@
 @if( ! $apiaries->isEmpty() )
     @foreach ($apiaries as $apiary)
-        <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
+        <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border space-x-4">
             <div class="p-6">
-                <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900">
+                <h5 class="block mb-2 font-sans text-xl font-semibold leading-snug tracking-normal text-gray-900">
                     {{ $apiary->name }}
                 </h5>
-                <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit text-orange-500">
+                <p class="block font-sans text-base font-light leading-relaxed text-inherit text-orange-500">
                     {{ $apiary->address }}
                 </p>
                 @if ($apiary->latitude != null && $apiary->longitude != null)
                     {{-- Map container --}}
-                    <div id="map_{{ $apiary->id }}" class="leaflet-map" style="height: 150px;">
+                    <div id="map_{{ $apiary->id }}" class="leaflet-map" style="height: 200px;">
                     </div>    {{-- Initialize map for each apiary --}}
                     <script>
                         var map_{{ $apiary->id }} = L.map('map_{{ $apiary->id }}').setView([{{ $apiary->latitude }}, {{ $apiary->longitude }}], 5);
@@ -39,10 +39,13 @@
 @else
     <div class="text-center items-c">
         <div class="bg-white p-8 rounded-lg shadow-lg w-96 inline-block">
-            <p class="text-orange-700 text-lg mb-4">Du har ikke registrert noen bigårder ennå.</p>
+            <p class="text-lg mb-4">Du har ikke registrert noen bigårder ennå.</p>
             <form action="{{ url('/newApiary') }}" method="get">
                 @csrf
-                <button type="submit">Trykk her for å opprette en bigård</button>
+                <x-button type="submit" class="text-white bg-orange-500 hover:bg-orange-700 transition-transform duration-300 transform hover:scale-110">
+                    Opprett en ny bigård
+                </x-button>
+
             </form>
         </div>
     </div>

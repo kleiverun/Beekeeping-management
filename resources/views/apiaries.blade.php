@@ -25,10 +25,12 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-                    @include('components.apiary-card')
+        <div class="container mx-auto px-4 lg:px-0">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                @include('components.apiary-card')
             </div>
         </div>
+
     </div>
+
 </x-app-layout>

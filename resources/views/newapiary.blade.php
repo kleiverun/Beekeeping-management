@@ -12,6 +12,14 @@
             height: 300px; /* Adjust the height as needed */
             display: none;
         }
+
+         #popup-modal {
+             display: true;
+         }
+
+        #close-modal:checked + #popup-modal {
+            display: flex;
+        }
     </style>
 
     <title>Ny kube</title>
@@ -26,15 +34,14 @@
         </x-slot>
         <div class="py-12">
 
+
+
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                @if (\Session::has('success'))
-                <div class="alert alert-success">
-                    <ul>
-                        <li>{!! \Session::get('success') !!}</li>
-                    </ul>
-                </div>
-                @endif
+
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    @if(session('success'))
+                        <p class="text-red-700"> {{session('success')}}</p>
+                    @endif
                     <x-newapiary-form/>
                 </div>
 

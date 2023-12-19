@@ -3,6 +3,7 @@
 use App\Http\Controllers\view\DashboardController;
 use App\Models\Apiary;
 use App\Models\Hive;
+use App\Models\Queen;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -33,25 +34,25 @@ Route::middleware([
     // Route to the page where you can register a new hive
     Route::get('/newHive', function () {
         $apiaries = Apiary::where('users_id', auth()->user()->id)->get();
-        if ($apiaries->isEmpty()) {
-            return redirect('/newApiary')->with('success', 'Du må registrere en bigård før du kan registrere en bikube');
-        }
-        $queens = \App\Models\Queen::where('usersID', auth()->user()->id)->get();
+        $queens = Queen::where('usersID', auth()->user()->id)->get();
         $queens = $queens->isEmpty() ? null : $queens;
 
+        if ($apiaries->isEmpty()) {
+            $successMessage = 'Du må registrere en bigård før du kan registrere en bikube';
+            return redirect('newApiary')->with('success', $successMessage);
+        }
         return view('newhive')->with('apiaries', $apiaries)->with('queens', $queens);
     })->name('newHive');
     // Route to the page where you see and register new harvests
     Route::get('/newHarvest', function () {
         $userId = auth()->user()->id;
         $hives = Hive::where('users_id', $userId)->get(); // Use get() to retrieve the results
+        $successMessage = 'Du må registrere en bikube før du kan registrere en innhøsting';
         if ($hives->isEmpty()) { // Check if the collection is empty
-            return redirect('/newHive')->with('success', 'Du må registrere en bikube før du kan registrere en innhøsting');
+            return redirect('/newHive')->with('success', $successMessage);
         }
-
         $user = User::find($userId);
         $harvests = $user->hives->flatMap->harvests;
-
         return view('newharvest')->with('hives', $hives)->with('harvests', $harvests);
     })->name('newHarvest');
 
@@ -66,7 +67,10 @@ Route::middleware([
         $hives = Hive::where('users_id', auth()->id())->get();
         return view('newqueen')->with('hives', $hives);
     })->name('newQueen');
-
+    Route::get('/newInspection', function () {
+        $hives = Hive::where('users_id', auth()->id())->get();
+        return view('newinspection')->with('hives', $hives);
+    })->name('newInspection');
     // Routes to store new apiary, hive and queen
     Route::post('/registerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
     Route::post('/registerHive', 'App\Http\Controllers\form\v1\NewHiveController@store')->name('NewHiveController.store');

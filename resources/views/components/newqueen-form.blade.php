@@ -5,7 +5,7 @@
         @csrf
         <x-label for="queenBreed" value="{{ __('Dronningens rase') }}"/>
         <x-input id="queenBreed" class="mt-1 mb-2 w-full" type="text" name="queenBreed" :value="old('queenBreed')"
-                 required autofocus autocomplete="queenBreed"/>
+                 required autofocus autocomplete="queenBreed" maxlength="255"/>
 
         <x-label for="queenDate" value="{{ __('Dronningens fødseldato') }}"/>
         <x-input id="queenDate" class="mt-1 mb-2 w-full" type="date" name="queenDate" :value="old('queenDate')" required
@@ -13,7 +13,7 @@
 
         <x-label for="queenDescription" value="{{ __('Dronningens beskrivelse') }}"/>
         <x-input id="queenDescription" class="mt-1 mb-4 w-full" type="text" name="queenDescription"
-                 :value="old('queenDescription')" required autofocus autocomplete="queenDescription"/>
+                 :value="old('queenDescription')" required autofocus autocomplete="queenDescription"  maxlength="255"/>
 
         <button type="submit"
                 class="mt-4 mb-10 bg-orange-500 hover:bg-green-500 text-white py-2 px-4 rounded-md transition-all duration-300 w-full block mx-auto">

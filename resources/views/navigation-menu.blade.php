@@ -12,25 +12,20 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('newHive') }}" :active="request()->routeIs('newHive')">
-                        {{ __('Registrer et nytt bifolk') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('newApiary') }}" :active="request()->routeIs('newApiary')">
-                        {{ __('Registrer en ny bigård') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('apiaries') }}" :active="request()->routeIs('apiaries')">
-                        {{ __('Se dine bigårder og bikuber') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('newQueen') }}" :active="request()->routeIs('newQueen')">
-                        {{ __('Registrer dronning') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('newHarvest') }}" :active="request()->routeIs('newHarvest')">
-                        {{ __('Registrer innhøsting') }}
-                    </x-nav-link>
+                    @foreach([
+                        'dashboard' => 'Dashboard',
+                        'newHive' => 'Registrer et nytt bifolk',
+                        'newApiary' => 'Registrer en ny bigård',
+                        'apiaries' => 'Se dine bigårder og bikuber',
+                        'newQueen' => 'Registrer dronning',
+                        'newHarvest' => 'Registrer innhøsting',
+                    ] as $route => $label)
+                        <x-nav-link href="{{ route($route) }}" :active="request()->routeIs($route)">
+                            {{ __($label) }}
+                        </x-nav-link>
+                    @endforeach
                 </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

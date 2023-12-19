@@ -10,7 +10,7 @@ class Hive extends Model
     use HasFactory;
 
     protected $table = 'hives';
-    protected $fillable = ['apiary_id', 'queenId', 'users_id', 'super', 'hiveDescription', 'hiveStrength', 'created_at', 'updated_at'];
+    protected $fillable = ['apiary_id', 'queensID', 'users_id', 'super', 'hiveDescription', 'hiveStrength', 'created_at', 'updated_at'];
 
 
     public function harvests()

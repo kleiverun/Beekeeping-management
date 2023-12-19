@@ -26,6 +26,7 @@ class StoreHiveRequest extends FormRequest
         return [
             'apiary_id' => ['required', 'integer'],
             'users_id' => ['nullable', 'integer'],
+            'queensID' => ['nullable', 'integer'],
             'super' => ['required', 'integer'],
             'hiveDescription' => ['required', 'string', 'max:255'],
             'hiveStrength' => ['required', 'integer'],

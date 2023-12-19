@@ -4,6 +4,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Requests\V1\StoreHarvestRequest;
 use App\Models\Harvest;
 use App\Models\Hive;
 use Livewire\Component;
@@ -44,18 +45,20 @@ class RegisterHarvest extends Component
      */
     public function handleHiveidChange()
     {
+
         $selectedHive = Hive::findOrFail($this->selectedHiveId);
         $this->maxSkattekasser = $selectedHive->super;
+        $this -> supersHarvested = 0;
     }
 
     // Validates a new harvest, creates a new harvest record and resets input fields
-    public function newHarvest()
+    public function newHarvest(StoreHarvestRequest $request): void
     {
         $this->validate([
             'harvestWeight' => 'required',
             'supersHarvested' => 'required|numeric|min:0|max:'.$this->maxSkattekasser,   // Adjusted validation
-            'harvestDate' => 'required|date',
-            'description' => 'required',
+            'dateHarvested' => 'required|date',
+            'description' => 'required|max:255',
         ]);
 
         // Use create method on Harvest model to store a new record
@@ -74,9 +77,9 @@ class RegisterHarvest extends Component
         $this->reset('selectedHiveId', 'harvestWeight', 'supersHarvested', 'harvestDate', 'description', 'maxSkattekasser');
     }
     /*
-     * If the user selects the allSupers button. 
+     * If the user selects the allSupers button.
      */
-    public function selectAllSupers()
+    public function selectAllSupers() : void
     {
         $this->supersHarvested = $this->maxSkattekasser;
     }

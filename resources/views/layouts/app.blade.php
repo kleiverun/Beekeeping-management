@@ -16,8 +16,11 @@
         <title>Beekeeping management</title>
         <!-- Styles -->
         @livewireStyles
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
-    <body class="font-sans antialiased">
+    <body class=" antialiased" style="font-family: 'Roboto', sans-serif;">
         <x-banner />
 
         <div class="min-h-screen bg-orange-300">

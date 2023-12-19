@@ -27,6 +27,8 @@ class StoreHarvestRequest extends FormRequest
             'hiveID' => 'required',
             'harvestWeight' => 'required',
             'supersHarvested' => 'required',
+            'dateHarvested' => 'required',
+            'description' => 'required',
         ];
     }
 
@@ -36,6 +38,8 @@ class StoreHarvestRequest extends FormRequest
             'hiveID.required' => 'Du må velge en bikube',
             'harvestWeight.required' => 'Du må fylle inn en vekt',
             'supersHarvested.required' => 'Du må fylle inn antall skattekasser',
+            'dateHarvested.required' => 'Du må fylle inn en dato',
+            'description.required' => 'Du må fylle inn en beskrivelse',
         ];
     }
 
