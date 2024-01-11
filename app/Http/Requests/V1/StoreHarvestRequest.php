@@ -25,10 +25,10 @@ class StoreHarvestRequest extends FormRequest
     {
         return [
             'hive_id' => 'required',
-            'harvestWeight' => 'required',
-            'supersHarvested' => 'required',
-            'dateHarvested' => 'required',
-            'description' => 'required',
+            'harvestWeight' => 'required, numeric',
+            'supersHarvested' => 'required|numeric|min:0',
+            'dateHarvested' => 'required|date',
+            'description' => 'required|max:255',
         ];
     }
 
