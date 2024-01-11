@@ -9,13 +9,13 @@ class ApiaryFilter extends ApiFilter
     protected $allowedParms = [
         'id' => ['eq'],
         'name' => ['eq'],
-        'users_id' => ['eq'],
+        'user_id' => ['eq'],
         'address' => ['eq'],
     ];
     protected $columnMap = [
         'id' => 'id',
         'name' => 'name',
-        'users_id' => 'users_id',
+        'user_id' => 'user_id',
         'address' => 'address',
     ];
     protected $operatorMap = [

@@ -3,7 +3,6 @@
         <p class="mb-4 text-lg font-semibold text-center">{{ __('Registrer inspeksjon') }}</p>
         <form action="#" method="POST">
             @csrf
-
             <label for="hive" class="block text-sm font-semibold mb-1">{{ __('Hive:') }}</label>
             <select name="hiveId" id="hive" class="w-full px-3 py-2 mt-1 mb-4 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500">
                 <x-hives-option :hives="$hives"/>

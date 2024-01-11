@@ -11,7 +11,7 @@ class Harvest extends Model
 
     protected $table = 'harvests';
     protected $fillable = [
-        'hiveID',
+        'hive_id',
         'harvestWeight',
         'supersHarvested',
         'dateHarvested',

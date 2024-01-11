@@ -13,14 +13,12 @@ return new class() extends Migration {
         Schema::create('hives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('apiary_id')->constrained('apiaries');
-            $table->foreignId('users_id')->constrained('users');
-            $table->unsignedBigInteger('QueensID')->nullable(); // Make the column nullable
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('queen_id')->nullable()->constrained('queens'); // Make the column nullable
             $table->integer('super');
             $table->string('hiveDescription');
             $table->integer('hiveStrength');
             $table->timestamps();
-
-            $table->foreign('QueensID')->references('QueenID')->on('queens')->nullable();
         });
     }
 
@@ -29,6 +27,12 @@ return new class() extends Migration {
      */
     public function down(): void
     {
+        Schema::table('hives', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('apiary_id');
+            $table->dropConstrainedForeignId('user_id');
+            $table->dropConstrainedForeignId('queen_id');
+        });
         Schema::dropIfExists('hives');
     }
 };
+

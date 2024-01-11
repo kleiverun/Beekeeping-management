@@ -12,9 +12,9 @@ return new class() extends Migration {
     {
         Schema::create('hiveChanges', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hiveId')->constrained('hives');
-            $table -> foreignId('apiaryId')->constrained('apiaries');
-            $table->foreignId('queenId')->constrained('queens', 'QueenID');
+            $table->foreignId('hive_id')->constrained('hives', 'id');
+            $table->foreignId('apiary_id')->constrained('apiaries');
+            $table->foreignId('queen_id')->nullable()->constrained('queens');
             $table->string('hiveDescription');
             $table->integer('super');
             $table->integer('hiveStrength');
@@ -22,11 +22,11 @@ return new class() extends Migration {
         });
     }
 
-    /**
+    /**ø
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('hive_changes');
+        Schema::dropIfExists('hiveChanges');
     }
 };

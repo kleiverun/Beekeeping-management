@@ -23,7 +23,7 @@ class StoreInspectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hiveID' => ['required', 'integer'],
+            'hive_id' => ['required', 'integer'],
             'inspectionDate' => ['required', 'date'],
             'description' => ['required', 'string', 'max:255'],
         ];

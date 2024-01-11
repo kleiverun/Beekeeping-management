@@ -13,7 +13,7 @@ class NewHiveController extends Controller
      */
     public function store(StoreHiveRequest $request)
     {
-        $request->merge(['users_id' => auth()->user()->id]);
+        $request->merge(['user_id' => auth()->user()->id]);
         if (Hive::create($request->all())) {
             return redirect()->route('dashboard');
         } else {

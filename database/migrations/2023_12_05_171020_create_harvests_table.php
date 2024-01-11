@@ -12,11 +12,11 @@ return new class() extends Migration {
     {
         Schema::create('harvests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hiveID')->constrained('hives');
+            $table->foreignId('hive_id')->constrained('hives');
             $table->integer('harvestWeight');
             $table->integer('supersHarvested');
             $table->dateTime('dateHarvested');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

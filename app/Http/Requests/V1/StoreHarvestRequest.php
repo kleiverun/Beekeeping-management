@@ -24,7 +24,7 @@ class StoreHarvestRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hiveID' => 'required',
+            'hive_id' => 'required',
             'harvestWeight' => 'required',
             'supersHarvested' => 'required',
             'dateHarvested' => 'required',
@@ -35,7 +35,7 @@ class StoreHarvestRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'hiveID.required' => 'Du må velge en bikube',
+            'hive_id.required' => 'Du må velge en bikube',
             'harvestWeight.required' => 'Du må fylle inn en vekt',
             'supersHarvested.required' => 'Du må fylle inn antall skattekasser',
             'dateHarvested.required' => 'Du må fylle inn en dato',

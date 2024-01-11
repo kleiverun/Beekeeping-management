@@ -12,7 +12,7 @@ class Apiary extends Model
     protected $table = 'apiaries';
     public $timestamps = true;
 
-    protected $fillable = ['name', 'address', 'longitude', 'latitude', 'users_id'];
+    protected $fillable = ['name', 'address', 'longitude', 'latitude', 'user_id'];
 
     public function user()
     {

@@ -22,7 +22,7 @@ class StoreApiaryRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'users_id' => ['integer'],
+            'user_id' => ['integer'],
             'address' => ['nullable', 'string'],
             'longitude' => ['nullable', 'numeric'],
             'latitude' => ['nullable', 'numeric'],

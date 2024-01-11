@@ -12,7 +12,7 @@ class HiveController extends Controller
      */
     public function index($idBikuber)
     {
-        $allHives = Hive::where('users_id', auth()->user()->id)
+        $allHives = Hive::where('user_id', auth()->user()->id)
         ->where('apiary_id', $idBikuber)
         ->get(); // You need to call get() to execute the query and fetch data.
 
@@ -26,7 +26,7 @@ class HiveController extends Controller
      */
     public function totalHivesForApiary($apiary)
     {
-        $hives = Hive::where('users_id', auth()->user()->id)
+        $hives = Hive::where('user_id', auth()->user()->id)
         ->where('apiary_idApiary', $apiary)
         ->get();
 

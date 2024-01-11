@@ -35,7 +35,7 @@ class StoreQueenRequest extends FormRequest
     {
         $this->merge([
             'created_at' => now(),
-            'usersID' => auth()->user()->id,
+            'user_id' => auth()->user()->id,
         ]);
     }
 }

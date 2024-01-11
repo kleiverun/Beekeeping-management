@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hiveID')->constrained('hives');
+            $table->foreignId('hive_id')->constrained('hives');
             $table->date('inspectionDate');
             $table->text('description');
             $table->timestamps();

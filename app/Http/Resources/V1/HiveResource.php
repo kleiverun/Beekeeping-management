@@ -15,9 +15,10 @@ class HiveResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'IdBikube' => $this->id,
-            'Idapiary' => $this->apiary_idApiary,
-            'IdBruker' => $this->bruker_idBruker,
+            'id' => $this->id,
+            'apiary_id' => $this->apiary_idApiary,
+            'user_id' => $this->bruker_idBruker,
+            'queen_id' => $this->queens_idQueen,
             'hiveDescription' => $this->hiveDescription,
             'super' => $this->super,
             'hiveStrength' => $this->hiveStrength,

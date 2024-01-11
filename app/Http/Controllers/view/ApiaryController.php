@@ -15,6 +15,6 @@ class ApiaryController extends Controller
     {
         $userid = auth()->user()->id;
 
-        return ApiaryCollection::collection(Apiary::where('users_id', $userid)->get());
+        return ApiaryCollection::collection(Apiary::where('user_id', $userid)->get());
     }
 }

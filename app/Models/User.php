@@ -36,7 +36,7 @@ class User extends Authenticatable
 
     public function hives()
     {
-        return $this->hasMany(Hive::class, 'users_id');
+        return $this->hasMany(Hive::class, 'user_id');
     }
 
     public function hasPermission($permission)

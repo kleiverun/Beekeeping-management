@@ -23,8 +23,8 @@
             </div>
 
             @if ($queens && $queens->count() > 0)
-                <x-label for="queensID" value="{{ __('Har bikuben en registrert dronning?') }}"/>
-                <select name="queensID" id="queensID" class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
+                <x-label for="queen_id" value="{{ __('Har bikuben en registrert dronning?') }}"/>
+                <select name="queen_id" id="queen_id" class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
                     <option selected disabled>Velg dronning</option>
                     @foreach($queens as $queen)
                         <x-queen-option :queen="$queen"/>

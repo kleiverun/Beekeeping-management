@@ -12,14 +12,12 @@ return new class() extends Migration {
     {
         Schema::create('apiaries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->string('address') ->nullable();
             $table->double('longitude')->nullable();
             $table->double('latitude')->nullable();
-            $table->unsignedBigInteger('users_id');
             $table->timestamps();
-
-            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 

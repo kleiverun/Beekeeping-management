@@ -10,5 +10,12 @@ class HiveChanges extends Model
     use HasFactory;
 
     protected $table = 'hiveChanges';
-    protected $fillable = ['idBikubeEndringer', 'bikube_idBikube', 'super', 'hiveStrength', 'created_at', 'updated_at'];
+    protected $fillable = ['hive_id', 'apiary_id', 'queen_id', 'hiveDescription', 'super', 'hiveStrength', 'created_at', 'updated_at'];
+
+
+    public function hive()
+    {
+        return $this->belongsTo(Hive::class, 'hive_id');
+    }
+
 }

@@ -19,6 +19,7 @@
                         'apiaries' => 'Se dine bigårder og bikuber',
                         'newQueen' => 'Registrer dronning',
                         'newHarvest' => 'Registrer innhøsting',
+                        'newInspection' => 'Registrer inspeksjon',
                     ] as $route => $label)
                         <x-nav-link href="{{ route($route) }}" :active="request()->routeIs($route)">
                             {{ __($label) }}

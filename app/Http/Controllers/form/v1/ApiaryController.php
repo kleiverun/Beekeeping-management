@@ -11,7 +11,7 @@ class ApiaryController extends Controller
 {
     public function store(StoreApiaryRequest $storeApiaryRequest)
     {
-        $storeApiaryRequest->merge(['users_id' => auth()->user()->id]);
+        $storeApiaryRequest->merge(['user_id' => auth()->user()->id]);
         if (Apiary::create($storeApiaryRequest->all())) {
             return redirect()->route('dashboard');
         } else {
@@ -26,6 +26,6 @@ class ApiaryController extends Controller
     {
         $userid = auth()->user()->id;
 
-        return ApiaryCollection::collection(Apiary::where('users_id', $userid)->get());
+        return ApiaryCollection::collection(Apiary::where('user_id', $userid)->get());
     }
 }

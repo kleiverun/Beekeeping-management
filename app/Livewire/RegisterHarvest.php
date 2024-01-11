@@ -63,7 +63,7 @@ class RegisterHarvest extends Component
 
         // Use create method on Harvest model to store a new record
         Harvest::create([
-            'hiveID' => $this->selectedHiveId,
+            'hive_id' => $this->selectedHiveId,
             'harvestWeight' => $this->harvestWeight,
             'supersHarvested' => $this->supersHarvested,
             'dateHarvested' => $this->harvestDate,

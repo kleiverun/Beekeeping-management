@@ -7,14 +7,14 @@ use App\Filters\ApiFilter;
 class HiveFilter extends ApiFilter
 {
     protected $allowedParms = [
-        'users_id' => ['eq'],
+        'user_id' => ['eq'],
         'apiary_idApiary' => ['eq'],
         'super' => ['eq', 'gt', 'ge', 'lt', 'le'],
         'hiveDescription' => ['eq', 'like'],
         'hiveStrength' => ['eq', 'gt', 'ge', 'lt', 'le'],
     ];
     protected $columnMap = [
-        'users_id' => 'users_id',
+        'user_id' => 'user_id',
         'apiary_idApiary' => 'apiary_idApiary',
         'super' => 'super',
         'hiveDescription' => 'hiveDescription',
