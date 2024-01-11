@@ -7,6 +7,9 @@
                 <h5 class="mb-2 text-xl font-semibold text-orange-600">
                     Innhøsting {{$harvest->id}}
                 </h5>
+                <p class="mb-2 text-orange-500" >
+                    Beskrivelse: {{ $harvest->description }}
+                </p>
                 <p class="mb-2 text-gray-600">
                     Vekt: {{ $harvest->harvestWeight }} kg
                 </p>

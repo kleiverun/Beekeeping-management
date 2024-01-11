@@ -53,6 +53,8 @@ Route::middleware([
         }
         $user = User::find($user_id);
         $harvests = $user->hives->flatMap->harvests;
+
+        $harvests = $harvests->sortByDesc('dateHarvested');
         return view('newharvest')->with('hives', $hives)->with('harvests', $harvests);
     })->name('newHarvest');
 
@@ -74,6 +76,7 @@ Route::middleware([
     Route::post('/registerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
     Route::post('/registerHive', 'App\Http\Controllers\form\v1\NewHiveController@store')->name('NewHiveController.store');
     Route::post('/registerQueen', 'App\Http\Controllers\form\v1\NewQueenController@store')->name('NewQueenController.store');
+    Route::post('/registerInspection', 'App\Http\Controllers\form\v1\InspectionController@store')->name('InspectionController.store');
     // Get all hives for this {id} apiary
     Route::get('/hives/{id}', 'App\Http\Controllers\view\HiveController@index')->name('hive.index');
 });

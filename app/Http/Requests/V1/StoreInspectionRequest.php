@@ -28,4 +28,5 @@ class StoreInspectionRequest extends FormRequest
             'description' => ['required', 'string', 'max:255'],
         ];
     }
+
 }

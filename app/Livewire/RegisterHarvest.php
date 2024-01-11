@@ -7,6 +7,7 @@ namespace App\Livewire;
 use App\Http\Requests\V1\StoreHarvestRequest;
 use App\Models\Harvest;
 use App\Models\Hive;
+use http\Env\Request;
 use Livewire\Component;
 
 class RegisterHarvest extends Component
@@ -16,7 +17,7 @@ class RegisterHarvest extends Component
     public $harvestWeight;
     public $maxSupers;
     public $supersHarvested;
-    public $harvestDate;
+    public $dateHarvested;
     public $description;
     public $maxSkattekasser;
     protected $listeners = ['refreshHarvests'];
@@ -45,36 +46,32 @@ class RegisterHarvest extends Component
      */
     public function handleHiveidChange()
     {
-
         $selectedHive = Hive::findOrFail($this->selectedHiveId);
         $this->maxSkattekasser = $selectedHive->super;
         $this -> supersHarvested = 0;
     }
 
     // Validates a new harvest, creates a new harvest record and resets input fields
-    public function newHarvest(StoreHarvestRequest $request): void
+    public function newHarvest(\Illuminate\Http\Request $request): void
     {
         $this->validate([
-            'harvestWeight' => 'required',
-            'supersHarvested' => 'required|numeric|min:0|max:'.$this->maxSkattekasser,   // Adjusted validation
-            'dateHarvested' => 'required|date',
-            'description' => 'required|max:255',
+            'supersHarvested' => 'required|numeric|min:0|max:'.$this->maxSkattekasser,
         ]);
-
-        // Use create method on Harvest model to store a new record
         Harvest::create([
             'hive_id' => $this->selectedHiveId,
             'harvestWeight' => $this->harvestWeight,
             'supersHarvested' => $this->supersHarvested,
-            'dateHarvested' => $this->harvestDate,
-            'description' => $this->description,
+            'dateHarvested' => $this->dateHarvested,
+            'description' => $this->description
         ]);
-        // Then update the hive super count
+
+        // Subtract the number of supers harvested from the hive
         $hive = Hive::find($this->selectedHiveId);
         $hive->super -= $this->supersHarvested;
         $hive->save();
 
-        $this->reset('selectedHiveId', 'harvestWeight', 'supersHarvested', 'harvestDate', 'description', 'maxSkattekasser');
+        $this->reset( 'harvestWeight', 'supersHarvested', 'dateHarvested', 'description', 'maxSkattekasser');
+        $this->selectedHiveId = $this->hives->first()->id;
     }
     /*
      * If the user selects the allSupers button.
