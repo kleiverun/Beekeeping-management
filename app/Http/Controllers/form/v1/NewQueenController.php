@@ -10,6 +10,7 @@ class NewQueenController extends Controller
 {
     public function store(StoreQueenRequest $storeQueenRequest)
     {
+        dd($storeQueenRequest->all());
         if (Queen::create($storeQueenRequest->all())) {
             return redirect()->route('dashboard');
         } else {

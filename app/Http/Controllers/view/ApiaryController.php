@@ -13,8 +13,7 @@ class ApiaryController extends Controller
      */
     public function index()
     {
-        $userid = auth()->user()->id;
-
-        return ApiaryCollection::collection(Apiary::where('user_id', $userid)->get());
+        $apiaries = Apiary::where('user_id', auth()->user()->id)->get();
+        return view('apiaries')->with('apiaries', $apiaries);
     }
 }

@@ -27,11 +27,7 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::table('hives', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('apiary_id');
-            $table->dropConstrainedForeignId('user_id');
-            $table->dropConstrainedForeignId('queen_id');
-        });
+
         Schema::dropIfExists('hives');
     }
 };

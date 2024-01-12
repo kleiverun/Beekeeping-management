@@ -13,6 +13,11 @@ return new class() extends Migration {
         Schema::create('queens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id');
+            $table->unsignedBigInteger('motherQueen')->nullable();
+            $table->foreign('motherQueen')
+                ->references('id') // Assuming the primary key of the 'queens' table is 'id'
+                ->on('queens')
+                ->onDelete('cascade');
             $table->date('queenDate');
             $table->string('queenBreed');
             $table->string('queenDescription');

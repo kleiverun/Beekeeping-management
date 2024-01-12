@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\view\ApiaryController;
 use App\Http\Controllers\view\DashboardController;
+use App\Http\Controllers\view\HarvestController;
+use App\Http\Controllers\view\NewHiveController;
+use App\Http\Controllers\view\QueenController;
 use App\Models\Apiary;
 use App\Models\Hive;
 use App\Models\Queen;
@@ -32,42 +36,13 @@ Route::middleware([
         return view('newapiary');
     })->name('newApiary');
     // Route to the page where you can register a new hive
-    Route::get('/newHive', function () {
-        $apiaries = Apiary::where('user_id', auth()->user()->id)->get();
-        $queens = Queen::where('user_id', auth()->user()->id)->get();
-        $queens = $queens->isEmpty() ? null : $queens;
-        if ($apiaries->isEmpty()) {
-            $successMessage = 'Du må registrere en bigård før du kan registrere en bikube';
-            return redirect('newApiary')->with('success', $successMessage);
-        }
-        return view('newhive')->with('apiaries', $apiaries)->with('queens', $queens);
-    })->name('newHive');
+    Route::get('/newHive',[NewHiveController::class, 'index'])->name('newHive');
     // Route to the page where you see and register new harvests
-    Route::get('/newHarvest', function () {
-        $user_id = auth()->user()->id;
-        $hives = Hive::where('user_id', $user_id)->get();
-        $successMessage = 'Du må registrere en bikube før du kan registrere en innhøsting';
-        // Check if the collection is empty
-        if ($hives->isEmpty()) {
-            return redirect('/newHive')->with('success', $successMessage);
-        }
-        $user = User::find($user_id);
-        $harvests = $user->hives->flatMap->harvests;
-
-        $harvests = $harvests->sortByDesc('dateHarvested');
-        return view('newharvest')->with('hives', $hives)->with('harvests', $harvests);
-    })->name('newHarvest');
-
+   Route::get('/newHarvest', [HarvestController::class, 'index'])->name('newHarvest');
     // Route to the page where you can see all the apiaries you have registered
-    Route::get('/apiaries', function () {
-        $apiaries = Apiary::where('user_id', auth()->user()->id)->get();
-        return view('apiaries')->with('apiaries', $apiaries);
-    })->name('apiaries');
+    Route::get('/apiaries', [ApiaryController::class, 'index'])->name('apiaries');
     // Route to the page where you can register a new queen
-    Route::get('/newQueen', function () {
-        $hives = Hive::where('user_id', auth()->id())->get();
-        return view('newqueen')->with('hives', $hives);
-    })->name('newQueen');
+    Route::get('/newQueen', [QueenController::class, 'index'])->name('newQueen');
     Route::get('/newInspection', function () {
         $hives = Hive::where('user_id', auth()->id())->get();
         return view('newinspection')->with('hives', $hives);

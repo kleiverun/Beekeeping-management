@@ -13,7 +13,29 @@
 
         <x-label for="queenDescription" value="{{ __('Dronningens beskrivelse') }}"/>
         <x-input id="queenDescription" class="mt-1 mb-4 w-full" type="text" name="queenDescription"
-                 :value="old('queenDescription')" required autofocus autocomplete="queenDescription"  maxlength="255"/>
+                 :value="old('queenDescription')" required autofocus autocomplete="queenDescription" maxlength="255"/>
+
+        <x-label for="hive" value="{{ __('Hvilken kube skal dronningen tilhøre?') }}"/>
+        <select name="hive_id" id="hive"
+                class="w-full px-3 py-2 mt-1 mb-4 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500">
+
+            @if(count($hives) === 0)
+                <option value="" disabled selected>Ingen kuber tilgjengelige</option>
+            @else
+                <x-hives-option :hives="$hives"/>
+            @endif
+
+        </select>
+        <x-label for="queenMother" value="{{ __('Hvem er dronningens mor?') }}"/>
+        @forelse ($queens as $queen)
+            <select name="queenMother" id="queenMother"
+                    class="w-full px-3 py-2 mt-1 mb-4 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500">
+                <x-queen-option :queen="$queen"/>
+            </select>
+        @empty
+            {{-- Display this content if there are no queens --}}
+            <p>No queens available.</p>
+        @endforelse
 
         <button type="submit"
                 class="mt-4 mb-10 bg-orange-500 hover:bg-green-500 text-white py-2 px-4 rounded-md transition-all duration-300 w-full block mx-auto">

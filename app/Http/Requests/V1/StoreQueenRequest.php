@@ -28,6 +28,7 @@ class StoreQueenRequest extends FormRequest
             'queenDate' => ['required', 'date'],
             'queenBreed' => ['required', 'string', 'max:255'],
             'queenDescription' => ['nullable', 'string', 'max:255'],
+            'queenMother' => ['nullable', 'integer'],
         ];
     }
 
