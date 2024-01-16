@@ -5,10 +5,7 @@ use App\Http\Controllers\view\DashboardController;
 use App\Http\Controllers\view\HarvestController;
 use App\Http\Controllers\view\NewHiveController;
 use App\Http\Controllers\view\QueenController;
-use App\Models\Apiary;
-use App\Models\Hive;
-use App\Models\Queen;
-use App\Models\User;
+use App\Http\Controllers\view\InspectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +29,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Route to the page where you can register a new apiary
-    Route::get('/newApiary', function () {
-        return view('newapiary');
-    })->name('newApiary');
+    Route::view('/newApiary', 'newapiary')->name('newApiary');
     // Route to the page where you can register a new hive
     Route::get('/newHive',[NewHiveController::class, 'index'])->name('newHive');
     // Route to the page where you see and register new harvests
@@ -43,15 +38,12 @@ Route::middleware([
     Route::get('/apiaries', [ApiaryController::class, 'index'])->name('apiaries');
     // Route to the page where you can register a new queen
     Route::get('/newQueen', [QueenController::class, 'index'])->name('newQueen');
-    Route::get('/newInspection', function () {
-        $hives = Hive::where('user_id', auth()->id())->get();
-        return view('newinspection')->with('hives', $hives);
-    })->name('newInspection');
+    Route::get('/newInspection', [InspectionController::class, 'index'])->name('newInspection');
     // Routes to store new apiary, hive and queen
-    Route::post('/registerApiary', 'App\Http\Controllers\form\v1\ApiaryController@store')->name('ApiaryController.store');
-    Route::post('/registerHive', 'App\Http\Controllers\form\v1\NewHiveController@store')->name('NewHiveController.store');
-    Route::post('/registerQueen', 'App\Http\Controllers\form\v1\NewQueenController@store')->name('NewQueenController.store');
-    Route::post('/registerInspection', 'App\Http\Controllers\form\v1\InspectionController@store')->name('InspectionController.store');
+    Route::post('/registerApiary', [App\Http\Controllers\form\v1\ApiaryController::class,'store'])->name('ApiaryController.store');
+    Route::post('/registerHive', [App\Http\Controllers\form\v1\NewHiveController::class,'store'])->name('NewHiveController.store');
+    Route::post('/registerQueen', [App\Http\Controllers\form\v1\NewQueenController::class, 'store'])->name('NewQueenController.store');
+    Route::post('/registerInspection', [App\Http\Controllers\form\v1\InspectionController::class,'store'])->name('InspectionController.store');
     // Get all hives for this {id} apiary
-    Route::get('/hives/{id}', 'App\Http\Controllers\view\HiveController@index')->name('hive.index');
+    Route::get('/hives/{id}', [App\Http\Controllers\view\HiveController::class,'index'])->name('hive.index');
 });

@@ -4,11 +4,14 @@
         <form method="post" action="{{ url('registerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
             <div class="text-sm ">Velg hvilken bigård denne kuben tilhører:</div>
-            <select required name="apiary_id" id="hive"
-                    class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500"
-                    autofocus
+            <select
+                required
+                name="apiary_id"
+                id="hive"
+                class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500"
+                autofocus
             >
-                <option selected disabled>Velg bigård</option>
+                <option selected value="">Velg bigård</option>
                 @foreach ($apiaries as $apiary)
                     <x-apiary-select :apiary="$apiary"/>
                 @endforeach
@@ -21,14 +24,12 @@
                          max="20"
                 />
             </div>
-
             @if ($queens && $queens->count() > 0)
                 <x-label for="queen_id" value="{{ __('Har bikuben en registrert dronning?') }}"/>
-                <select name="queen_id" id="queen_id" class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
-                    <option selected disabled>Velg dronning</option>
-                    @foreach($queens as $queen)
-                        <x-queen-option :queen="$queen"/>
-                    @endforeach
+                <select name="queen_id" id="queen_id"
+                        class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500">
+                    <option selected value="">Har ingen registrert dronning</option>
+                    <x-queen-option :queens="$queens"/>
                 </select>
             @else
                 <div class="text-center mb-6">

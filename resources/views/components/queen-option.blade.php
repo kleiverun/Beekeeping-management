@@ -1,4 +1,6 @@
-@props(['queen'])
+@props(['queens'])
 <div>
-    <option value="{{ $queen->id }}">{{ $queen->queenDescription }}</option>
+    @foreach($queens as $queen)
+        <option value="{{ $queen->id }}">{{ $queen->queenDescription }}</option>
+    @endforeach
 </div>
