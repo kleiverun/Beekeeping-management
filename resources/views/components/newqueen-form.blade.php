@@ -24,18 +24,16 @@
             @else
                 <x-hives-option :hives="$hives"/>
             @endif
-
         </select>
         <x-label for="queenMother" value="{{ __('Hvem er dronningens mor?') }}"/>
+        <select name="queenMother" id="queenMother" class="w-full px-3 py-2 mt-1 mb-4 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500">
         @forelse ($queens as $queen)
-            <select name="queenMother" id="queenMother"
-                    class="w-full px-3 py-2 mt-1 mb-4 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500">
                 <x-queen-option :queen="$queen"/>
-            </select>
         @empty
             {{-- Display this content if there are no queens --}}
             <p>No queens available.</p>
         @endforelse
+        </select>
 
         <button type="submit"
                 class="mt-4 mb-10 bg-orange-500 hover:bg-green-500 text-white py-2 px-4 rounded-md transition-all duration-300 w-full block mx-auto">

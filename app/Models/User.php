@@ -31,7 +31,7 @@ class User extends Authenticatable
         'phonenumber',
         'address',
         'created_at',
-         'updated_at',
+        'updated_at',
     ];
 
     public function hives()

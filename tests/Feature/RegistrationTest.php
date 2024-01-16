@@ -47,11 +47,14 @@ class RegistrationTest extends TestCase
         }
 
         $response = $this->post('/register', [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+            'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
+            'phonenumber' => '123456789', // Add a valid phone number
+            'address' => '123 Main St',   // Add a valid address
         ]);
 
         $this->assertAuthenticated();

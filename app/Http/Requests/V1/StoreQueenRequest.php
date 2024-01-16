@@ -24,7 +24,7 @@ class StoreQueenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hiveId' => ['nullable', 'integer'],
+            'hive_id' => ['nullable', 'integer'],
             'queenDate' => ['required', 'date'],
             'queenBreed' => ['required', 'string', 'max:255'],
             'queenDescription' => ['nullable', 'string', 'max:255'],
