@@ -10,7 +10,7 @@ class Hive extends Model
     use HasFactory;
 
     protected $table = 'hives';
-    protected $fillable = ['apiary_id', 'queen_id', 'user_id', 'super', 'hiveDescription', 'hiveStrength', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'apiary_id', 'queen_id', 'user_id', 'super', 'hiveDescription', 'hiveStrength', 'created_at', 'updated_at'];
 
 
     public function harvests()
@@ -21,4 +21,9 @@ class Hive extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function apiary()
+    {
+        return $this->belongsTo(Apiary::class, 'apiary_id');
+    }
+
 }

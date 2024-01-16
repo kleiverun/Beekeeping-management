@@ -19,17 +19,5 @@ class HiveController extends Controller
         return view('hives', compact('allHives'));
     }
 
-    /**
-     * Get total number of hives for an apiary.
-     *
-     * @param $apiary apiary id
-     */
-    public function totalHivesForApiary($apiary)
-    {
-        $hives = Hive::where('user_id', auth()->user()->id)
-        ->where('apiary_idApiary', $apiary)
-        ->get();
 
-        return $hives->count();
-    }
 }

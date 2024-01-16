@@ -3,13 +3,21 @@
         <h3 class="text-3xl font-extrabold text-center mb-4">Registrer en ny bikube</h3>
         <form method="post" action="{{ url('registerHive') }}" class="max-w-sm mx-auto space-y-4">
             @csrf
+            <div class="">
+                <x-label for="id"
+                         value="{{ __('Skriv inn identifikator om den allerede har en (for eksempel på taket)') }}">
+                </x-label>
+                <x-input id="id" class="block mt-1 w-full" type="text" name="id"
+                         :value="old('id')" autocomplete="id" maxlength="255"/>
+            </div>
+
             <div class="text-sm ">Velg hvilken bigård denne kuben tilhører:</div>
             <select
-                required
-                name="apiary_id"
-                id="hive"
-                class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500"
-                autofocus
+                    required
+                    name="apiary_id"
+                    id="hive"
+                    class="block w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg focus:outline-none focus:border-gray-500"
+                    autofocus
             >
                 <option selected value="">Velg bigård</option>
                 @foreach ($apiaries as $apiary)

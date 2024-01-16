@@ -8,38 +8,42 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <div>
-                <x-label for="first name" value="{{ __('First name') }}" />
-                <x-input id="first name" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="firstname" />
+            <div class="mb-4">
+                <x-label for="firstname" value="{{ __('First Name') }}" />
+                <x-input id="firstname" class="block w-full mt-1 " type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="given-name" />
             </div>
-            <div>
-                <x-label for="lastname" value="{{ __('Lastname') }}" />
-                <x-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
+
+            <div class="mb-4">
+                <x-label for="lastname" value="{{ __('Last Name') }}" />
+                <x-input id="lastname" class="block w-full mt-1 " type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="family-name" />
             </div>
-            <div class="mt-4">
+
+            <div class="mb-4">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-input id="email" class="block w-full mt-1 " type="email" name="email" :value="old('email')" required autocomplete="email" />
             </div>
-            <div class="mt-4">
+
+            <div class="mb-4">
                 <x-label for="address" value="{{ __('Address') }}" />
-                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" />
-            </div>
-            <div class="mt-4">
-                <x-label for="phonenumber" value="{{ __('Phonenumber') }}" />
-                <x-input id="phonenumber" class="block mt-1 w-full" type="number" name="phonenumber" required autocomplete="phonenumber" />
+                <x-input id="address" class="block w-full mt-1 " type="text" name="address" :value="old('address')" required autocomplete="street-address" />
             </div>
 
-            <div class="mt-4">
+            <div class="mb-4">
+                <x-label for="phonenumber" value="{{ __('Phone Number') }}" />
+                <x-input id="phonenumber" class="block w-full mt-1 " type="tel" name="phonenumber" required autocomplete="tel" />
+            </div>
+
+            <div class="mb-4">
                 <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-input id="password" class="block w-full mt-1 " type="password" name="password" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-4">
+            <div class="mb-4">
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-input id="password_confirmation" class="block w-full mt-1 " type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
                         <div class="flex items-center">

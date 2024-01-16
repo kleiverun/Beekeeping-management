@@ -38,6 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Hive::class, 'user_id');
     }
+    public function apiaries()
+    {
+        return $this->hasMany(Apiary::class, 'user_id');
+    }
 
     public function hasPermission($permission)
     {

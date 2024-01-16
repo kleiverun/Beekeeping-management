@@ -10,8 +10,9 @@ use Tests\TestCase;
 class RegisterApiaryTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
+
     /**
-     * A basic feature test example.
+     * Test that a user can create a new apiary with only latitude and longitude
      */
     public function test_new_apiary_with_only_latitude_and_longitude(): void
     {
@@ -30,6 +31,9 @@ class RegisterApiaryTest extends TestCase
 
         $this->assertDatabaseHas('apiaries', $data);
     }
+    /**
+     * Test that a user can create a new apiary with only an address
+     */
     public function test_new_apiary_with_address()
     {
         $user = User::factory()->create();
@@ -46,6 +50,9 @@ class RegisterApiaryTest extends TestCase
 
         $this->assertDatabaseHas('apiaries', $data);
     }
+    /**
+     * Test that a user can create a new apiary with an address, latitude, and longitude
+     */
     public function test_new_apiary_with_address_latitude_longitude()
     {
         $user = User::factory()->create();
