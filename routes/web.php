@@ -44,6 +44,7 @@ Route::middleware([
     Route::post('/registerHive', [App\Http\Controllers\form\v1\NewHiveController::class,'store'])->name('NewHiveController.store');
     Route::post('/registerQueen', [App\Http\Controllers\form\v1\NewQueenController::class, 'store'])->name('NewQueenController.store');
     Route::post('/registerInspection', [App\Http\Controllers\form\v1\InspectionController::class,'store'])->name('InspectionController.store');
+    Route::get('/inspections/{id}', [App\Http\Controllers\view\AllInspectionController::class,'index'])->name('AllInspectionController.index');
     // Get all hives for this {id} apiary
     Route::get('/hives/{id}', [App\Http\Controllers\view\HiveController::class,'index'])->name('hive.index');
 });

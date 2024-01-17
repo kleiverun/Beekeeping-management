@@ -46,9 +46,13 @@ class RegisterHarvest extends Component
      */
     public function handleHiveidChange()
     {
-        $selectedHive = Hive::findOrFail($this->selectedHiveId);
-        $this->maxSkattekasser = $selectedHive->super;
-        $this -> supersHarvested = 0;
+        if ($this->selectedHiveId!='0') {
+            $selectedHive = Hive::findOrFail($this->selectedHiveId);
+            $this->maxSkattekasser = $selectedHive->super;
+            $this -> supersHarvested = 0;
+        }
+
+
     }
 
     // Validates a new harvest, creates a new harvest record and resets input fields

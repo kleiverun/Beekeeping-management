@@ -16,10 +16,8 @@ class NewHiveController extends Controller
             $successMessage = 'Du må registrere en bigård før du kan registrere en bikube';
             return redirect('newApiary')->with('success', $successMessage);
         }
-
-// Retrieve queens that are not associated with any hive
         $queens = Queen::where('user_id', auth()->user()->id)
-            ->whereDoesntHave('hive') // Adjusted to use whereDoesntHave
+            ->whereDoesntHave('hive')
             ->get();
 
         return view('newhive')->with('apiaries', $apiaries)->with('queens', $queens);

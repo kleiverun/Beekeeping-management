@@ -10,4 +10,8 @@ class Inspection extends Model
     use HasFactory;
     protected $fillable =[ 'hive_id', 'inspectionDate', 'description', 'created_at', 'updated_at'];
 
+    public function hive()
+    {
+        return $this->belongsTo(Hive::class, 'hive_id');
+    }
 }

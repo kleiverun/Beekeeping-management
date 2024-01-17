@@ -25,5 +25,8 @@ class Hive extends Model
     {
         return $this->belongsTo(Apiary::class, 'apiary_id');
     }
-
+    public function inspections()
+    {
+        return $this->hasMany(Inspection::class, 'hive_id');
+    }
 }
