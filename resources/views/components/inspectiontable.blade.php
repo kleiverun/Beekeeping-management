@@ -1,7 +1,7 @@
 @props(['inspections'])
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs uppercase bg-orange-500">
+        <thead class="text-xs uppercase ">
         <tr>
             <x-th>
                 Bikube ID

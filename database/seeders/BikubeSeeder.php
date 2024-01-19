@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Hive;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class BikubeSeeder extends Seeder
@@ -12,7 +13,7 @@ class BikubeSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = \Faker\Factory::create();
+        $faker = Factory::create();
         for ($i = 0; $i < 1000; ++$i) {
             Hive::create([
                 'apiary_id' => $faker->numberBetween(1, 3),

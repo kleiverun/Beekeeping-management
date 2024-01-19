@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Queen;
+use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +14,7 @@ class QueenSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = \Faker\Factory::create();
+        $faker = Factory::create();
         for ($i = 0; $i < 1500; ++$i) {
             Queen::create([
                 'user_id' => 1,

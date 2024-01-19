@@ -15,6 +15,16 @@
             height: 300px; /* Adjust the height as needed */
             display: none;
         }
+             /* Add this CSS to your stylesheet or in a style tag in your HTML file */
+         .arrow-container {
+             display: inline-block;
+             transition: transform 0.3s ease; /* Adjust the transition duration and timing function as needed */
+         }
+
+        a:hover .arrow-container svg {
+            transform: rotate(-90deg) translateY(10px); /* Adjust the values as needed */
+        }
+    </style>
     </style>
 </head>
 
@@ -30,6 +40,7 @@
         <div class="container mx-auto px-4 lg:px-0">
                 @include('components.apiary-card')
         </div>
+
     </div>
 </x-app-layout>
 </body>

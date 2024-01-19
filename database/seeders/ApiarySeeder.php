@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Apiary;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 // Adjust the namespace and model name as per your application
@@ -13,7 +14,7 @@ class ApiarySeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = \Faker\Factory::create();
+        $faker = Factory::create();
         for ($i = 0; $i < 300; ++$i) {
             Apiary::create([
                 'user_id' => 1,
