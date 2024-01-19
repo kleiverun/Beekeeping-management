@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Hive;
 use Illuminate\Database\Seeder;
 
 class BikubeSeeder extends Seeder
@@ -12,13 +13,14 @@ class BikubeSeeder extends Seeder
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 200; ++$i) {
-            \App\Models\Apiary::create([
-                'apiary_idApiary' => $faker->numberBetween(1, 100),
-                'bruker_idBruker' => $faker->numberBetween(1, 100),
-                'super' => $faker->numberBetween(1, 10),
-                'hiveDescription' => $faker->sentence(7),
-                'hiveStrength' => $faker->numberBetween(1, 10),
+        for ($i = 0; $i < 1000; ++$i) {
+            Hive::create([
+                'apiary_id' => $faker->numberBetween(1, 3),
+                'queen_id' => $faker->numberBetween(1, 15),
+                'user_id' => 1,
+                'super' => $faker->numberBetween(0, 10),
+                'hiveDescription' => $faker->text,
+                'hiveStrength' => $faker->numberBetween(0, 10),
             ]);
         }
     }

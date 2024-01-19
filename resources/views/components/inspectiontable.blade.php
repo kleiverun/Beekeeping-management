@@ -1,7 +1,7 @@
 @props(['inspections'])
-<div class="overflow-x-auto mx-10 mt-5">
-    <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs uppercase bg-orange-500">
         <tr>
             <x-th>
                 Bikube ID

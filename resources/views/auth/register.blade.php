@@ -9,12 +9,12 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="mb-4">
-                <x-label for="firstname" value="{{ __('First Name') }}" />
+                <x-label for="firstname" value="{{ __('Firstname') }}" />
                 <x-input id="firstname" class="block w-full mt-1 " type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="given-name" />
             </div>
 
             <div class="mb-4">
-                <x-label for="lastname" value="{{ __('Last Name') }}" />
+                <x-label for="lastname" value="{{ __('Lastname') }}" />
                 <x-input id="lastname" class="block w-full mt-1 " type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="family-name" />
             </div>
 

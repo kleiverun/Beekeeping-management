@@ -14,11 +14,13 @@ class ApiarySeeder extends Seeder
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 100; ++$i) {
-            apiary::create([
+        for ($i = 0; $i < 300; ++$i) {
+            Apiary::create([
+                'user_id' => 1,
                 'name' => $faker->name,
-                'bruker_idBruker' => $faker->numberBetween(1, 100),
                 'address' => $faker->address,
+                'longitude' => $faker->longitude,
+                'latitude' => $faker->latitude,
             ]);
         }
     }
