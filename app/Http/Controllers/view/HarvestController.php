@@ -10,18 +10,15 @@ class HarvestController extends Controller
 {
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $hives = Hive::where('user_id', $user_id)->get();
-        $successMessage = 'Du må registrere en bikube før du kan registrere en innhøsting';
-        // Check if the collection is empty
+        $user = auth()->user();
+        $hives = $user->hives()->with('harvests')->get();
+
         if ($hives->isEmpty()) {
-            return redirect('/newHive')->with('success', $successMessage);
+            return redirect('/newHive')->with('success', 'Du må registrere en bikube før du kan registrere en innhøsting');
         }
-        $user = User::find($user_id);
-        $harvests = $user->hives->flatMap->harvests;
 
-        $harvests = $harvests->sortByDesc('dateHarvested');
+        $harvests = $hives->flatMap->harvests->sortByDesc('dateHarvested');
 
-        return view('newharvest')->with('harvests', $harvests)->with('hives', $hives);
+        return view('newharvest', compact('harvests', 'hives'));
     }
 }

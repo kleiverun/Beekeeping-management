@@ -11,15 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $userid = auth()->user()->id;
-
-        $apiaries = ApiaryCollection::collection(Apiary::where('user_id', $userid)->get());
-        $totalApiaries = $apiaries->count();
-        $totalHives = 0;
-        foreach ($apiaries as $apiary) {
-            $totalHives += $apiary->hives ? $apiary->hives->count() : 0;
-        }
-        return view('dashboard', ['totalHives' => $totalHives, 'totalApiaries' => $totalApiaries]);
+        return view('dashboard');
     }
 
 

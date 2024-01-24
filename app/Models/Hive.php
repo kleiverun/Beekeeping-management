@@ -29,4 +29,8 @@ class Hive extends Model
     {
         return $this->hasMany(Inspection::class, 'hive_id');
     }
+    public function queen()
+    {
+        return $this->belongsTo(Queen::class, 'queen_id');
+    }
 }
