@@ -13,8 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
-// import auth fasade
-
 class ApiaryController extends Controller
 {
     /**
@@ -22,13 +20,13 @@ class ApiaryController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new apiaryFilter();
+        $filter = new ApiaryFilter();
         $queryItems = $filter->transform($request);
 
         if (count($queryItems) == 0) {
-            return new ApiaryCollection(apiary::paginate());
+            return new ApiaryCollection(Apiary::paginate());
         } else {
-            $apiaries = apiary::where($queryItems)->paginate();
+            $apiaries = Apiary::where($queryItems)->paginate();
 
             return new ApiaryCollection($apiaries->appends($request->query()));
         }
@@ -50,24 +48,24 @@ class ApiaryController extends Controller
      */
     public function show(string $id)
     {
-        $apiary = apiary::find($id);
+        $apiary = Apiary::find($id);
 
         if ($apiary) {
             return new ApiaryResource($apiary);
         }
 
-        return new ApiaryResource(apiary::findOrFail($id));
+        return new ApiaryResource(Apiary::findOrFail($id));
     }
 
     /**
-     * Create multiple apiary resource in storage.
+     * Creates multiple Apiary resource in storage.
      */
     public function bulkStore(BulkStoreApiaryRequest $request)
     {
         $bulk = collect($request->all())->map(function ($arr, $key) {
             return Arr::except($arr, ['id', 'created_at', 'updated_at']);
         });
-        apiary::insert($bulk->toArray());
+        Apiary::insert($bulk->toArray());
     }
 
     /**

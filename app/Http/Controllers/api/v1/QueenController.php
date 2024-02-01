@@ -39,7 +39,9 @@ class QueenController extends Controller
      */
     public function destroy(Queen $queen)
     {
-        return $queen->delete();
+        $queen->delete();
+
+        return response()->json(null, 204);
     }
 
     /**

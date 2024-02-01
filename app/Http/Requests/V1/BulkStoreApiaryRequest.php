@@ -38,7 +38,7 @@ class BulkStoreApiaryRequest extends FormRequest
         $data = [];
         foreach ($this->toArray() as $obj) {
             $modifiedObj = [
-                'bruker_idBruker' => $obj['bruker_idBruker'] ?? null,
+                'user_id' => $obj['userId'] ?? null,
                 'name' => $obj['name'] ?? null,
                 'address' => $obj['address'] ?? null,
                 'created_at' => $obj['created_at'] ?? null,

@@ -10,7 +10,6 @@
                         {{ $apiary->address }}
                     </p>
                     @if ($apiary->latitude != null && $apiary->longitude != null)
-                        {{-- Map container --}}
                         <div id="map_{{ $apiary->id }}" class="leaflet-map" style="height: 200px;"></div>
                     @endif
                 </div>

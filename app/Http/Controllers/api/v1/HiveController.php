@@ -21,7 +21,7 @@ class HiveController extends Controller
     {
         $brukerId = request()->query('brukerId');
         if ($brukerId) {
-            $bikuber = Hive::where('bruker_idBruker', $brukerId)->get();
+            $bikuber = Hive::where('user_id', $brukerId)->get();
 
             return new HiveCollection($bikuber);
         } else {
@@ -44,7 +44,7 @@ class HiveController extends Controller
      */
     public function show($idBikube)
     {
-        $inkluderapiary = request()->query('includeIdApiary');
+        $includeApiary = request()->query('includeIdApiary');
 
         $Hive = Hive::find($idBikube);
 
@@ -52,7 +52,7 @@ class HiveController extends Controller
             return new HiveResource(Hive::findOrFail($idBikube));
         }
 
-        if ($inkluderapiary) {
+        if ($includeApiary) {
             $Hive->loadMissing('Hive');
         }
 
@@ -65,7 +65,7 @@ class HiveController extends Controller
      */
     public function update(UpdateHiveRequest $UpdateHiveRequest, $id)
     {
-        // Find the Bruker model by its ID
+        // Find the user model by its ID
         $Hive = Hive::find($id);
         if ($Hive) {
             // Update the Hive model with the validated data
@@ -84,5 +84,8 @@ class HiveController extends Controller
      */
     public function destroy(Hive $Hive)
     {
+        $Hive->delete();
+
+        return response()->json(null, 204);
     }
 }

@@ -20,7 +20,7 @@ class ApiaryResource extends JsonResource
             'address' => $this->address,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
-            'user_id' => $this->bruker_idBruker,
+            'user_id' => $this->user_id,
             'lastUpdated' => $this->updated_at,
         ];
     }

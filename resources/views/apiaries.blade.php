@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>Alle bigårder</title>
+    <title>
+        @yield('title', 'Beekeeper')
+    </title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
@@ -25,7 +27,7 @@
             transform: rotate(-90deg) translateY(10px); /* Adjust the values as needed */
         }
     </style>
-    </style>
+
 </head>
 
 <body>

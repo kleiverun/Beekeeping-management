@@ -1,3 +1,4 @@
+@props(['cordinates'])
 <div class="p-6 lg:p-8 bg-orange border-b border-gray-200">
     <x-application-logo class="block h-12 w-auto"/>
 
@@ -25,6 +26,17 @@
             </a>
         @endforeach
     </div>
+    <script>
+        map = L.map('map').setView([0, 0], 2); // Centered at (0, 0) with zoom level 2
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            @foreach($cordinates as $cordinate)
+            L.marker([{{ $cordinate->latitude }}, {{ $cordinate->longitude }}]).addTo(map)
+            .bindPopup('{{ $cordinate->name }}')
+            .openPopup();
+            @endforeach
+    </script>
 </div>
 
 

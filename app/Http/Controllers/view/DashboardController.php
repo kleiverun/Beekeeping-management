@@ -11,7 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        //Get only all the lattiude and longitude from the apiary table where the user_id is the same as the logged in user
+        $cordinates = Apiary::where('user_id', auth()->user()->id)->get(['latitude', 'longitude', 'name']);
+
+        return view('dashboard')->with('cordinates', $cordinates);
     }
 
 

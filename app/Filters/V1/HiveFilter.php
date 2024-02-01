@@ -8,14 +8,16 @@ class HiveFilter extends ApiFilter
 {
     protected $allowedParms = [
         'user_id' => ['eq'],
-        'apiary_idApiary' => ['eq'],
+        'apiary_id' => ['eq'],
+        'queen_id' => ['eq'],
         'super' => ['eq', 'gt', 'ge', 'lt', 'le'],
-        'hiveDescription' => ['eq', 'like'],
+        'hiveDescription' => ['like'],
         'hiveStrength' => ['eq', 'gt', 'ge', 'lt', 'le'],
     ];
     protected $columnMap = [
         'user_id' => 'user_id',
-        'apiary_idApiary' => 'apiary_idApiary',
+        'apiary_id' => 'apiary_id',
+        'queen_id' => 'queen_id',
         'super' => 'super',
         'hiveDescription' => 'hiveDescription',
         'hiveStrength' => 'hiveStrength',

@@ -6,7 +6,9 @@
     @vite('resources/css/app.css')
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>Ny kube</title>
+    <title>
+        @yield('title', 'Beekeeper')
+    </title>
 </head>
 <body >
 <x-app-layout>

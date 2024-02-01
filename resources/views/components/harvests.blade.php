@@ -1,44 +1,43 @@
 @props(['harvests'])
-
-<div class="overflow-x-auto mx-10 mt-5">
-    <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs uppercase bg-orange-200">
         <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <x-th>
                 ID
-            </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            </x-th>
+            <x-th>
                 Beskrivelse
-            </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            </x-th>
+            <x-th>
                 Vekt på innhøstet honning (kg)
-            </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            </x-th>
+            <x-th>
                 Antall skattekasser innhøstet
-            </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            </x-th>
+            <x-th>
                 Dato for innhøsting
-            </th>
+            </x-th>
         </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
         @foreach($harvests as $harvest)
             <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
+                <x-td>
                     <div class="text-sm text-gray-900">{{ $harvest->id }}</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                </x-td>
+                <x-td>
                     <div class="text-sm text-orange-600 font-semibold">{{ $harvest->description }}</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                </x-td>
+                <x-td>
                     <div class="text-sm text-gray-600">{{ $harvest->harvestWeight }} kg</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                </x-td>
+                <x-td>
                     <div class="text-sm text-gray-600">{{ $harvest->supersHarvested }}</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                </x-td>
+                <x-td>
                     <div class="text-sm text-gray-600">{{ $harvest->dateHarvested }}</div>
-                </td>
+                </x-td>
             </tr>
         @endforeach
         </tbody>
