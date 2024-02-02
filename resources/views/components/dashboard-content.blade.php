@@ -12,31 +12,24 @@
 </div>
 
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-    <div class="flex items-center space-x-4">
-        @foreach([
-            'dashboard' => 'Dashboard',
-            'newHive' => 'Registrer et nytt bifolk',
-            'newApiary' => 'Registrer en ny bigård',
-            'apiaries' => 'Se dine bigårder og bikuber',
-            'newQueen' => 'Registrer dronning',
-            'newHarvest' => 'Registrer innhøsting',
-        ] as $route => $label)
-            <a href="{{ route($route) }}" class="bg-orange-500 text-white py-2 px-4 rounded-md transition-all duration-200 transform hover:scale-105">
-                {{ __($label) }}
-            </a>
-        @endforeach
-    </div>
-    <script>
-        map = L.map('map').setView([0, 0], 2); // Centered at (0, 0) with zoom level 2
+    <h2 class="text-2xl font-semibold text-gray-800 leading-tight">
+        {{__('Your hives')}}
+    </h2>
+    @if($cordinates->isNotEmpty())
+        <div class="mt-5" id="map">
+        <script>
+            map = L.map('map').setView([0, 0], 2);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
+                attribution: '© OpenStreetMap contributors'
             }).addTo(map);
             @foreach($cordinates as $cordinate)
             L.marker([{{ $cordinate->latitude }}, {{ $cordinate->longitude }}]).addTo(map)
-            .bindPopup('{{ $cordinate->name }}')
-            .openPopup();
+                .bindPopup('{{ $cordinate->name }}')
+                .openPopup();
             @endforeach
-    </script>
+        </script>
+    @endif
+        </div>
 </div>
 
 

@@ -7,9 +7,6 @@
     <!-- Vue directive, adjust based on your project setup -->
     @vite('resources/css/app.css')
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>
-        @yield('title', 'Beekeeper')
-    </title>
     <!-- Leaflet styles and scripts -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -33,7 +30,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <!-- Your Vue or Blade component content -->
-                <div id="map"></div>
                 <x-dashboard-content :cordinates="$cordinates" />
             </div>
         </div>

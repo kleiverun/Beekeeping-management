@@ -1,11 +1,10 @@
 @props(['inspections'])
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs uppercase ">
+    <x-table>
+        <thead class="text-xs uppercase">
         <tr>
             <x-th>
                 Bikube ID
-                </x-th>
+            </x-th>
             <x-th>
                 Inspeksjonsdato
             </x-th>
@@ -14,7 +13,7 @@
             </x-th>
         </tr>
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
+        <x-tbody>
         @foreach($inspections as $inspection)
             <tr>
                 <x-td>
@@ -28,6 +27,6 @@
                 </x-td>
             </tr>
         @endforeach
-        </tbody>
-    </table>
+        </x-tbody>
+    </x-table>
 </div>

@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>
-        @yield('title', 'Beekeeper')
-    </title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
@@ -40,7 +37,7 @@
 
     <div class="py-12">
         <div class="container mx-auto px-4 lg:px-0">
-                @include('components.apiary-card')
+                <x-apiary-card :apiaries="$apiaries" />
         </div>
 
     </div>

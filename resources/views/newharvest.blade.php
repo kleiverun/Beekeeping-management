@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+
         <x-harvests :harvests="$harvests" />
     </div>
 </x-app-layout>

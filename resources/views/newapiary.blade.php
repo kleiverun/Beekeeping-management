@@ -21,8 +21,6 @@
             display: flex;
         }
     </style>
-
-    <title>Ny kube</title>
 </head>
 <body>
 
