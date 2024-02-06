@@ -27,7 +27,6 @@ class UserController extends Controller
         if ($includeApiary) {
             $brukere = $brukere->with('apiary');
         }
-
         return new UserCollection($brukere->paginate()->appends($request->query()));
     }
 
@@ -58,7 +57,6 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->validated());
-
         if ($user) {
             return response()->json(['message' => 'User created'], 201);
         } else {

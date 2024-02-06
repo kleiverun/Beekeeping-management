@@ -21,9 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// api/v1/brukere middleware auth:sanctum er feilen
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1', 'middleware' => 'auth:sanctum'], function () {
-    // Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\api\v1'], function () {
     Route::apiResource('users', UserController::class);
     Route::apiResource('apiaries', ApiaryController::class);
     Route::apiResource('hives', HiveController::class);

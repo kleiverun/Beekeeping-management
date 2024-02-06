@@ -9,6 +9,7 @@ use App\Http\Requests\V1\UpdateHiveRequest;
 use App\Http\Resources\V1\HiveCollection;
 use App\Http\Resources\V1\HiveResource;
 use App\Models\Hive;
+use http\Env\Response;
 
 class HiveController extends Controller
 {
@@ -40,23 +41,21 @@ class HiveController extends Controller
     /**
      * Display the specified Hive resource.
      * If the inkluderIdapiary query parameter is set, the apiaries relation will be loaded.
-     *  http://127.0.0.1:8000/api/v1/bikuber/{id}?includeIdApiary=true.
+     *  http://127.0.0.1:8000/api/v1/hives/{id}?includeIdApiary=true.
      */
-    public function show($idBikube)
+    public function show($id)
     {
         $includeApiary = request()->query('includeIdApiary');
-
-        $Hive = Hive::find($idBikube);
-
-        if (!$Hive) {
-            return new HiveResource(Hive::findOrFail($idBikube));
+        $hive = Hive::find($id);
+        if (!$hive) {
+            return new HiveResource(Hive::findOrFail($id));
         }
 
         if ($includeApiary) {
-            $Hive->loadMissing('Hive');
+            $hive->loadMissing('Hive');
         }
 
-        return new HiveResource($Hive);
+        return new HiveResource($hive);
     }
 
     /**
@@ -68,9 +67,10 @@ class HiveController extends Controller
         // Find the user model by its ID
         $Hive = Hive::find($id);
         if ($Hive) {
-            // Update the Hive model with the validated data
             $Hive->update($UpdateHiveRequest->validated());
-            echo $UpdateHiveRequest;
+            return response()->json([
+                'message' => 'Hive updated successfully'
+            ], 200);
         } else {
             // Bruker with the given ID is not found
             return response()->json([
@@ -82,10 +82,20 @@ class HiveController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hive $Hive)
+    public function destroy($id)
     {
-        $Hive->delete();
 
-        return response()->json(null, 204);
+        $hive = Hive::find($id);
+        if ($hive) {
+            $hive->delete();
+            return response()->json([
+                'message' => 'Hive deleted successfully'
+            ], 200);
+        } else {
+            return response()->json([
+                'error' => 'Hive not found',
+            ], 404);
+        }
+
     }
 }

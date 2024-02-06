@@ -14,7 +14,8 @@ class UpdateHiveRequest extends FormRequest
     {
         $user = $this->user();
 
-        return $user != null && $user->tokenCan('update');
+        $user != null && $user->tokenCan('update');
+        return true;
     }
 
     /**

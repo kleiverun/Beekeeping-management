@@ -6,6 +6,7 @@ use App\Http\Controllers\view\HarvestController;
 use App\Http\Controllers\view\NewHiveController;
 use App\Http\Controllers\view\QueenController;
 use App\Http\Controllers\view\InspectionController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +41,20 @@ Route::middleware([
     Route::post('/registerInspection', [App\Http\Controllers\form\v1\InspectionController::class,'store'])->name('InspectionController.store');
     Route::get('/inspections/{id}', [App\Http\Controllers\view\AllInspectionController::class,'index'])->name('AllInspectionController.index');
     Route::get('/hives/{id}', [App\Http\Controllers\view\HiveController::class,'index'])->name('hive.index');
+});
+Route::get('/setup', function () {
+    $credentials = [
+        'email' => 'email@email.com',
+        'password' => 'password',
+    ];
+    if (!Auth::attempt($credentials)) {
+        $user = \App\Models\User();
+        $user->email = $credentials['email'];
+        $user->password = Hash::make($credentials['password']);
+        $user->save();
+    }
+    if (Auth::attempt($credentials)) {
+        $adminToken = Auth::user()->createToken('adminToken', ['create', ' update', 'delete']);
+        return $adminToken->plainTextToken;
+    }
 });

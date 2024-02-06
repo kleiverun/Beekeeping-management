@@ -16,9 +16,9 @@ class HiveResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'apiary_id' => $this->apiary_idApiary,
-            'user_id' => $this->userId,
-            'queen_id' => $this->queens_idQueen,
+            'apiaryId' => $this->apiary_id,
+            'userId' => $this->user_id,
+            'queenId' => $this->queen_id,
             'hiveDescription' => $this->hiveDescription,
             'super' => $this->super,
             'hiveStrength' => $this->hiveStrength,
