@@ -74,7 +74,7 @@ class HiveController extends Controller
         } else {
             // Bruker with the given ID is not found
             return response()->json([
-                'error' => 'Hive not found',
+                'message' => 'Hive not found',
             ], 404);
         }
     }

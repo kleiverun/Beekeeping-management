@@ -47,7 +47,6 @@
                 </div>
 
                 @if ($apiary->latitude != null && $apiary->longitude != null)
-                    {{-- Initialize map for each apiary --}}
                     <script>
                         var map_{{ $apiary->id }} = L.map('map_{{ $apiary->id }}').setView([{{ $apiary->latitude }}, {{ $apiary->longitude }}], 5);
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

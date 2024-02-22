@@ -39,7 +39,6 @@
         <div class="container mx-auto px-4 lg:px-0">
                 <x-apiary-card :apiaries="$apiaries" />
         </div>
-
     </div>
 </x-app-layout>
 </body>

@@ -13,10 +13,11 @@ class HiveController extends Controller
     public function index($idBikuber)
     {
         $allHives = Hive::where('user_id', auth()->user()->id)
-        ->where('apiary_id', $idBikuber)
-        ->get(); // You need to call get() to execute the query and fetch data.
+            ->where('apiary_id', $idBikuber)
+            ->paginate(20); // Removed `->get()`
 
         return view('hives', compact('allHives'));
+
     }
 
 
