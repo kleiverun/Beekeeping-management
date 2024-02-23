@@ -1,7 +1,7 @@
 
 # Beekeeping-management
 
-This project tries to create a solution for managing your hives, apiaries and queens.  
+This project tries to create a solution for managing your apiary needs.  
 
 
 ## Authors
