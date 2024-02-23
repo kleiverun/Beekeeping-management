@@ -40,7 +40,7 @@
                     @if(session('success'))
                         <p class="text-red-700"> {{session('success')}}</p>
                     @endif
-                    <x-newapiary-form/>
+                    <x-newApiary-form/>
                 </div>
 
             </div>
